@@ -1,0 +1,596 @@
+<!DOCTYPE HTML>
+<html lang="en" class="navy sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>CSC110 Guides</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">CSC110 Guides</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p>This is a set of guides mostly covering how to install and set up software
+you'll need for this class. If you <em>know what you're doing</em> and want to use an
+alternative program or follow a different process, then you can. However, make
+sure that:</p>
+<ol>
+<li>You are complying with the academic integrity policy in our syllabus.
+Software that incorporates AI might be a problem.</li>
+<li>You know how to use and troubleshoot your alternative without my help. If you
+need me to fix a problem for you, then I will first ask you to follow the
+guides I've provided and see if that fixes the issue.</li>
+<li>You're capable of completing any assignments or other tasks necessary for
+this class using your alternative. If not, then follow the guides and use the
+recommended software.</li>
+</ol>
+<h1 id="computer-information"><a class="header" href="#computer-information">Computer Information</a></h1>
+<p>You should have a Linux, macOS, or Windows laptop (Chromebooks are not suitable
+for this class). Aside from the operating system (Linux, Mac, or Windows), there
+are a few other things you'll need to know about your computer.</p>
+<h2 id="architecture"><a class="header" href="#architecture">Architecture</a></h2>
+<p>When downloading software, you may need to know what kind of CPU your computer
+has (the CPU's "architecture") to choose the correct version of that software.
+You most likely have an x86_64 (abbreviated x64) CPU or an aarch64 (also called
+arm64) CPU. To check:</p>
+<ul>
+<li>Linux: Open your terminal and run <code>uname -m</code>.</li>
+<li>Mac: Check
+<a href="https://support.apple.com/guide/mac-help/get-system-information-about-your-mac-syspr35536/mac">About This Mac</a>.
+Older Macs have x86_64 CPU's, and newer Mac's have aarch64 CPUs.</li>
+<li>Windows: Open "About your PC" in system settings and check "System type". You
+most likely have an x86_64 CPU if you're using Windows.</li>
+</ul>
+<!-- ## Terminal and Shell -->
+<!---->
+<!-- We will be using a terminal frequently throughout the semester, and some -->
+<!-- configuration will be different depending on which shell is running on your -->
+<!-- terminal. The shell is what actually processes the commands you type into the -->
+<!-- terminal. -->
+<!---->
+<!-- - Linux: you're most likely using bash, but you can check by launching your -->
+<!--   terminal and running the command `echo $0`. -->
+<!-- - Mac: You most likely have zsh, but older Macs come with bash instead of zsh. -->
+<!--   You can check with `echo $0` just like on Linux. -->
+<!-- - Windows: You'll install Git Bash in the [Software Installation](./install.md) -->
+<!--   guide. Your terminal will therefore be running bash. -->
+<h2 id="home-directory"><a class="header" href="#home-directory">Home Directory</a></h2>
+<p>Your home directory is where your terminal should start and where you'll find
+many familiar folders like Documents and Desktop. You can run <code>echo $HOME</code> on
+your bash or zsh terminal to print the path of your home directory. Depending on
+your operating system, this will normally be:</p>
+<ul>
+<li>Linux: <code>/home/username</code></li>
+<li>Mac: <code>/Users/username</code></li>
+<li>Windows: <code>/c/Users/username</code>
+<ul>
+<li>Windows formats paths differently from Linux and Mac, so you may also see
+this displayed as <code>C:\Users\username</code> outside of your Git Bash terminal.</li>
+</ul>
+</li>
+</ul>
+<p>Note: "username" is a placeholder for your actual username. My username is
+"zach" and I have a Linux computer, so my home directory is <code>/home/zach</code>.</p>
+<h1 id="software-installation"><a class="header" href="#software-installation">Software Installation</a></h1>
+<p>This class requires you to have a terminal, text editor, and the Java 25 JDK (or
+Java 24 until Java 25 is officially released).</p>
+<h2 id="terminal"><a class="header" href="#terminal">Terminal</a></h2>
+<p>If you're on Windows, install
+<a href="https://git-scm.com/downloads/win">Git for Windows</a>, which includes Git Bash.
+The terminal programs that come with Windows are not compatible with some of the
+terminal commands you'll see in class. You'll need a terminal that runs bash or
+a similar shell in order to follow along with my examples.</p>
+<p>If you're on Linux or Mac, then your default terminal running bash or zsh should
+be fine.</p>
+<h2 id="geany"><a class="header" href="#geany">Geany</a></h2>
+<p>The recommended text editor for this class is <a href="https://www.geany.org/">Geany</a>.
+You can download an installer from the
+<a href="https://www.geany.org/download/releases/">releases page</a> for Mac or Windows
+(make sure you get the arm64 installer if your Mac has an aarch64 CPU), and you
+can use your <a href="https://www.geany.org/download/third-party/">package manager</a> to
+install it on Linux.</p>
+<h2 id="java"><a class="header" href="#java">Java</a></h2>
+<p>We'll be using some new features that were previewed in Java 24 and will be
+finalized in Java 25. You should install Java 25 when it becomes available on
+September 16th, but until then you can use Java 24 and enable preview features
+when running your programs. We'll cover enabling preview features when we write
+our first program.</p>
+<p>The Eclipse Foundation provides free builds of the JDK (Java Development Kit),
+which you can download from their
+<a href="https://adoptium.net/temurin/releases/">releases page</a>. Click "All Versions",
+then select your operating system, architecture, and version 25 (or 24 if 25 is
+not yet available). Choose the .MSI (Windows) or .PKG (Mac) installers. The .ZIP
+and .TAR.GZ archives require manual installation.</p>
+<p>On Linux, you should check your package manager to see whether it has version 24
+or 25 of Java. If not, then you can manually install the .TAR.GZ download.
+Please see me during office hours if you need help with this.</p>
+<p>After you install java, you can confirm that it was installed correctly by
+restarting your terminal and running the command <code>java -version</code>. This should
+show the version number of your Java installation (24 or 25).</p>
+<h1 id="geany-configuration"><a class="header" href="#geany-configuration">Geany Configuration</a></h1>
+<h2 id="plugins"><a class="header" href="#plugins">Plugins</a></h2>
+<p>Under Tools -&gt; Plugin Manager, you'll find several useful plugins. Check the
+"File Browser", "Save Actions", and "Split Window" plugins to enable them. You
+can edit a plugin's preferences by selecting it and clicking the Preferences
+button.</p>
+<h3 id="save-actions"><a class="header" href="#save-actions">Save Actions</a></h3>
+<p>I recommend enabling the autosave feature in this plugin's preferences. Choose
+whatever settings you'd prefer, or go with the following suggestions if you
+don't know what to choose:</p>
+<ul>
+<li>Check "Enable save when losing focus" so Geany saves whenever you switch to a
+terminal to run your program.</li>
+<li>Check "Enable" and set interval to 300 to autosave every five minutes.</li>
+</ul>
+<h3 id="file-browser"><a class="header" href="#file-browser">File Browser</a></h3>
+<p>The default settings should be fine. You can find the file browser in the
+sidebar (make sure View -&gt; Show Sidebar is checked) under the Files tab. This
+can be a convenient way to find and edit files.</p>
+<h3 id="split-window"><a class="header" href="#split-window">Split Window</a></h3>
+<p>If you want to have multiple files open and visible at once, you can enable a
+split view with Tools -&gt; Split Window -&gt; Side by Side (or Top and Bottom). The
+second panel can show any of your open tabs.</p>
+<h2 id="settings"><a class="header" href="#settings">Settings</a></h2>
+<p>You can find your settings under Edit -&gt; Preferences. On Mac and Windows
+Preferences may be under a different menu, such as File or Geany.</p>
+<p>For now, the only setting I recommend changing is the "Startup Path" in the
+General section. Set this to your csc110 folder (see
+<a href="./organization.html">File Organization</a> so that the file browser starts in a more
+convenient location whenever you open Geany.</p>
+<h1 id="file-organization"><a class="header" href="#file-organization">File Organization</a></h1>
+<p>Organize your files however you want, but make sure you know where they are and
+how to find them. I'll cover a simple setup that should make it easy to keep
+track of your work for this class.</p>
+<ol>
+<li>Go to your home directory and create a <code>csc110</code> folder. You can use the
+command <code>mkdir csc110</code> on your terminal. You can choose another location, but
+make sure it's easy to find. If it's in your home directory, then you can
+always reach it with the command <code>cd ~/csc110</code>.</li>
+<li>In your csc110 folder, create folders called <code>labs</code>, <code>assignments</code>, and
+<code>classwork</code>. You can also do this with the <code>mkdir</code> command.</li>
+<li>Set Geany to start in your <code>csc110</code> folder (see
+<a href="./configure.html">Software Configuration</a>).</li>
+</ol>
+<h1 id="terminal-navigation"><a class="header" href="#terminal-navigation">Terminal Navigation</a></h1>
+<p>We'll cover how to use your terminal during class. These guides are longer and
+more detailed to serve as a reference in case you forget something. We use the
+terminal constantly in this class, so it's important that you understand the
+basics of terminal commands, paths, and how to navigate your file system.</p>
+<h1 id="commands"><a class="header" href="#commands">Commands</a></h1>
+<p>You interact with a terminal by typing a command and reading the command's
+output. This section will cover the structure of a command and some terms you'll
+need to know to understand these commands.</p>
+<p>There are differences between Windows and Unix-like systems, but most of these
+differences won't matter if you are using a bash emulator on Windows. For
+example, Windows uses a backslash to separate directory names in paths, but your
+bash emulator should allow you to use a forward slash as if you were on a Mac or
+Linux computer. My notes focus on Unix-like systems, but I will try to note
+differences between Git Bash and bash/zsh when they come up.</p>
+<h2 id="terms"><a class="header" href="#terms">Terms</a></h2>
+<p>Some terms that will be used to explain terminal commands. Refer back to this
+list if you come across something you don't understand.</p>
+<ul>
+<li><strong>Directory</strong>: another word for a folder on your hard drive. A directory can
+contain files and other directories.
+<ul>
+<li>Your <strong>working directory</strong> is the directory in which your terminal (or
+another program) is currently running. Your terminal has direct access to
+files in its working directory.</li>
+<li>Your <strong>home directory</strong> is the where the terminal starts. This should be
+your user folder: <code>/home/username</code> on Linux, <code>/Users/username</code> on Mac, and
+<code>C:\Users\username</code> (displayed as <code>/c/Users/username</code> in a bash emulator) on
+Windows.</li>
+</ul>
+</li>
+<li><strong>Path</strong>: a path is the location of a file or directory. It consists of
+directory names separated by forward slashes (<code>/</code>). The path ends with the
+name of the file or directory it leads to.
+<ul>
+<li>An <strong>absolute path</strong> tells you how to reach a file or directory from the
+root of a file system. An absolute path starts with a forward slash on
+Unix-like systems. For example, the absolute path to my Desktop can be
+written as <code>/home/zach/Desktop</code> or <code>/home/zach/Desktop/</code>. The forward slash
+at the end of the path is optional, and it can only be included when the
+path points to a directory (such as the Desktop folder).</li>
+<li>A <strong>relative path</strong> tells you how to get from one location (usually your
+working directory) to a specific file or directory. For example, if I were
+in the directory <code>/home/zach</code> and wanted to reach
+<code>/home/zach/Desktop/notes.txt</code>, then the relative path <code>Desktop/notes.txt</code>
+tells me how to reach that file from my current location.</li>
+<li>Your computer also has a list of paths that it checks whenever you ask it to
+run a program. This list is stored under the label "path" or "PATH", and we
+can just refer to it as "the path". When you install a new program, the
+installer will usually add its location to the path or create a shortcut in
+a directory that was already on the path. If a program is on the path, then
+you only have to type its name to run it. If a program is not on the path,
+then you have to type a path to that program to run it.</li>
+</ul>
+</li>
+</ul>
+<h2 id="command-structure"><a class="header" href="#command-structure">Command Structure</a></h2>
+<p>Commands on the terminal can refer to programs or built-in functions. Sometimes
+you'll only need to type the name of a command, and sometimes you'll need to
+include <strong>arguments</strong> after the name. An argument is an additional piece of
+information that changes the command's behavior.</p>
+<p>Here are three examples using the <code>ls</code> command:</p>
+<ul>
+<li><code>ls</code>: lists contents of working directory; no arguments</li>
+<li><code>ls Desktop</code>: lists contents of the <code>Desktop</code> directory; <code>Desktop</code> is an
+argument</li>
+<li><code>ls -a Desktop</code>: lists contents of the <code>Desktop</code> directory, including hidden
+files; <code>-a</code> and <code>Desktop</code> are arguments</li>
+</ul>
+<p>The third command includes a special type of argument called a <strong>flag</strong>. A flag
+normally starts with one or two dashes, and it enables a setting in the command.
+The <code>-a</code> flag tells <code>ls</code> to include hidden files in its output.</p>
+<h2 id="spaces"><a class="header" href="#spaces">Spaces</a></h2>
+<p>Spaces separate each part of a command (the name and arguments). This can cause
+problems if you use spaces in your filenames. For example, if you have a folder
+named <code>My Folder</code>, then the command <code>ls My Folder</code> will not list the contents of
+<code>My Folder</code>. It will instead try to list the contents of two directories: <code>My</code>
+and <code>Folder</code>. We can fix this by quoting the path (<code>ls 'My Folder'</code>) or escaping
+the spaces (<code>ls My\ Folder</code>), but this is easy to forget and takes longer to
+type. If you avoid using spaces in filenames, then you don't have to worry about
+this.</p>
+<h2 id="command-history-and-tab-completion"><a class="header" href="#command-history-and-tab-completion">Command History and Tab Completion</a></h2>
+<p>Your terminal saves a history of every command you enter. You can go back
+through this history with the up and down arrow keys, which lets you repeat a
+command without retyping it.</p>
+<p>The tab key will attempt to complete the path or command name you are currently
+typing. This saves a lot of typing AND helps you avoid mistakes. If you haven't
+typed enough to narrow it down to one possibility, then you can hit tab again to
+see a list of every remaining option.</p>
+<h2 id="examples"><a class="header" href="#examples">Examples</a></h2>
+<p>If I want to show you what it looks like when you run a terminal command, then I
+will include both the command and its output. It might look something like this:</p>
+<pre><code>$ ls -a ~/Desktop
+. .. todo.txt lesson_plan.md
+</code></pre>
+<p>Terminals display a prompt when you are allowed to type a command. This prompt
+can include your username and working directory, and it usually ends in a dollar
+sign, percent sign, or other special character. When you type a command, it will
+appear after that special character. For example, the prompt on my work desktop
+terminal looks like this before I type a command:</p>
+<pre><code>zach@zach-work-desktop:~$
+</code></pre>
+<p>If I type the command <code>ls -a ~/Desktop</code>, then it will appear after the prompt:</p>
+<pre><code>zach@zach-work-desktop:~$ ls -a ~/Desktop
+</code></pre>
+<p>We usually use a lone dollar sign at the start of a line to abbreviate this
+prompt, but it is not part of the command. For example, if you wanted to imitate
+the example below, then you would only type <code>ls -a ~/Desktop</code> on your terminal
+and press the enter key.</p>
+<pre><code>$ ls -a ~/Desktop
+. .. todo.txt lesson_plan.md
+</code></pre>
+<p>Here's a longer example involving five terminal commands, two of which produce
+output:</p>
+<pre><code>$ cd Desktop/csc110
+bash: cd: csc110: No such file or directory
+$ cd Desktop
+$ mkdir csc110
+$ ls
+csc110
+$ cd csc110
+</code></pre>
+<p>In the above example, I ran the commands <code>cd Desktop/csc110</code>, <code>cd Desktop</code>,
+<code>mkdir csc110</code>, <code>ls</code>, and <code>cd csc110</code>. The messages
+<code>bash: cd: csc110: No such file or directory</code> and <code>csc110</code> were the output of
+two of those commands.</p>
+<h1 id="navigation"><a class="header" href="#navigation">Navigation</a></h1>
+<p>Before you can use the terminal to run your programs, you need to know how to
+navigate your filesystem and find those programs. This is essential for doing
+anything in the terminal. The following three commands will help:</p>
+<ul>
+<li><code>pwd</code> (print working directory): tells you where you are</li>
+<li><code>cd</code> (change directory): moves the terminal to a new folder</li>
+<li><code>ls</code> (list): lists files and folders in your current location</li>
+</ul>
+<h2 id="pwd"><a class="header" href="#pwd">pwd</a></h2>
+<p>Run <code>pwd</code> to print the absolute path of your working directory. You won't need
+to use this command often, but it's useful if you aren't sure exactly where you
+are.</p>
+<h2 id="cd"><a class="header" href="#cd">cd</a></h2>
+<p>Running <code>cd</code> with no arguments will take you to your home directory. Running
+<code>cd</code> followed by a directory's path will take you to that directory. You can use
+a relative or absolute path.</p>
+<p>For example:</p>
+<ul>
+<li>If I'm in the directory <code>/home/zach/</code>, which contains the directory
+<code>Documents</code>, then I can move into Documents with <code>cd Documents</code> or
+<code>cd /home/zach/Documents/</code>.</li>
+<li>If I'm in <code>/home/</code>, then I can move into Documents with <code>cd zach/Documents</code> or
+<code>cd /home/zach/Documents/</code>, but not <code>cd Documents</code>.</li>
+</ul>
+<p>Finally, there are a few special names that act as shortcuts for commonly-used
+directories:</p>
+<ul>
+<li><code>~</code> Refers to your home directory. In the above example, I could reach my
+Documents folder from any location with <code>cd ~/Documents</code>.</li>
+<li><code>.</code> Refers to the working directory. You won't need to use this one right now,
+but you may see it in some paths or after running the <code>ls -a</code> command.</li>
+<li><code>..</code> Refers to the working directory's parent directory. This is useful if you
+want to go back to a directory that appears earlier in your path. For example,
+if your working directory is <code>/home/zach/Documents/csc110/homework/</code>, then
+<code>..</code> refers to <code>/home/zach/Documents/csc110/</code>. You can use <code>..</code> multiple times
+to go back further. In the previous example, <code>../..</code> would refer to
+<code>/home/zach/Documents/</code>, and <code>cd ../..</code> would move me to that directory.</li>
+</ul>
+<h2 id="ls"><a class="header" href="#ls">ls</a></h2>
+<p>Running <code>ls</code> with no arguments will list the contents of your working directory.
+Running <code>ls</code> followed by a path will list the contents of that directory (if the
+path points to a directory) or the name of that file (if the path points to a
+file).</p>
+<p>This command is helpful if you're looking for a file or want to see what's in
+your current location.</p>
+<p>The <code>-a</code> flag mentioned earlier will show hidden files, and the <code>-l</code> flag will
+show more details about the files.</p>
+<h1 id="standard-vs-compact-java"><a class="header" href="#standard-vs-compact-java">Standard vs Compact Java</a></h1>
+<p>In this class, most (possibly all) of our programs will be written as <strong>Compact
+Source Files</strong>. It's not necessary to understand what exactly this means right
+now, but you can read the relevant
+<a href="https://openjdk.org/jeps/512">JDK Enhancement Proposal</a> if you want the
+details. For now, I'll summarize the main points:</p>
+<ul>
+<li>Java normally requires a lot of
+<a href="https://en.wikipedia.org/wiki/Boilerplate_code">boilerplate</a> to write even
+the simplest program. That boilerplate code involves Java features that a new
+programmer won't be equipped to understand.</li>
+<li>Basic input and output (I/O) operations, which most of our programs will need,
+also require features that are difficult for new programmers to understand.</li>
+<li>A compact source file is a more concise way of writing a Java program. It
+removes most of the boilerplate from small programs and provides easier access
+to I/O functions. This lets us focus on the actual program we're trying to
+write and introduce new concepts when we're ready for them.</li>
+</ul>
+<p>This guide will cover how to convert standard Java programs into compact Java
+programs. This may be useful if:</p>
+<ul>
+<li>You have prior Java experience and want a quick guide for converting the way
+you normally code to the way we code in this class.</li>
+<li>You're looking at an example that doesn't use the new compact source features.
+These features are new, so most textbooks and online examples don't use them.</li>
+</ul>
+<h2 id="1-remove-the-class"><a class="header" href="#1-remove-the-class">1. Remove the Class</a></h2>
+<p>Standard Java programs will have most of their code inside of a class:</p>
+<pre><code class="language-java">public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+    }
+}
+</code></pre>
+<p>We don't need the class:</p>
+<pre><code class="language-java">public static void main(String[] args) {
+    System.out.println("Hello World");
+}
+</code></pre>
+<h2 id="2-simplify-main"><a class="header" href="#2-simplify-main">2. Simplify Main</a></h2>
+<p>The <code>main</code> function is more complex in a standard Java program:</p>
+<pre><code class="language-java">public static void main(String[] args) {
+    System.out.println("Hello World");
+}
+</code></pre>
+<p>All we need is <code>void main()</code>:</p>
+<pre><code class="language-java">void main() {
+    System.out.println("Hello World");
+}
+</code></pre>
+<h2 id="3-output"><a class="header" href="#3-output">3. Output</a></h2>
+<p>Standard Java programs use <code>System.out.</code> or <code>System.err.</code> followed by <code>println</code>,
+<code>print</code>, or <code>printf</code> for output:</p>
+<pre><code class="language-java">System.out.println("Regular output.");
+System.err.println("Error message.");
+</code></pre>
+<p>We use <code>IO.println</code> and <code>IO.print</code> for output:</p>
+<pre><code class="language-java">IO.println("Regular output.");
+IO.println("Error message.");
+</code></pre>
+<p>To finish converting the earlier Hello World example:</p>
+<pre><code class="language-java">void main() {
+    IO.println("Hello World");
+}
+</code></pre>
+<h2 id="4-input"><a class="header" href="#4-input">4. Input</a></h2>
+<p>Standard Java programs need to create a special object (such as a scanner or
+buffered reader) to read user input:</p>
+<pre><code class="language-java">java.util.Scanner stdin = new java.util.Scanner(System.in);
+
+System.out.print("Please enter some input: ");
+var input = stdin.nextLine();
+
+System.out.println("Please enter more input: ");
+var input2 = stdin.nextLine();
+</code></pre>
+<p>We use <code>IO.readln</code> with an optional prompt message:</p>
+<pre><code class="language-java">var input = IO.readln("Please enter some input: ");
+var input2 = IO.readln("Please enter more input: ");
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>

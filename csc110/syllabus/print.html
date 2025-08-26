@@ -1,0 +1,623 @@
+<!DOCTYPE HTML>
+<html lang="en" class="navy sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>CSC110 Syllabus</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">CSC110 Syllabus</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="course-information"><a class="header" href="#course-information">Course Information</a></h1>
+<p><strong>Course Title:</strong> CSC110: Programming and Problem Solving</p>
+<p><strong>Semester:</strong> Fall 2025</p>
+<p><strong>Instructor:</strong> Zachary Kohlberg (Zach preferred, he/him)</p>
+<p><strong>Instructor Email:</strong> <a href="mailto:zckohlberg@qu.edu">zckohlberg@qu.edu</a></p>
+<p><strong>Tentative Schedule:</strong> <a href="https://docs.google.com/spreadsheets/d/1C8fSCqmkfCbtoPpi9M4ds0SZpciBmhirb-415J6XztY/edit?usp=sharing">Google Sheets Link</a></p>
+<p><strong>Prerequisites/Corequisites:</strong></p>
+<ul>
+<li>CSC110 and CSC110L are taken concurrently</li>
+</ul>
+<p><strong>Sections:</strong></p>
+<ul>
+<li>CSC110-01: Tuesday/Thursday 2:00 PM to 3:15 PM ET in TH 130</li>
+<li>CSC110-02: Tuesday/Thursday 3:30 PM to 4:45 PM ET in TH 130</li>
+<li>CSC110-03: Tuesday/Thursday 5:00 PM to 6:15 PM ET in TH 130</li>
+</ul>
+<h2 id="description"><a class="header" href="#description">Description</a></h2>
+<p>CSC110 is an introduction to programming using the Java programming language.
+The primary focus of this class is developing problem-solving skills and a
+general knowledge of programming that will be useful to you in most programming
+languages. While we will spend a lot of time learning about Java and how to
+write good code, writing code isn't our ultimate goal. The most important skill
+you can learn in this class is how to <em>think</em> like a programmer. Once you've
+mastered that, writing code is surprisingly easy.</p>
+<h2 id="objectives"><a class="header" href="#objectives">Objectives</a></h2>
+<p>CSC110 and CSC110L share objectives. Upon successful completion of both courses,
+students should be able to:</p>
+<ol>
+<li>
+<p>Discuss the challenges inherent in communicating with (programming) a
+(non-reasoning) computer.</p>
+</li>
+<li>
+<p>Break a complex problem down into smaller more manageable components.</p>
+</li>
+<li>
+<p>Provide step-by-step instructions to solve small computational problems.</p>
+</li>
+<li>
+<p>Using at least one programming language, write examples of and solve problems
+in programs with the following basic programming constructs and tools:</p>
+<ol>
+<li>Mathematical expressions</li>
+<li>Conditional expressions</li>
+<li>Simple iterative statements</li>
+<li>Simple functions</li>
+<li>Simple data structures, such as arrays, lists, and strings</li>
+</ol>
+</li>
+<li>
+<p>Discuss the importance of commenting and good code structure/style</p>
+</li>
+</ol>
+<h2 id="lab"><a class="header" href="#lab">Lab</a></h2>
+<p>CSC110 and CSC110L are separate classes, usually with different instructors,
+syllabi, and Blackboard pages. Your final grade in CSC110 is based only on your
+work in CSC110, and your final grade in CSC110L is based only on your work in
+CSC110L. These final grades may therefore differ.</p>
+<!-- This syllabus is primarily written for CSC110, but I also use it when I teach -->
+<!-- CSC110L. If you have a different instructor for each class, then this syllabus -->
+<!-- only applies to the class you are taking with me. -->
+<h1 id="communication-and-office-hours"><a class="header" href="#communication-and-office-hours">Communication and Office Hours</a></h1>
+<h2 id="office-hours"><a class="header" href="#office-hours">Office Hours</a></h2>
+<p>I am a part-time faculty member and do not have an office on campus. If I am
+available for in person office hours, then it will be noted in a schedule posted
+to Blackboard. These times do not require an appointment.</p>
+<p>We can also schedule a remote meeting on a weekday if you are not able to attend
+my in-person office hours. If you'd like to meet remotely, then please send me
+an email with your availability over the next several days. I'll try to find a
+time that works for both of us and schedule a Zoom meeting.</p>
+<h2 id="blackboard"><a class="header" href="#blackboard">Blackboard</a></h2>
+<p>I will post or link to all course material and assignments on Blackboard. If you
+want to find something or submit an assignment, go to our Blackboard site and
+look in the appropriate page. If you think I forgot to post something, then send
+me an email and I'll either post it or tell you where to find it.</p>
+<h2 id="email"><a class="header" href="#email">Email</a></h2>
+<p>My email is <a href="mailto:zckohlberg@qu.edu">zckohlberg@qu.edu</a>. I check my email most weekdays and try to
+respond to all emails within 24 hours. If you email me after Friday morning or
+on the weekend, then I probably won't see it until Monday. You're still welcome
+to email me at any time.</p>
+<p>I will answer most questions via email if you don't want to ask in person. If
+you're asking for help with an assignment or other coding issue, then please
+attach your code (the text file, not a screenshot). Try to include as much
+relevant information as possible and be specific about what you want to know.
+This helps me give you a useful answer more quickly.</p>
+<p>If you want me to do something more involved than answer a few questions, such
+as review your code or help you debug a program, then you should meet with me
+during office hours. I'm happy to help you with coding, debugging, and other
+tasks as long as you're the one doing the task. You should not come to office
+hours or send an email expecting me to do your work for you.</p>
+<h1 id="class-meetings"><a class="header" href="#class-meetings">Class Meetings</a></h1>
+<h2 id="instructor-absence"><a class="header" href="#instructor-absence">Instructor Absence</a></h2>
+<p>I may hold class remotely via Zoom while sick or otherwise unable to attend in
+person. If I need to cancel class, then I will notify everyone as early as
+possible in a Blackboard announcement.</p>
+<h2 id="class-structure"><a class="header" href="#class-structure">Class Structure</a></h2>
+<p>Class meetings will be a mix of lectures, practice exercises, and live coding.
+The <a href="https://docs.google.com/spreadsheets/d/1C8fSCqmkfCbtoPpi9M4ds0SZpciBmhirb-415J6XztY/edit?usp=sharing">course schedule</a> will list the topics
+we're covering in a given week as well as any planned activities for a class
+outside of that day's lecture. Material prepared ahead of time, such as practice
+exercises and lecture outlines, will be posted online before class. Programs
+coded during class will also be posted after the meeting.</p>
+<h2 id="attendance-policy"><a class="header" href="#attendance-policy">Attendance Policy</a></h2>
+<p>I don't grade you on attendance. You're free to miss class whenever you decide
+it's prudent or necessary to do so, and you don't need to give me an excuse.
+However, you are still responsible for all material and work that you missed.</p>
+<p>If you miss a class, you should:</p>
+<ul>
+<li>Check the course schedule to see what we did that day</li>
+<li>Complete any activities you missed</li>
+<li>Review any new material that was covered with a classmate who attended the
+meeting</li>
+<li>Review any notes or other material posted after class</li>
+</ul>
+<p>If you are feeling sick or suspect you may have COVID, the flu, or another
+contagious illness, then please stay home and focus on recovering. You're not
+likely to get much out of class while you aren't feeling well, and attending
+class while sick also poses a risk to everyone else. If you want to attend while
+you suspect you have a contagious illness, then wear a mask.</p>
+<h1 id="course-material"><a class="header" href="#course-material">Course Material</a></h1>
+<p>Most material will be covered by in-class lectures. I may occasionally post
+reading assignments or videos to supplement what we cover in class.</p>
+<h2 id="secondary-resources"><a class="header" href="#secondary-resources">Secondary Resources</a></h2>
+<p>A few free resources you may want to use for further reading or extra practice:</p>
+<ul>
+<li><strong>MOOC.fi</strong>: The <a href="https://www.helsinki.fi/en">University of Helsinki</a> allows
+free access to material from many of their courses, including an
+<a href="https://java-programming.mooc.fi/">introductory Java class</a>. This course
+provides reading material and practice exercises that can be accessed after
+you make an account.</li>
+<li><strong>UMN Textbook</strong>: The University of Minnesota's
+<a href="https://open.umn.edu/opentextbooks/">Open Textbook Library</a> has free
+textbooks, including
+<a href="https://open.umn.edu/opentextbooks/textbooks/419">Introduction to Programming Using Java</a>.</li>
+<li><strong>LibreText</strong>: The website <a href="https://libretexts.org/">libretexts.org</a> has
+textbooks that cover a lot of the material we'll be learning this semester.
+Two that I've used in the past are:
+<ul>
+<li><a href="https://eng.libretexts.org/Bookshelves/Computer_Science/Programming_and_Computation_Fundamentals/Book%3A_Programming_Fundamentals_(Busbee_and_Braunschweig)/00%3A_Front_Matter/03%3A_Table_of_Contents">Programming and Computation Fundamentals, by Busbee and Braunschweig</a></li>
+<li><a href="https://eng.libretexts.org/Bookshelves/Computer_Science/Programming_and_Computation_Fundamentals/Computer_Science_from_the_Bottom_Up_(Wienand)">Computer Science from the Bottom Up, by Wienand</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="software"><a class="header" href="#software">Software</a></h2>
+<p>There are several programs you will need for this class: a bash/zsh terminal, a
+text editor, and the Java 25 JDK. There are guides linked on Blackboard for
+installing these programs, and we will cover them during the first week of
+class.</p>
+<h2 id="other-resources"><a class="header" href="#other-resources">Other Resources</a></h2>
+<p>The <a href="https://docs.oracle.com/en/java/javase/23/docs//api/index.html">Java API</a>
+is a useful reference. It may be intimidating right now, but the more you learn
+about Java and programming in general, the more easily you'll be able to
+navigate the API and use it to look up information.</p>
+<p>If you're curious about how Java works, you may want to look at the
+<a href="https://docs.oracle.com/javase/specs/">Java Specification</a>. It's a very
+technical document and not likely to come up while you're coding, but I might
+reference it in class and some of you may find it interesting.</p>
+<p>Finally, asking good questions is one of the most useful skills you can have as
+a student. In my experience, most people (myself included) don't ask questions
+as often as they should, and it can be difficult to ask a question that will
+quickly lead to a helpful answer. I think the blog posts below provide excellent
+advice for asking and answering questions:</p>
+<ul>
+<li><a href="https://jvns.ca/blog/good-questions/">https://jvns.ca/blog/good-questions/</a></li>
+<li><a href="https://jvns.ca/blog/2021/10/21/how-to-get-useful-answers-to-your-questions/">https://jvns.ca/blog/2021/10/21/how-to-get-useful-answers-to-your-questions/</a></li>
+<li><a href="https://jvns.ca/blog/answer-questions-well/">https://jvns.ca/blog/answer-questions-well/</a></li>
+</ul>
+<h1 id="grading"><a class="header" href="#grading">Grading</a></h1>
+<p>This class uses something close to a labor-based grading system. While the idea
+of labor-based grading may be unfamiliar to many students, the implementation in
+this class should be easy to understand:</p>
+<ul>
+<li>Individual assignments are marked either complete or incomplete depending on
+whether they meet a set of requirements.</li>
+<li>Assignments can be revised and resubmitted multiple times up until their
+deadline. An incomplete means "try again," not "you failed."</li>
+<li>Your final grade is determined by the number of assignments you complete. See
+the table below.</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>Grade</th><th>Assignments</th></tr></thead><tbody>
+<tr><td>A</td><td>5+</td></tr>
+<tr><td>B</td><td>4</td></tr>
+<tr><td>C</td><td>3</td></tr>
+<tr><td>D</td><td>2</td></tr>
+<tr><td>F</td><td>0-1</td></tr>
+</tbody></table>
+</div>
+<p>Make sure you read the <a href="./grading/deadlines.html">deadline policy</a>. This covers
+more specific rules about submitting assignments. You should also take a look at
+the <a href="./grading/faq.html">FAQ</a>, which covers questions I've anticipated or been
+asked in the past about the grading system. Finally, there's an optional section
+about <a href="./grading/labor_based_grading.html">labor-based grading</a> in case you're
+curious.</p>
+<h1 id="deadlines"><a class="header" href="#deadlines">Deadlines</a></h1>
+<h2 id="submission-limit-and-assignment-deadlines"><a class="header" href="#submission-limit-and-assignment-deadlines">Submission Limit and Assignment Deadlines</a></h2>
+<p>You have a limited number of attempts for autograded assignments, and each
+attempt has a deadline. You may submit your work any number of times before that
+deadline, but I when I grade the attempt I will only use your most recent
+on-time submission.</p>
+<p>You are allowed one attempt at each autograded assignment per week, due by 11:59
+PM ET on Sunday. I may allow extra attempts later in the semester depending on
+how the first couple of projects go. If I do, then I will announce the deadlines
+for these attempts on Blackboard. This means you can retry an assignment at
+least once per week until its deadline.</p>
+<p>Assignment deadlines will be posted on Blackboard when the assignment is
+announced. A deadline is your last chance to submit the assignment. You will not
+be allowed to retry after the deadline.</p>
+<p>Both the attempt deadlines and assignment deadlines will be strictly enforced.
+This keeps them simple and consistent, and it should not be a problem unless you
+wait until the last minute to turn something in.</p>
+<h2 id="blackboard-submissions"><a class="header" href="#blackboard-submissions">Blackboard Submissions</a></h2>
+<p>All work must be submitted on Blackboard. You must attach your source code in a
+.java file named <em>exactly</em> as specified in the assignment.</p>
+<h2 id="feedback-on-autograded-assignments"><a class="header" href="#feedback-on-autograded-assignments">Feedback on Autograded Assignments</a></h2>
+<p>Most assignments are autograded. I will run your program through a series of
+tests, and if it passes every test then it will be marked complete. If it fails
+one or more tests, then it will be marked incomplete. My tests will also produce
+feedback if they fail, and I will share this feedback with you when I update
+assignment grades. This feedback should help you revise your program so that it
+passes the test next time.</p>
+<p>The tests have very specific requirements, and you should expect to fail all or
+most of them on your first attempt. Plan on resubmitting your work at least two
+or three times before your program passes every test. This means submitting your
+first attempt several weeks before the deadline.</p>
+<h2 id="extensions"><a class="header" href="#extensions">Extensions</a></h2>
+<p>In rare cases (such as medical or family emergencies), I will allow an extension
+to a deadline or an exception to another restriction on submitting an
+assignment. You can email me to ask for a such an exception if you believe one
+is appropriate in your situation. Your email should include an explanation of
+why you need the extension, a new proposed deadline (or the proposed exception
+to a policy), and your current progress on the assignment. Be sure to send me
+your code and any other material you've created for the assignment so far.</p>
+<p>I have some expectations if I am going to give an extension or make an exception
+to a class policy:</p>
+<ul>
+<li>You've demonstrated that you read this policy by including <em>all</em> of the
+information I just asked for.</li>
+<li>If you're having trouble with the assignment, then you've taken steps to get
+help. Usually this means seeing a tutor or going to office hours.</li>
+<li>You are clearly making an effort to keep up with the class and not
+procrastinating. If there is an ongoing problem affecting your work or
+participation in the class and you want me to accommodate you, then you must
+let me know early and keep me informed as that situation develops.</li>
+</ul>
+<p>Extensions and other exceptions are given on a case-by-case basis. I will try to
+be as fair as possible, but this comes down to my judgement and whether you've
+been proactively communicating with me.</p>
+<h1 id="faq"><a class="header" href="#faq">FAQ</a></h1>
+<ul>
+<li><strong>If I'm not graded on an assignment, does that mean I don't need to put any
+effort into it?</strong> I still review assignments and check that tasks were
+completed as directed. You should expect to be challenged and have to put in a
+significant amount of work.</li>
+<li><strong>Why can't I get an A+?</strong> QU's
+<a href="https://catalog.qu.edu/academics/grading-system/">grading system</a> does not
+include an A+. The highest grade you can earn in any QU class is an A.</li>
+<li><strong>Why can't I get an A-, B+, B-, C+, or C-?</strong> There aren't enough assignments
+to include an option for every in-between grade, and they're not necessary. An
+A is the highest grade you can earn, a B is less demanding but still a good
+grade, and a C represents the minimum requirements to pass this class and meet
+the prerequisite for other classes.</li>
+<li><strong>Is there extra credit?</strong> No.</li>
+<li><strong>Can I get partial credit for an assignment?</strong> No. You must complete the
+entire assignment, submit it on time, and submit it in the correct format to
+receive credit for it. If you're having trouble, then please ask me or a tutor
+for help.</li>
+<li><strong>Are there exams?</strong> No. Graded exams, quizzes, and similar assessments don't
+work with this grading system. There are no exams, not even a final exam.
+However, I may give ungraded quizzes as a way for you to check your
+understanding of topics we've covered.</li>
+</ul>
+<p>If you have questions about the grading system that aren't answered here, then
+please don't hesitate to ask me about it! I want you to feel comfortable with
+the grading system and understand what's required to earn the grade you want.</p>
+<h1 id="labor-based-grading"><a class="header" href="#labor-based-grading">Labor-Based Grading</a></h1>
+<h2 id="what-is-labor-based-grading"><a class="header" href="#what-is-labor-based-grading">What is Labor-Based Grading?</a></h2>
+<p>Labor-based grading and contract grading are approaches to grading that try to
+emphasize the work you put into a class over the outcomes of that work. This
+grading system specifies what work you need to complete to earn a particular
+final grade, and these individual units of work aren't usually graded. You
+receive a final grade based on how much work you complete rather than a weighted
+average of grades from assignments and exams.</p>
+<p>There are plenty of articles online about labor-based grading if you want to
+read more about it. Here's one that was easy to find and that I think explains
+the concept well: <a href="https://cep.barnard.edu/labor-based-grading">https://cep.barnard.edu/labor-based-grading</a>. This article
+also links to an example grade contract. My implementation will differ, but my
+goals are largely the same.</p>
+<h2 id="why-labor-based-grading"><a class="header" href="#why-labor-based-grading">Why Labor-Based Grading?</a></h2>
+<p>The author of the
+<a href="https://docs.google.com/document/d/1I9hjemH4qo5nQYa89WW-3udW-oz4cYDoly25m8yaiik/edit?usp=sharing">example grade contract</a>
+shown in the Bernard College webpage gives an excellent explanation of why they
+prefer contract grading over traditional grades. I recommend reading that if you
+want to hear more about the motivation behind instructors using labor-based
+grading. It doesn't fix all of the problems with grades, but I think it at least
+mitigates some of them.</p>
+<h1 id="university-resources"><a class="header" href="#university-resources">University Resources</a></h1>
+<p>This section covers some resources available to you at Quinnipiac University.
+Please don't hesitate to ask me, your advisor, or an academic coach if you need
+help finding or accessing a resource. If I'm not able to help you directly, then
+I'll try to put you in touch with someone who can.</p>
+<h2 id="academic-catalog"><a class="header" href="#academic-catalog">Academic Catalog</a></h2>
+<p>The <a href="https://catalog.qu.edu/">Academic Catalog</a> includes the
+<a href="https://catalog.qu.edu/handbooks/undergraduate/">undergrad student handbook</a>,
+<a href="https://catalog.qu.edu/academics/grading-system/">grading system</a>, and
+<a href="https://catalog.qu.edu/handbooks/academic-calendar/">academic calendar</a>, as
+well as university policies on
+<a href="https://catalog.qu.edu/university-policies/titleix-policy/">Title XI</a>,
+<a href="https://catalog.qu.edu/university-policies/academic-integrity-policy/">academic integrity</a>,
+<a href="https://catalog.qu.edu/university-policies/disability-policy/">disabilities</a>,
+and
+<a href="https://catalog.qu.edu/university-policies/withdrawal-course/">withdrawing from a course</a>.</p>
+<h2 id="learning-commons"><a class="header" href="#learning-commons">Learning Commons</a></h2>
+<p>I highly recommend making use of the Learning Commons any time you need help
+with work for this class. There should be several peer tutors available for
+computer science and software engineering courses. The Learning Commons also
+employs academic coaches who work with first-year students.</p>
+<p>Below is some additional information about the Learning Commons and their
+contact information:</p>
+<blockquote>
+<p>The Learning Commons is a place for students to go when they want to achieve a
+level of performance they can’t reach on their own. In a setting of practice
+and growth, student resources are provided through Peer Educator programs, the
+Office of Student Accessibility, and Academic Development &amp; Outreach
+professional staff. The Learning Commons can be found at the Mount Carmel
+Campus in the North wing of the Arnold Bernhard Library; and at the North
+Haven Campus on the third floor of the Law School (SLE-340). Students are
+encouraged to visit The Learning Commons for support with class content, to
+improve study skills, to consult on academic success strategies, and for
+general developmental advising needs.</p>
+</blockquote>
+<p>Phone: 203-582-8628</p>
+<p>Email: <a href="mailto:LearningCommons@Qinnipiac.edu">LearningCommons@Qinnipiac.edu</a></p>
+<p>Website: <a href="https://www.qu.edu/student-life/support-services/">https://www.qu.edu/student-life/support-services/</a></p>
+<h2 id="accommodations"><a class="header" href="#accommodations">Accommodations</a></h2>
+<p>QU's policy on disabilities and accommodations can be found at
+<a href="https://catalog.qu.edu/university-policies/disability-policy/">https://catalog.qu.edu/university-policies/disability-policy/</a>.</p>
+<p>This is a statement about accommodations and disabilities that the university
+recommends including in all syllabi:</p>
+<blockquote>
+<p>Quinnipiac University is committed to creating a learning environment that
+meets the needs of its diverse student body. If you anticipate or experience
+any barriers to learning in this course, please feel welcome to discuss your
+concerns with me.</p>
+<p>If you have a disability, or think you may have a disability, you may also
+want to meet with the Office of Student Accessibility, to begin this
+conversation or to request reasonable accommodations. Quinnipiac University
+complies with the Americans with Disabilities Act and Section 504 of the
+Rehabilitation Act of 1973.</p>
+<p>Please contact the Office of Student Accessibility by emailing access@qu.edu,
+or by calling 203-582-7600. If you have already been approved for
+accommodations through the Office of Student Accessibility, please meet with
+me so we can develop an implementation plan together.</p>
+</blockquote>
+<p>Finally, I want to add that your mental and physical health are more important
+than your classes. If you're struggling with class due to mental health issues
+or notice that you're developing unhealthy habits to cope with your workload,
+then please talk to someone as early as possible. I'll try to work with you if
+you tell me about a problem you're experiencing, and the earlier we talk the
+more I can do to help you.</p>
+<h1 id="academic-integrity-and-accountability-policy"><a class="header" href="#academic-integrity-and-accountability-policy">Academic Integrity and Accountability Policy</a></h1>
+<p>You should be familiar with the following QU policies before reading the rest of
+this page:</p>
+<ul>
+<li>Academic Integrity and Accountability (AIA):
+<a href="https://catalog.qu.edu/university-policies/academic-integrity-policy/">https://catalog.qu.edu/university-policies/academic-integrity-policy/</a></li>
+<li>Artificial Intelligence (AI):
+<a href="https://provost.qu.edu/artificial-intelligence/">https://provost.qu.edu/artificial-intelligence/</a></li>
+</ul>
+<p>These policies apply to all courses at QU. This page covers details and
+additional rules specific to our class.</p>
+<h2 id="unauthorized-possession-of-materials"><a class="header" href="#unauthorized-possession-of-materials">Unauthorized Possession of Materials</a></h2>
+<p>If you have not completed an assignment, then you must not at any point access
+or possess a full or partial solution to that assignment. This includes material
+shared by a classmate, posted online, or generated by an AI.</p>
+<h2 id="ai-use-and-plagiarism"><a class="header" href="#ai-use-and-plagiarism">AI Use and Plagiarism</a></h2>
+<p>The following are not allowed and will be reported as a violation of the AIA
+policy:</p>
+<ul>
+<li>Copying, paraphrasing, or otherwise basing any significant part of your work
+off code you did not write. This includes AI-generated code, code found
+online, and code written by a classmate.</li>
+<li>Allowing someone else to do your work for you, dictate code to you, or
+otherwise do most of the actual work. If your only contribution is typing,
+then it's not your work.</li>
+<li>Splitting work between multiple people or otherwise working together on an
+assignment that doesn't explicitly allow group work.</li>
+</ul>
+<p>The following are allowed:</p>
+<ul>
+<li>Using material I provide you. If I include code in an assignment, show you
+code during class/office hours, or share code in my notes or other material,
+then you're free to use it in any assignments for this class.</li>
+<li>Asking other people for help, asking an AI for help, and looking up online
+sources for help. However, your use of AI/other sources and the help you
+receive from other people must not violate any other rules in this policy.</li>
+</ul>
+<p>If the help you receive from someone, your use of AI, or your use of other
+sources results in work that looks like it was plagiarized, AI-generated, or
+otherwise in violation of the AIA policy, then it will be treated as an AIA
+violation.</p>
+<h2 id="sharing-work"><a class="header" href="#sharing-work">Sharing Work</a></h2>
+<p>You're free to share or publicly post work completed for this class for any of
+the following reasons:</p>
+<ul>
+<li>To include in a portfolio</li>
+<li>To seek help or feedback from someone outside of the class</li>
+<li>To seek help or feedback from a classmate who has already completed that
+assignment</li>
+<li>To discuss an assignment with someone outside of the class or a classmate who
+has already completed that assignment</li>
+</ul>
+<p>I'm open to sharing for other reasons, but you should check with me first to
+make sure this won't later be viewed as an AIA violation.</p>
+<p>I also want to specify reasons for sharing that will always be considered an AIA
+violation:</p>
+<ul>
+<li>Posting or sharing work for the purpose of facilitating an AIA violation</li>
+<li>Sharing work with someone you know has not completed that assignment</li>
+</ul>
+<h1 id="syllabus-revisions"><a class="header" href="#syllabus-revisions">Syllabus Revisions</a></h1>
+<p>If the syllabus needs to be revised, then any changes will be noted here. I will
+also keep older versions of the syllabus available on Blackboard so that there
+is a clear record of all changes.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>
