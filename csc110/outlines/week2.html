@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Week 1 - CSC110 Lecture Outlines</title>
+        <title>Week 2 - CSC110 Lecture Outlines</title>
 
 
         <!-- Custom HTML head -->
@@ -152,17 +152,72 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="week-1"><a class="header" href="#week-1">Week 1</a></h1>
+                        <h1 id="week-2"><a class="header" href="#week-2">Week 2</a></h1>
+<p>For last week's topics:</p>
+<ul>
+<li>Advice: avoid spaces in file/dir names</li>
+<li>UpperCamelCase for program names</li>
+<li>Text editors: I strongly advise using Geany</li>
+</ul>
+<p>Goals: after this week you should understand how to</p>
+<ul>
+<li>run a Java program on your terminal with preview features enabled</li>
+<li>write a hello world program</li>
+<li>write a program that prints arbitrary text to the terminal</li>
+<li>write a program that prompts the user for input</li>
+<li>write a program that prints different output depending on the user's input</li>
+</ul>
+<p>Example programs:</p>
+<pre><code class="language-java">// HelloWorld.java
+void main() {
+    IO.println("Hello World");
+}
+
+// This line is a comment. Lines beginning with "//" are comments, which are
+// ignored by the program when it runs. Comments are a good way to write notes
+// in your code.
+</code></pre>
+<pre><code class="language-java">// Greeting.java
+void main() {
+    var name = IO.readln("What is your name? ");
+    IO.print("Hello ");
+    IO.print(name);
+    IO.println(" , how was your first week of class?");
+}
+// Questions:
+// - Why are there spaces at the beginning/end of some messages?
+// - What's the difference between calling print vs println?
+// - What happens if we end with a print instead of println?
+// - Why don't we put quotes around name?
+</code></pre>
+<pre><code class="language-java">// Email.java
+void main() {
+    // Comments starting with TODO are a common way to leave reminders for
+    // unfinished tasks. You should delete those TODO comments when you finish
+    // the task!
+
+    // Input: what do we need from the user?
+    var firstName = IO.readln("What is your first name? ");
+    var lastName = IO.readln("What is your last name? ");
+    // TODO: ask user for their university's name
+
+    // Output: what do we want to show the user when we're done?
+    IO.print("Your email is ");
+    IO.print(firstName);
+    IO.print(".");
+    // TODO: print the rest of the email
+}
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="about.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="week1/terminal.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="week1/csc110.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="week2/java.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -172,11 +227,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="about.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="week1/terminal.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="week1/csc110.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="week2/java.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
