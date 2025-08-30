@@ -175,11 +175,16 @@ lecture.</p>
 <ul>
 <li>run a Java program on your terminal with preview features enabled</li>
 <li>write a hello world program</li>
+<li>write comments in a program</li>
 <li>write a program that prints arbitrary text to the terminal</li>
 <li>write a program that prompts the user for input</li>
 <li>write a program that prints different output depending on the user's input</li>
 </ul>
-<p>Example programs:</p>
+<h2 id="example-programs"><a class="header" href="#example-programs">Example Programs</a></h2>
+<p>You don't need to select all the text to copy these programs. If you mouse over
+the code, a clipboard icon should appear in the upper-right corner of that
+program. Click the icon to copy the entire program, then paste it into your text
+editor.</p>
 <pre><code class="language-java">// HelloWorld.java
 void main() {
     IO.println("Hello World");
@@ -368,6 +373,200 @@ the questions in the comments.</li>
 classroom. You're only allowed five lines of code inside the <code>main</code> function:
 the four printlns and one variable. Hint: you need to read user input.</li>
 <li>Finish the <code>Email.java</code> program.</li>
+</ol>
+<h1 id="week-3"><a class="header" href="#week-3">Week 3</a></h1>
+<p>Goals: after this week you should understand how to</p>
+<ul>
+<li>explain the difference between statements and expressions</li>
+<li>explain the difference between literal values, variables, and more complex
+expressions</li>
+<li>explain the difference between declaring, initializing, and reassigning a
+variable</li>
+<li>declare variables with explicit types</li>
+<li>convert user input (or other strings) to an int or double</li>
+<li>write expressions using arithmetic operations on ints and doubles</li>
+<li>write expressions using string concatenation</li>
+<li>write expressions using several Math and String functions</li>
+</ul>
+<h2 id="example-programs-1"><a class="header" href="#example-programs-1">Example Programs</a></h2>
+<pre><code class="language-java">// Arithmetic.java
+void main() {
+    // Input
+    int x = Integer.parseInt(IO.readln("Please enter a value for x: "));
+    int y = Integer.parseInt(IO.readln("Please enter a value for y: "));
+
+    // Calculations
+    // Declaring variables without initializing them
+    int sum, difference, product, quotient, remainder;
+    // Initializing declared variables
+    sum = x + y;
+    difference = x - y;
+    product = x * y;
+    quotient = x / y;
+    remainder = x % y;
+
+    // Output
+    IO.println("x + y = " + sum);
+    IO.println("x - y = " + difference);
+    IO.println("x * y = " + product);
+    IO.println("x / y = " + quotient);
+    IO.println("x % y = " + remainder);
+}
+
+// Questions:
+// - What happens if we try to print those variables without initializing them?
+// - What happens if we write "int sum = x + y" instead of "sum = x + y"? When
+//   is it correct to state a variable's type?
+// - What happens when the second number is zero?
+// - What happens if the user enters a word instead of a number?
+// - What happens if you enter a non-integer number, like 2.5?
+// - Try changing the program to use doubles instead of integers. How does that
+//   change the answers to the last three questions? Remember to use
+//   Double.parseDouble instead of Integer.parseInt.
+</code></pre>
+<pre><code class="language-java">// Height.java
+void main() {
+    // Input
+    int totalInches = Integer.parseInt(IO.readln("How tall are you in inches?"));
+
+    // Calculations
+    int feet = totalInches / 12;
+    int inches = totalInches % 12;
+
+    // Output
+    IO.println("Your height is " + feet + "'" + inches + "\".");
+}
+</code></pre>
+<h1 id="types"><a class="header" href="#types">Types</a></h1>
+<ul>
+<li>What is a type?</li>
+<li>Three new types: <code>String</code>, <code>int</code>, <code>double</code></li>
+<li>Others that we'll cover later: <code>byte</code>, <code>short</code>, <code>long</code>, <code>float</code>, <code>char</code>,
+<code>boolean</code></li>
+<li>Variables have types, Java uses "static typing"</li>
+<li><code>var</code> keyword infers type from initial value</li>
+</ul>
+<h1 id="syntax"><a class="header" href="#syntax">Syntax</a></h1>
+<ul>
+<li>Need vocab to communicate and explain new concepts
+<ul>
+<li>Statements and expressions</li>
+<li>Literals</li>
+<li>Operators</li>
+<li>Identifiers and keywords
+(<a href="https://docs.oracle.com/javase/tutorial/java/nutsandbolts/_keywords.html">https://docs.oracle.com/javase/tutorial/java/nutsandbolts/_keywords.html</a>)</li>
+</ul>
+</li>
+<li>Review syntax for variables and IO function calls</li>
+</ul>
+<h1 id="variables-1"><a class="header" href="#variables-1">Variables</a></h1>
+<ul>
+<li>Explicit types preferred in Java, avoid <code>var</code></li>
+<li>Syntax: declare, initialize, reassign</li>
+<li>Common mistake: redeclare (illegal) instead of reassign</li>
+<li>Assignment operator (<code>=</code>) does not mean what you think it means</li>
+<li>Remember static typing?</li>
+</ul>
+<h1 id="conversions"><a class="header" href="#conversions">Conversions</a></h1>
+<ul>
+<li>Implicit, cast, and functions</li>
+<li>Implicit conversions:
+<ul>
+<li>anything to <code>String</code></li>
+<li><code>int</code> to <code>double</code></li>
+</ul>
+</li>
+<li>Explicit conversion (cast):
+<ul>
+<li><code>double</code> to <code>int</code></li>
+</ul>
+</li>
+<li>With functions:
+<ul>
+<li><code>String</code> parsing into <code>int</code> or <code>double</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="numbers"><a class="header" href="#numbers">Numbers</a></h1>
+<ul>
+<li>Arithmetic operators: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code></li>
+<li>Modulo/remainder operator: <code>%</code></li>
+<li>Unary operators: <code>+</code>, <code>-</code></li>
+<li>Integer division</li>
+<li>Overflow</li>
+<li>Doubles have limited precision</li>
+<li>Literals:
+<ul>
+<li>Underscores for readability</li>
+<li>Scientific notation</li>
+</ul>
+</li>
+<li><code>Math</code> functions:
+<ul>
+<li><code>Math.pow</code></li>
+<li><code>Math.abs</code></li>
+<li><code>Math.min</code> and <code>Math.max</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="strings"><a class="header" href="#strings">Strings</a></h1>
+<ul>
+<li>Concatenation: <code>+</code></li>
+<li>What is a method?</li>
+<li>String methods:
+<ul>
+<li><code>toUpperCase()</code> and <code>toLowerCase()</code></li>
+<li><code>substring(start)</code> and <code>substring(start, end)</code></li>
+<li><code>length()</code></li>
+</ul>
+</li>
+<li>Indexes for substring
+<ul>
+<li>Zero-indexing</li>
+<li>Upper bound is exclusive</li>
+</ul>
+</li>
+</ul>
+<h1 id="class-git-repo"><a class="header" href="#class-git-repo">Class Git Repo</a></h1>
+<ul>
+<li>Stuff from class will be in a public git repository</li>
+<li>Can download a zip on GitHub, but this is a pain</li>
+<li>Easier: clone/pull on terminal using git</li>
+<li>Git installation
+<ul>
+<li>Linux: use package manager, probably have it already</li>
+<li>Mac: <a href="https://git-scm.com/downloads/mac">https://git-scm.com/downloads/mac</a></li>
+<li>Windows: already got it when you installed Git Bash</li>
+</ul>
+</li>
+</ul>
+<p>If you don't have the repo yet, then you can clone it with the following
+command. <strong>Run this command from inside your <code>csc110</code> folder!</strong></p>
+<pre><code class="language-bash">git clone git@github.com:zachkohlberg/csc11025fa_class_repo.git
+</code></pre>
+<p>If you already have the repo, then you can update it with the following command.
+<strong>Run this command from inside the cloned repo!</strong></p>
+<pre><code class="language-bash">git pull
+</code></pre>
+<p>Avoid storing your own files in the repo or editing the files in the repo. If
+you modify anything in the repo, then you may run into errors when you try to
+update it with the pull command.</p>
+<h1 id="practice"><a class="header" href="#practice">Practice</a></h1>
+<ol>
+<li>Experiment with the <code>Arithmetic.java</code> program and answer the questions in the
+comments.</li>
+<li>Try writing a program that generates a shorter school email address:
+<code>fmlast@quinnipiac.edu</code> (first initial, middle initial, last name) instead of
+<code>first.last@quinnipiac.edu</code>. Ask for the user's first name, middle initial,
+last name, and school name. Use <code>toLowerCase</code> to ensure nothing is
+capitalized, and use <code>substring</code> to get the user's first initial.</li>
+<li>Try writing a program that calculates the total minutes from a number of
+days, hours, and minutes. For example, if a user inputs 4 days, 17 hours, and
+11 minutes, then the program should respond with "6791 total minutes."</li>
+<li>Try writing a program that does the opposite of the previous program: take a
+number of minutes and convert it to days, hours, and minutes. For example, if
+a user inputs 6791 minutes, then the program should respond with "4 days, 17
+hours, and 11 minutes." This process is similar to the <code>Height.java</code> program.</li>
 </ol>
 
                     </main>
