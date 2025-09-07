@@ -379,6 +379,21 @@ when you create the variable.</li>
 the "firstname.lastname@quinnipiac.edu" format.</li>
 </ol>
 <h1 id="week-3"><a class="header" href="#week-3">Week 3</a></h1>
+<p>Questions about week 2 practice?</p>
+<ul>
+<li>Discuss answers with other people. Get a second and third opinion!
+<ul>
+<li>LLMs are not reliable and will confidently assert incorrect information.</li>
+</ul>
+</li>
+<li>Prove you're right by trying to prove you were wrong.
+<ul>
+<li>Finding ten examples where your program is right means nothing. One example
+where your program is wrong means it's wrong.</li>
+</ul>
+</li>
+<li>Ask professor (office hours) or tutor (Learning Commons).</li>
+</ul>
 <p>Goals: after this week you should understand how to</p>
 <ul>
 <li>explain the difference between statements and expressions</li>
@@ -476,7 +491,8 @@ void main() {
 <li>Implicit, cast, and functions</li>
 <li>Implicit conversions:
 <ul>
-<li>anything to <code>String</code></li>
+<li>anything to <code>String</code> if concatenated with a <code>String</code> or passed to <code>IO</code>
+function</li>
 <li><code>int</code> to <code>double</code></li>
 </ul>
 </li>
@@ -530,23 +546,25 @@ void main() {
 <li>Upper bound is exclusive</li>
 </ul>
 </li>
+<li>Ignoring <code>char</code> for now</li>
 </ul>
 <h1 id="class-git-repo"><a class="header" href="#class-git-repo">Class Git Repo</a></h1>
 <ul>
 <li>Stuff from class will be in a public git repository</li>
-<li>Can download a zip on GitHub, but this is a pain</li>
+<li>Can download a zip from GitHub in web browser
+(<a href="https://github.com/zachkohlberg/csc11025fa_class_repo">https://github.com/zachkohlberg/csc11025fa_class_repo</a>)</li>
 <li>Easier: clone/pull on terminal using git</li>
 <li>Git installation
 <ul>
-<li>Linux: use package manager, probably have it already</li>
-<li>Mac: <a href="https://git-scm.com/downloads/mac">https://git-scm.com/downloads/mac</a></li>
+<li>Linux: use package manager</li>
+<li>Mac: <a href="https://git-scm.com/downloads/mac">https://git-scm.com/downloads/mac</a> (try installing Xcode first?)</li>
 <li>Windows: already got it when you installed Git Bash</li>
 </ul>
 </li>
 </ul>
 <p>If you don't have the repo yet, then you can clone it with the following
 command. <strong>Run this command from inside your <code>csc110</code> folder!</strong></p>
-<pre><code class="language-bash">git clone git@github.com:zachkohlberg/csc11025fa_class_repo.git
+<pre><code class="language-bash">git clone https://github.com/zachkohlberg/csc11025fa_class_repo.git
 </code></pre>
 <p>If you already have the repo, then you can update it with the following command.
 <strong>Run this command from inside the cloned repo!</strong></p>
@@ -554,11 +572,32 @@ command. <strong>Run this command from inside your <code>csc110</code> folder!</
 </code></pre>
 <p>Avoid storing your own files in the repo or editing the files in the repo. If
 you modify anything in the repo, then you may run into errors when you try to
-update it with the pull command.</p>
+update it with the pull command. I'm not going to troubleshoot this with you, so
+if you mess with the repo and can't pull then you can just make a new clone.</p>
 <h1 id="practice"><a class="header" href="#practice">Practice</a></h1>
 <ol>
 <li>Experiment with the <code>Arithmetic.java</code> program and answer the questions in the
 comments.</li>
+<li>For each expression below, predict the type (int, double, or String) and
+value of the expression. After you wrote down your predictions, try entering
+each expression into jshell to see if you were correct. Try to explain any
+unexpected results. Note: jshell won't show the type by default, but it will
+print quotes around a String and a ".0" after a double (even if the double is
+a whole number).</li>
+</ol>
+<pre><code>2 + 2 + 2
+"2" + 2 + 2
+"2" + (2 + 2)
+2 + 2 * 3
+2 + (2 * 3)
+20 / 7
+20 / 7.0
+20 % 7
+"hello" + "world".toUpperCase()
+("hello" + "world").toUpperCase()
+Math.max(20, 15.0)
+</code></pre>
+<ol start="3">
 <li>Try writing a program that generates a shorter school email address:
 <code>fmlast@quinnipiac.edu</code> (first initial, middle initial, last name) instead of
 <code>first.last@quinnipiac.edu</code>. Ask for the user's first name, middle initial,
@@ -572,6 +611,115 @@ number of minutes and convert it to days, hours, and minutes. For example, if
 a user inputs 6791 minutes, then the program should respond with "4 days, 17
 hours, and 11 minutes." This process is similar to the <code>Height.java</code> program.</li>
 </ol>
+<h1 id="tools"><a class="header" href="#tools">Tools</a></h1>
+<p>This is a summary of everything we've learned how to do so far. Right now, these
+are all valid inside of the <code>main</code> function of a compact Java program. These
+examples include some placeholders, which I've surrounded with underscores and
+written in <code>lower_snake_case</code>. For example, <code>_type_</code> is a placeholder that can
+be any of the types we've learned about: <code>int</code>, <code>double</code>, or <code>String</code>.
+<code>_function_identifier_</code> is a placeholder than can be replaced with the
+identifier (name) of any function we've learned about, such as <code>println</code> or
+<code>abs</code>.</p>
+<pre><code>// Types (_type_): int, double, String
+// Operators (_op_): +, -, *, /, %
+// Identifiers (_identifier_): starts with letter, only contains letters/digits
+// Namespaces (_namespace_): IO, Integer, Double, Math
+
+////////////////
+// Statements //
+////////////////
+
+// Variable declaration
+_type_ _identifier_;
+
+// Variable declaration and initialization
+_type_ _identifier_ = _expression_;
+
+// Variable declaration (infers type) and initialization
+var _identifier_ = _expression_;
+
+// Assignment
+_identifier_ = _expression_;
+
+// Function call
+_namespace_._function_identifier_(_arguments_);
+
+/////////////////
+// Expressions //
+/////////////////
+
+// int literal
+20
+-3
+1_000_000
+
+// double literal
+20.0
+-3.14
+1_000_000.0
+
+// String literal
+"Hello World"
+"abc"
+""
+
+// Variable
+_variable_identifier_
+
+// Function call (non-void function)
+_namespace_._function_identifier_(_arguments_)
+
+// String method call
+_string_expression_._method_identifier_(_arguments_)
+
+// int cast
+(int)_double_expression_
+
+// Parenthesis (for order of operations)
+(_expression_)
+
+// Binary operator
+_expression_ _op_ _expression_
+
+////////////////////////
+// Specific Functions //
+////////////////////////
+
+// Return type: void
+IO.print(_expression_)
+IO.println(_expression_)
+IO.println()
+
+// Return type: String
+IO.readln(_expression_)
+IO.readln()
+
+// Return type: int
+Integer.parseInt(_string_expression_)
+Math.abs(_int_expression_)
+Math.min(_int_expression_, _int_expression_)
+Math.max(_int_expression_, _int_expression_)
+
+// Return type: double
+Double.parseDouble(_string_expression_)
+Math.abs(_double_expression_)
+Math.min(_double_expression_, _double_expression_)
+Math.max(_double_expression_, _double_expression_)
+Math.pow(_double_expression_, _double_expression_)
+
+/////////////////////////////
+// Specific String Methods //
+/////////////////////////////
+
+// Return type: String
+_string_expression_.toLowerCase()
+_string_expression_.toUpperCase()
+_string_expression_.substring(_int_expression_)
+_string_expression_.substring(_int_expression_, _int_expression_)
+
+// Return type: int
+_string_expression_.length()
+</code></pre>
 
                     </main>
 
