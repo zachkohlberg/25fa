@@ -312,6 +312,17 @@ void main() {
 <li>What if we wanted it to work for the whole class?</li>
 </ul>
 <h1 id="io"><a class="header" href="#io">I/O</a></h1>
+<pre><code class="language-java">void main() {
+    // var input creates a new variable named "input"
+    // IO.readln(...) prints a message and returns whatever the user types
+    // the = stores the result of readln in the input variable
+    var input = IO.readln("Type something: ");
+    IO.print("You typed: ");
+    // printing the variable retrieves whatever was stored in it and prints that
+    // this will repeat whatever the user typed earlier
+    IO.println(input);
+}
+</code></pre>
 <ul>
 <li>Input and Output (I/O)</li>
 <li>On terminal (standard in, standard out)
@@ -548,11 +559,37 @@ function</li>
 </li>
 <li>Ignoring <code>char</code> for now</li>
 </ul>
+<h1 id="errors"><a class="header" href="#errors">Errors</a></h1>
+<ul>
+<li>two steps: compile source code into bytecode, then run bytecode on JVM</li>
+<li>compile error
+<ul>
+<li>code doesn't run</li>
+<li>stops compilation early (may hide other compile errors)</li>
+<li>often syntax-related (syntax errors)</li>
+<li>better than runtime errors</li>
+</ul>
+</li>
+<li>runtime error
+<ul>
+<li>happens while code is running (already compiled successfully)</li>
+<li>names ending with "Exception" (e.g. <code>NumberFormatException</code>)</li>
+<li>crashes the program</li>
+</ul>
+</li>
+<li>logic error
+<ul>
+<li>happens at runtime</li>
+<li>program works incorrectly but doesn't crash</li>
+<li>hardest to fix (no crash/error message to tell you about the error)</li>
+</ul>
+</li>
+</ul>
 <h1 id="class-git-repo"><a class="header" href="#class-git-repo">Class Git Repo</a></h1>
 <ul>
 <li>Stuff from class will be in a public git repository</li>
 <li>Can download a zip from GitHub in web browser
-(<a href="https://github.com/zachkohlberg/csc11025fa_class_repo">https://github.com/zachkohlberg/csc11025fa_class_repo</a>)</li>
+(<a href="https://github.com/zachkohlberg/csc110_25fa_class_repo">https://github.com/zachkohlberg/csc110_25fa_class_repo</a>)</li>
 <li>Easier: clone/pull on terminal using git</li>
 <li>Git installation
 <ul>
@@ -564,7 +601,7 @@ function</li>
 </ul>
 <p>If you don't have the repo yet, then you can clone it with the following
 command. <strong>Run this command from inside your <code>csc110</code> folder!</strong></p>
-<pre><code class="language-bash">git clone https://github.com/zachkohlberg/csc11025fa_class_repo.git
+<pre><code class="language-bash">git clone https://github.com/zachkohlberg/csc110_25fa_class_repo.git
 </code></pre>
 <p>If you already have the repo, then you can update it with the following command.
 <strong>Run this command from inside the cloned repo!</strong></p>
@@ -589,7 +626,7 @@ a whole number).</li>
 "2" + 2 + 2
 "2" + (2 + 2)
 2 + 2 * 3
-2 + (2 * 3)
+(2 + 2) * 3
 20 / 7
 20 / 7.0
 20 % 7
@@ -612,9 +649,9 @@ a user inputs 6791 minutes, then the program should respond with "4 days, 17
 hours, and 11 minutes." This process is similar to the <code>Height.java</code> program.</li>
 </ol>
 <h1 id="tools"><a class="header" href="#tools">Tools</a></h1>
-<p>This is a summary of everything we've learned how to do so far. Right now, these
+<p>This is a summary of all the tools currently at your disposal. Right now, these
 are all valid inside of the <code>main</code> function of a compact Java program. These
-examples include some placeholders, which I've surrounded with underscores and
+examples include many placeholders, which I've surrounded with underscores and
 written in <code>lower_snake_case</code>. For example, <code>_type_</code> is a placeholder that can
 be any of the types we've learned about: <code>int</code>, <code>double</code>, or <code>String</code>.
 <code>_function_identifier_</code> is a placeholder than can be replaced with the
@@ -622,7 +659,8 @@ identifier (name) of any function we've learned about, such as <code>println</co
 <code>abs</code>.</p>
 <pre><code>// Types (_type_): int, double, String
 // Operators (_op_): +, -, *, /, %
-// Identifiers (_identifier_): starts with letter, only contains letters/digits
+// Identifiers (_identifier_): starts with non-digit, only contains letters,
+//                             digits, $, or _
 // Namespaces (_namespace_): IO, Integer, Double, Math
 
 ////////////////
@@ -631,55 +669,77 @@ identifier (name) of any function we've learned about, such as <code>println</co
 
 // Variable declaration
 _type_ _identifier_;
+// Example:
+int age;
 
 // Variable declaration and initialization
 _type_ _identifier_ = _expression_;
+// Example:
+String name = "My Name";
 
 // Variable declaration (infers type) and initialization
 var _identifier_ = _expression_;
+// Example:
+var name = "My Name";
 
 // Assignment
 _identifier_ = _expression_;
+// Example:
+age = age + 1;
 
-// Function call
+// Function call (usually a void function)
 _namespace_._function_identifier_(_arguments_);
+// Example:
+IO.println("Hello World");
 
 /////////////////
 // Expressions //
 /////////////////
 
-// int literal
+// int literal examples:
 20
 -3
 1_000_000
 
-// double literal
+// double literal examples:
 20.0
 -3.14
 1_000_000.0
 
-// String literal
+// String literal examples:
 "Hello World"
 "abc"
 ""
 
 // Variable
 _variable_identifier_
+// Example:
+age
 
 // Function call (non-void function)
 _namespace_._function_identifier_(_arguments_)
+// Example:
+Integer.parseInt("100")
 
 // String method call
 _string_expression_._method_identifier_(_arguments_)
+// Example:
+"Hello World".toUpperCase()
 
 // int cast
 (int)_double_expression_
+// Example:
+(int) (1000.0 / 7.0)
 
 // Parenthesis (for order of operations)
 (_expression_)
+// Example:
+(number + 10)
 
 // Binary operator
 _expression_ _op_ _expression_
+// Example:
+"Hello " + "World!"
 
 ////////////////////////
 // Specific Functions //
@@ -691,7 +751,7 @@ IO.println(_expression_)
 IO.println()
 
 // Return type: String
-IO.readln(_expression_)
+IO.readln(_string_expression_)
 IO.readln()
 
 // Return type: int
@@ -720,6 +780,123 @@ _string_expression_.substring(_int_expression_, _int_expression_)
 // Return type: int
 _string_expression_.length()
 </code></pre>
+<h1 id="week-4"><a class="header" href="#week-4">Week 4</a></h1>
+<p>Questions about practice exercises?</p>
+<h2 id="goals"><a class="header" href="#goals">Goals</a></h2>
+<p>After this week, you should be able to</p>
+<ul>
+<li>write boolean expressions with comparison operators</li>
+<li>compare Strings with <code>.equals(...)</code></li>
+<li>combine two boolean expressions with <code>&amp;&amp;</code> or <code>||</code></li>
+<li>negate a boolean expression with <code>!</code></li>
+<li>make one or more statements conditional with <code>if</code></li>
+<li>choose between two sets of statements with <code>if...else</code></li>
+<li>repeat one or more statements with <code>while</code></li>
+<li>write a "counting loop" to repeat one or more statements a set number of times</li>
+</ul>
+<h2 id="example-programs-2"><a class="header" href="#example-programs-2">Example Programs</a></h2>
+<ul>
+<li>boolean variable, comparison, output</li>
+<li>if and if-else statement</li>
+<li>flag loop</li>
+<li>counting loop</li>
+</ul>
+<h1 id="structured-programming-theorem"><a class="header" href="#structured-programming-theorem">Structured Programming Theorem</a></h1>
+<ul>
+<li>to oversimplify: you can program anything with:
+<ul>
+<li>sequential instructions</li>
+<li>selection</li>
+<li>iteration</li>
+</ul>
+</li>
+<li>selection: if</li>
+<li>iteration: while</li>
+</ul>
+<h1 id="booleans"><a class="header" href="#booleans">Booleans</a></h1>
+<ul>
+<li>new type: <code>boolean</code></li>
+<li>only possible values: <code>true</code> and <code>false</code></li>
+<li>comparison operators for <code>int</code>, <code>double</code>: <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>==</code>, <code>!=</code></li>
+<li>note: assignment operator (<code>=</code>) is different from equality operator (<code>==</code>)</li>
+<li><code>String</code> comparisons</li>
+<li>boolean logic operators: <code>&amp;&amp;</code>, <code>||</code>, <code>!</code> (no xor for now)</li>
+</ul>
+<h1 id="code-blocks"><a class="header" href="#code-blocks">Code Blocks</a></h1>
+<ul>
+<li>already saw this: the <code>{...}</code> after <code>void main()</code></li>
+<li>code block
+<ul>
+<li>starts with <code>{</code> and ends with <code>}</code> (curly braces/brackets)</li>
+<li>groups statements together; effectively becomes one big statement</li>
+<li>no semicolon</li>
+<li>creates a new scope</li>
+</ul>
+</li>
+<li>variable scope
+<ul>
+<li>part of the program where a variable exists</li>
+<li>variables created in a scope don't exist outside of it</li>
+<li>global scope: valid everywhere
+<ul>
+<li>outside <code>main</code> is effectively global for us but technically not global</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="if-statement"><a class="header" href="#if-statement">If Statement</a></h1>
+<ul>
+<li>if and if-else syntax
+<ul>
+<li>block sometimes optional but always recommended</li>
+<li>else is optional</li>
+<li>no semicolon after if/else!</li>
+</ul>
+</li>
+<li>if makes a block conditional: might run, might not run</li>
+<li>entire if-else construct is a statement</li>
+</ul>
+<h1 id="while-loop"><a class="header" href="#while-loop">While Loop</a></h1>
+<ul>
+<li>while syntax
+<ul>
+<li>like if, but no else</li>
+</ul>
+</li>
+<li>loop must end
+<ul>
+<li>body should affect condition</li>
+<li>infinite loops</li>
+<li>ctrl+c to cancel running program</li>
+</ul>
+</li>
+<li>counting loop
+<ul>
+<li>structure</li>
+<li>can use the repetition number in loop body</li>
+</ul>
+</li>
+</ul>
+<h1 id="counting-loop"><a class="header" href="#counting-loop">Counting Loop</a></h1>
+<h1 id="java-25"><a class="header" href="#java-25">Java 25</a></h1>
+<ul>
+<li>Java 25 is available</li>
+<li>install Java 25 (see guide)
+<ul>
+<li>make sure <code>java -version</code> shows 25, not 24</li>
+<li>guide now covers uninstalling old versions</li>
+</ul>
+</li>
+<li>no longer need <code>--enable-preview</code> when running a program</li>
+</ul>
+<h1 id="assignments"><a class="header" href="#assignments">Assignments</a></h1>
+<ul>
+<li>review deadlines and weekly submissions</li>
+<li>explain first assignment</li>
+<li>...</li>
+</ul>
+<h1 id="practice-1"><a class="header" href="#practice-1">Practice</a></h1>
 
                     </main>
 

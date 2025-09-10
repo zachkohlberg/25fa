@@ -153,9 +153,9 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="tools"><a class="header" href="#tools">Tools</a></h1>
-<p>This is a summary of everything we've learned how to do so far. Right now, these
+<p>This is a summary of all the tools currently at your disposal. Right now, these
 are all valid inside of the <code>main</code> function of a compact Java program. These
-examples include some placeholders, which I've surrounded with underscores and
+examples include many placeholders, which I've surrounded with underscores and
 written in <code>lower_snake_case</code>. For example, <code>_type_</code> is a placeholder that can
 be any of the types we've learned about: <code>int</code>, <code>double</code>, or <code>String</code>.
 <code>_function_identifier_</code> is a placeholder than can be replaced with the
@@ -163,7 +163,8 @@ identifier (name) of any function we've learned about, such as <code>println</co
 <code>abs</code>.</p>
 <pre><code>// Types (_type_): int, double, String
 // Operators (_op_): +, -, *, /, %
-// Identifiers (_identifier_): starts with letter, only contains letters/digits
+// Identifiers (_identifier_): starts with non-digit, only contains letters,
+//                             digits, $, or _
 // Namespaces (_namespace_): IO, Integer, Double, Math
 
 ////////////////
@@ -172,55 +173,77 @@ identifier (name) of any function we've learned about, such as <code>println</co
 
 // Variable declaration
 _type_ _identifier_;
+// Example:
+int age;
 
 // Variable declaration and initialization
 _type_ _identifier_ = _expression_;
+// Example:
+String name = "My Name";
 
 // Variable declaration (infers type) and initialization
 var _identifier_ = _expression_;
+// Example:
+var name = "My Name";
 
 // Assignment
 _identifier_ = _expression_;
+// Example:
+age = age + 1;
 
-// Function call
+// Function call (usually a void function)
 _namespace_._function_identifier_(_arguments_);
+// Example:
+IO.println("Hello World");
 
 /////////////////
 // Expressions //
 /////////////////
 
-// int literal
+// int literal examples:
 20
 -3
 1_000_000
 
-// double literal
+// double literal examples:
 20.0
 -3.14
 1_000_000.0
 
-// String literal
+// String literal examples:
 "Hello World"
 "abc"
 ""
 
 // Variable
 _variable_identifier_
+// Example:
+age
 
 // Function call (non-void function)
 _namespace_._function_identifier_(_arguments_)
+// Example:
+Integer.parseInt("100")
 
 // String method call
 _string_expression_._method_identifier_(_arguments_)
+// Example:
+"Hello World".toUpperCase()
 
 // int cast
 (int)_double_expression_
+// Example:
+(int) (1000.0 / 7.0)
 
 // Parenthesis (for order of operations)
 (_expression_)
+// Example:
+(number + 10)
 
 // Binary operator
 _expression_ _op_ _expression_
+// Example:
+"Hello " + "World!"
 
 ////////////////////////
 // Specific Functions //
@@ -232,7 +255,7 @@ IO.println(_expression_)
 IO.println()
 
 // Return type: String
-IO.readln(_expression_)
+IO.readln(_string_expression_)
 IO.readln()
 
 // Return type: int
@@ -270,6 +293,9 @@ _string_expression_.length()
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
+                            <a rel="next prefetch" href="../week4.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -281,6 +307,9 @@ _string_expression_.length()
                         <i class="fa fa-angle-left"></i>
                     </a>
 
+                    <a rel="next prefetch" href="../week4.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>
