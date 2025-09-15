@@ -153,6 +153,47 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="counting-loop"><a class="header" href="#counting-loop">Counting Loop</a></h1>
+<pre><code class="language-java">// CountingLoop.java
+void main() {
+    // init
+    int i = 0;
+    // condition
+    while (i &lt; 10) {
+        // task usually uses counter variable
+        IO.println("Loop body: i = " + i);
+
+        // update
+        i = i + 1;
+    }
+
+    // note values printed during loop and value printed after loop
+    IO.println("After loop: i = " + i);
+}
+</code></pre>
+<ul>
+<li>common pattern: repeat a set number of times and use repetition index in task</li>
+<li>three parts:
+<ul>
+<li>init: <code>int</code> variable to count repetitions, often called <code>i</code>, <code>j</code>, or <code>k</code>,
+usually starts at 0
+<ul>
+<li>example: <code>int i = 0;</code></li>
+</ul>
+</li>
+<li>condition: compare count to total repetitions
+<ul>
+<li>example: <code>(i &lt; 10)</code> would repeat 10 times</li>
+</ul>
+</li>
+<li>update: increment counter at end of loop body
+<ul>
+<li>example: <code>i = i + 1;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>variations: count down, different increments</li>
+</ul>
 
                     </main>
 

@@ -153,6 +153,28 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="code-blocks"><a class="header" href="#code-blocks">Code Blocks</a></h1>
+<pre><code class="language-java">// BlockScope.java
+void main() {
+    int x = 1;
+
+    IO.println("Before block:");
+    IO.println("  x=" + x);
+
+    {
+        x = 3;
+        int y = 2;
+
+        IO.println("Inside block:");
+        IO.println("  x=" + x);
+        IO.println("  y=" + y);
+    }
+
+    IO.println("After block:");
+    IO.println("  x=" + x);
+    // what happens if we enable this line?
+    // IO.println("  y=" + y);
+}
+</code></pre>
 <ul>
 <li>already saw this: the <code>{...}</code> after <code>void main()</code></li>
 <li>code block
