@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Practice - CSC110 Lecture Outlines</title>
+        <title>Week 5 - CSC110 Lecture Outlines</title>
 
 
         <!-- Custom HTML head -->
@@ -12,32 +12,32 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="../favicon.svg">
-        <link rel="shortcut icon" href="../favicon.png">
-        <link rel="stylesheet" href="../css/variables.css">
-        <link rel="stylesheet" href="../css/general.css">
-        <link rel="stylesheet" href="../css/chrome.css">
-        <link rel="stylesheet" href="../css/print.css" media="print">
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="../fonts/fonts.css">
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
-        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
-        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
 
         <!-- Provide site root to javascript -->
         <script>
-            var path_to_root = "../";
+            var path_to_root = "";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc.js"></script>
+        <script src="toc.js"></script>
     </head>
     <body>
     <div id="body-container">
@@ -89,7 +89,7 @@
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
-                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
             </noscript>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -123,7 +123,7 @@
                     <h1 class="menu-title">CSC110 Lecture Outlines</h1>
 
                     <div class="right-buttons">
-                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
 
@@ -152,86 +152,34 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="practice"><a class="header" href="#practice">Practice</a></h1>
-<p>Demo Problems:</p>
-<ol>
-<li>Given the user's age, is the user old enough to retire?
+                        <h1 id="week-5"><a class="header" href="#week-5">Week 5</a></h1>
+<p>Questions about practice?</p>
 <ul>
-<li>Write a boolean expression to answer this question and test it in jshell.</li>
-<li>Write a program that asks for the user's age and prints the answer to this
-question.</li>
+<li>review either birthday calculation or division</li>
 </ul>
-</li>
-<li>Ask the user for a positive integer, then print a countdown from that number
-to zero.</li>
-</ol>
-<p>Practice Problems:</p>
-<ol>
-<li>Write <strong>boolean expressions</strong> to answer the following questions. The
-expression should evaluate to <code>true</code> when the answer is yes and <code>false</code> when
-the answer is no. Only write the boolean expression! You should test these in
-jshell with different values to make sure they're correct.
+<p>Goals</p>
+<p>After this week, you should be able to</p>
 <ul>
-<li>Given the user's age, is the user old enough to legally drink in the US?
-The US drinking age is 21.</li>
-<li>Given the user's height in inches, is the user between 5 and 6 feet tall
-(inclusive)?</li>
-<li>Given the user's month and day of birth and the current month and day, has
-the user already celebrated their birthday this year? This one is more
-complex, so here are a few hints:
-<ul>
-<li>The months and days should be integers. You should use <code>int</code> variables
-with descriptive names such as <code>bMonth</code>, <code>bDay</code>, <code>cMonth</code>, and <code>cDay</code>.</li>
-<li>There are three separate questions you need to ask:
-<ul>
-<li>(A) Was the user born before the current month?</li>
-<li>(B) Was the user born this month?</li>
-<li>(C) Was the user born on or before the current day?</li>
+<li>explain the difference between a function definition/implementation and a
+function call</li>
+<li>explain the difference between a parameter and an argument</li>
+<li>write a short function that transform data (a "pure function")</li>
+<li>write a short function that perform a task (a "subroutine")</li>
+<li>write code that calls a function you wrote</li>
+<li>create an array</li>
+<li>access and modify the elements of an array</li>
+<li>write a counting loop that iterates over the elements of an array</li>
 </ul>
-</li>
-<li>B and C go together to ask "Was the user born on or before the current
-day this month?" Both must be true for the answer to be yes, so we join
-them with <code>&amp;&amp;</code>.</li>
-<li>If either A or the BC is true, then the answer to our original question
-is yes. Therefore, we join A and BC with <code>||</code>.</li>
-<li>The whole expression has the structure: <code>A || (B &amp;&amp; C)</code>.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Write a program that asks the user for their birth date and tells them
-whether they are old enough to legally drink. You can hard-code the current
-date to make testing easier.
-<ul>
-<li>You can calculate the user's age by subtracting their birth year from the
-current year, but this assumes they've already had their birthday this
-year.</li>
-<li>In problem 1, you wrote an expression to determine whether the user already
-celebrated their birthday. If that expression evaluates to <code>false</code>, then
-subtract 1 from the age calculated in the previous step.</li>
-<li>You also wrote an expression to determine whether they're old enough to
-drink, so use that to output the correct message.</li>
-</ul>
-</li>
-<li>Ask the user for a positive integer (n) and some text, then repeat the text n
-times. Each repetition should be on a separate line.</li>
-<li>Ask the user for two positive integers, then divide the numbers <strong>without
-using the division or modulo operators</strong>. Instead, use a loop to repeatedly
-subtract the divisor from the dividend and count how many times you were able
-to do this. Report both the integer quotient and the remainder expressed as a
-fraction. For example, 11 divided by 3 should print "3 and 2/3". If the
-remainder is zero, then just print the quotient.</li>
-</ol>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../week4/counting.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="week4/practice.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../week5.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="week5/functions.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -241,11 +189,11 @@ remainder is zero, then just print the quotient.</li>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../week4/counting.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="week4/practice.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../week5.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="week5/functions.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -260,13 +208,13 @@ remainder is zero, then just print the quotient.</li>
         </script>
 
 
-        <script src="../elasticlunr.min.js"></script>
-        <script src="../mark.min.js"></script>
-        <script src="../searcher.js"></script>
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
 
-        <script src="../clipboard.min.js"></script>
-        <script src="../highlight.js"></script>
-        <script src="../book.js"></script>
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
 

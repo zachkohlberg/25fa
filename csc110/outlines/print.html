@@ -1013,6 +1013,181 @@ usually starts at 0
 </li>
 <li>variations: count down, different increments</li>
 </ul>
+<h1 id="practice-1"><a class="header" href="#practice-1">Practice</a></h1>
+<p>Demo Problems:</p>
+<ol>
+<li>Given the user's age, is the user old enough to retire?
+<ul>
+<li>Write a boolean expression to answer this question and test it in jshell.</li>
+<li>Write a program that asks for the user's age and prints the answer to this
+question.</li>
+</ul>
+</li>
+<li>Ask the user for a positive integer, then print a countdown from that number
+to zero.</li>
+</ol>
+<p>Practice Problems:</p>
+<ol>
+<li>Write <strong>boolean expressions</strong> to answer the following questions. The
+expression should evaluate to <code>true</code> when the answer is yes and <code>false</code> when
+the answer is no. Only write the boolean expression! You should test these in
+jshell with different values to make sure they're correct.
+<ul>
+<li>Given the user's age, is the user old enough to legally drink in the US?
+The US drinking age is 21.</li>
+<li>Given the user's height in inches, is the user between 5 and 6 feet tall
+(inclusive)?</li>
+<li>Given the user's month and day of birth and the current month and day, has
+the user already celebrated their birthday this year? This one is more
+complex, so here are a few hints:
+<ul>
+<li>The months and days should be integers. You should use <code>int</code> variables
+with descriptive names such as <code>bMonth</code>, <code>bDay</code>, <code>cMonth</code>, and <code>cDay</code>.</li>
+<li>There are three separate questions you need to ask:
+<ul>
+<li>(A) Was the user born before the current month?</li>
+<li>(B) Was the user born this month?</li>
+<li>(C) Was the user born on or before the current day?</li>
+</ul>
+</li>
+<li>B and C go together to ask "Was the user born on or before the current
+day this month?" Both must be true for the answer to be yes, so we join
+them with <code>&amp;&amp;</code>.</li>
+<li>If either A or the BC is true, then the answer to our original question
+is yes. Therefore, we join A and BC with <code>||</code>.</li>
+<li>The whole expression has the structure: <code>A || (B &amp;&amp; C)</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Write a program that asks the user for their birth date and tells them
+whether they are old enough to legally drink. You can hard-code the current
+date to make testing easier.
+<ul>
+<li>You can calculate the user's age by subtracting their birth year from the
+current year, but this assumes they've already had their birthday this
+year.</li>
+<li>In problem 1, you wrote an expression to determine whether the user already
+celebrated their birthday. If that expression evaluates to <code>false</code>, then
+subtract 1 from the age calculated in the previous step.</li>
+<li>You also wrote an expression to determine whether they're old enough to
+drink, so use that to output the correct message.</li>
+</ul>
+</li>
+<li>Ask the user for a positive integer (n) and some text, then repeat the text n
+times. Each repetition should be on a separate line.</li>
+<li>Ask the user for two positive integers, then divide the numbers <strong>without
+using the division or modulo operators</strong>. Instead, use a loop to repeatedly
+subtract the divisor from the dividend and count how many times you were able
+to do this. Report both the integer quotient and the remainder expressed as a
+fraction. For example, 11 divided by 3 should print "3 and 2/3". If the
+remainder is zero, then just print the quotient.</li>
+</ol>
+<h1 id="week-5"><a class="header" href="#week-5">Week 5</a></h1>
+<p>Questions about practice?</p>
+<ul>
+<li>review either birthday calculation or division</li>
+</ul>
+<p>Goals</p>
+<p>After this week, you should be able to</p>
+<ul>
+<li>explain the difference between a function definition/implementation and a
+function call</li>
+<li>explain the difference between a parameter and an argument</li>
+<li>write a short function that transform data (a "pure function")</li>
+<li>write a short function that perform a task (a "subroutine")</li>
+<li>write code that calls a function you wrote</li>
+<li>create an array</li>
+<li>access and modify the elements of an array</li>
+<li>write a counting loop that iterates over the elements of an array</li>
+</ul>
+<h1 id="functions"><a class="header" href="#functions">Functions</a></h1>
+<pre><code class="language-java">add example
+</code></pre>
+<ul>
+<li>what is a function?</li>
+<li>functions we already know: println, readln, parseInt, pow, etc.</li>
+<li>we've already written one: <code>void main() {...}</code></li>
+<li>why use them?
+<ul>
+<li>shorter code</li>
+<li>easier to read</li>
+<li>code reuse: less work, fewer mistakes</li>
+</ul>
+</li>
+<li>purposes
+<ul>
+<li>procedures/subroutines: perform some task</li>
+<li>"pure" function: transform input into output</li>
+</ul>
+</li>
+<li>mental model: function is like a mini program inside your program</li>
+</ul>
+<h1 id="function-definitionimplementation"><a class="header" href="#function-definitionimplementation">Function Definition/Implementation</a></h1>
+<pre><code class="language-java">add example
+</code></pre>
+<ul>
+<li>define/declare: like declaring a variable</li>
+<li>implementation: code in function body, what the function does</li>
+<li>definition includes
+<ul>
+<li>return type</li>
+<li>identifier</li>
+<li>parameters</li>
+</ul>
+</li>
+<li><code>return</code> keyword</li>
+<li>if return type isn't void, must always explicitly return
+<ul>
+<li>show function that maybe returns with if</li>
+</ul>
+</li>
+</ul>
+<h1 id="function-call"><a class="header" href="#function-call">Function Call</a></h1>
+<pre><code class="language-java">add example
+</code></pre>
+<ul>
+<li>call/invoke: execute code in function's implementation</li>
+<li>provide arguments if needed</li>
+<li>include namespace (package, class) if needed</li>
+<li>methods: <code>expression.function(...)</code>, like <code>s.substring(5)</code> or
+<code>("Hello " + name).toUpperCase()</code></li>
+<li>assign return value to a variable</li>
+</ul>
+<h1 id="syntax-and-vocab"><a class="header" href="#syntax-and-vocab">Syntax and Vocab</a></h1>
+<ul>
+<li>call, invoke</li>
+<li>define, declare</li>
+<li>implementation, body</li>
+<li>parameters/arguments:
+<ul>
+<li>formal parameters (parameters)</li>
+<li>actual parameters (arguments)</li>
+</ul>
+</li>
+<li>return type, return value</li>
+<li>syntax/template
+<ul>
+<li>declare and implement</li>
+<li>call</li>
+</ul>
+</li>
+</ul>
+<h1 id="arrays"><a class="header" href="#arrays">Arrays</a></h1>
+<pre><code class="language-java">add example
+</code></pre>
+<ul>
+<li>array type vs non-array type</li>
+<li>create new array
+<ul>
+<li>new "empty" array</li>
+<li>new array from specific elements</li>
+</ul>
+</li>
+<li>indexing: access or modify an element</li>
+<li>length property (not a method)</li>
+<li>iterating with counting loop</li>
+</ul>
 <h1 id="java-25"><a class="header" href="#java-25">Java 25</a></h1>
 <ul>
 <li>Java 25 is available</li>
@@ -1030,7 +1205,7 @@ usually starts at 0
 <li>explain first assignment</li>
 <li>...</li>
 </ul>
-<h1 id="practice-1"><a class="header" href="#practice-1">Practice</a></h1>
+<h1 id="practice-2"><a class="header" href="#practice-2">Practice</a></h1>
 
                     </main>
 
