@@ -1101,8 +1101,78 @@ function call</li>
 <li>access and modify the elements of an array</li>
 <li>write a counting loop that iterates over the elements of an array</li>
 </ul>
+<h1 id="else-if"><a class="header" href="#else-if">Else-If</a></h1>
+<pre><code class="language-java">// ElseIf.java
+
+void main() {
+    int x = Integer.parseInt(IO.readln("Enter an integer: "));
+
+    if (x &gt; 0) {
+        IO.println("Your number is positive.");
+    } else if (x &lt; 0) {
+        IO.println("Your number is negative.");
+    } else {
+        IO.println("Your number is zero.");
+    }
+}
+</code></pre>
+<ul>
+<li>can chain if-else together</li>
+<li>ending in an "else if" means we can skip all cases</li>
+<li>ending in an "else" means we will always choose one case
+<ul>
+<li>important to the compiler</li>
+</ul>
+</li>
+<li>use earlier cases to omit redundant conditions</li>
+</ul>
 <h1 id="functions"><a class="header" href="#functions">Functions</a></h1>
-<pre><code class="language-java">add example
+<pre><code class="language-java">// Functions.java
+
+// declaring and implementing our main function
+void main() {
+    int x = 10;
+    // calling our square function and storing the result in a variable
+    int xSquared = square(x);
+    // calling println
+    IO.println(x + " squared is " + xSquared);
+
+    String s = "Hello";
+    // calling our repeat function and storing the result in a variable
+    String sRepeated = repeat(s, 4);
+    // calling println
+    IO.println(s + " repeated 4 times is " + sRepeated);
+}
+
+// declaring and implementing our square function
+int square(int n) {
+    // work
+    int nSquared = n * n;
+    // return the result
+    return nSquared;
+}
+
+// declaring and implementing our repeat function
+String repeat(String s, int times) {
+    // more complicated work than square
+    String result = "";
+    int i = 0;
+    while (i &lt; times) {
+        result = result + s;
+
+        i = i + 1;
+    }
+    // return the result
+    return result;
+}
+
+// Questions
+// - In main we use the names x and xSquared for variables, and in square we use
+//   n and nSquared. Why don't the names have to match?
+// - In main we use the names s and sRepeated for variables (plus the literal 4),
+//   and in repeat we use the names s, times, and result. One name matches, one
+//   value has no name in main (the 4, which in repeat is called times), and one
+//   name doesn't match. Why is this okay?
 </code></pre>
 <ul>
 <li>what is a function?</li>
@@ -1124,7 +1194,46 @@ function call</li>
 <li>mental model: function is like a mini program inside your program</li>
 </ul>
 <h1 id="function-definitionimplementation"><a class="header" href="#function-definitionimplementation">Function Definition/Implementation</a></h1>
-<pre><code class="language-java">add example
+<pre><code class="language-java">// FunctionDefsAndCalls.java
+
+// Function definitions/implementations
+
+// Function info (from just the declaration):
+// - id: average
+// - parameters:
+//   - id: a, type: double
+//   - id: b, type: double
+//   - id: c, type: double
+// - return type: double
+double average(double a, double b, double c) {
+    // this block is the definition
+    double sum = a + b + c;
+    // return keyword exits the function and returns the result of the following
+    // expression to the code that called this function
+    return sum / 3;
+}
+
+// Function calls (inside our main function's implementation)
+
+void main() {
+    // variables to use in one function call
+    // note: we can reuse these names because the scope of main's body is separate
+    // from the scope of average's body
+    double a = 12;
+    double b = 7.5;
+    double c = 6;
+
+    // calling the average function with arguments a (12.0), b (7.5), and c (6.0)
+    // and storing the result (8.5) in avg1
+    double avg1 = average(a, b, c);
+
+    // calling the average function with arguments 10.0, 5.0, and 30.0 and storing
+    // the result (15.0) in avg2
+    double avg2 = average(10, 5, 30);
+
+    // calling the println function with a string expression as the argument
+    IO.println("The averages are " + avg1 + " and " + avg2 + ".");
+}
 </code></pre>
 <ul>
 <li>define/declare: like declaring a variable</li>
@@ -1142,9 +1251,54 @@ function call</li>
 <li>show function that maybe returns with if</li>
 </ul>
 </li>
+<li>scope
+<ul>
+<li>parameter scope</li>
+<li>local variables in separate functions</li>
+</ul>
+</li>
 </ul>
 <h1 id="function-call"><a class="header" href="#function-call">Function Call</a></h1>
-<pre><code class="language-java">add example
+<pre><code class="language-java">// FunctionDefsAndCalls.java
+
+// Function definitions/implementations
+
+// Function info (from just the declaration):
+// - id: average
+// - parameters:
+//   - id: a, type: double
+//   - id: b, type: double
+//   - id: c, type: double
+// - return type: double
+double average(double a, double b, double c) {
+    // this block is the definition
+    double sum = a + b + c;
+    // return keyword exits the function and returns the result of the following
+    // expression to the code that called this function
+    return sum / 3;
+}
+
+// Function calls (inside our main function's implementation)
+
+void main() {
+    // variables to use in one function call
+    // note: we can reuse these names because the scope of main's body is separate
+    // from the scope of average's body
+    double a = 12;
+    double b = 7.5;
+    double c = 6;
+
+    // calling the average function with arguments a (12.0), b (7.5), and c (6.0)
+    // and storing the result (8.5) in avg1
+    double avg1 = average(a, b, c);
+
+    // calling the average function with arguments 10.0, 5.0, and 30.0 and storing
+    // the result (15.0) in avg2
+    double avg2 = average(10, 5, 30);
+
+    // calling the println function with a string expression as the argument
+    IO.println("The averages are " + avg1 + " and " + avg2 + ".");
+}
 </code></pre>
 <ul>
 <li>call/invoke: execute code in function's implementation</li>
@@ -1174,7 +1328,49 @@ function call</li>
 </li>
 </ul>
 <h1 id="arrays"><a class="header" href="#arrays">Arrays</a></h1>
-<pre><code class="language-java">add example
+<pre><code class="language-java">// Arrays.java
+
+void main() {
+    // [] means a type is an array rather than a single value
+    int[] a;
+
+    // new type[len] creates a new array of "type" with length "len"
+    // all elements in array are initialized to a default value
+    a = new int[3];
+
+    // access individual elements by index; otherwise just like accessing any variable
+    IO.println("first element is " + a[0]);
+    IO.println("second element is " + a[1]);
+    IO.println("third element is " + a[2]);
+
+    // arrays have a length, which is NOT a method (a String's length() is a method)
+    IO.println("array's length is " + a.length);
+
+    // modify individual elements by index; otherwise just like modifying any variable
+    a[0] = 5;
+    a[1] = 9;
+
+    // print all elements
+    IO.println("first element is " + a[0]);
+    IO.println("second element is " + a[1]);
+    IO.println("third element is " + a[2]);
+
+    // can also reassign to a brand new array
+    // can initialize with specific elements instead of default values
+    // one of the rare cases where a semicolon goes after a curly brace
+    a = new int[] { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+
+    // counting loops are perfect for processing entire arrays
+    IO.print("a: ");
+    int i = 0;
+    while (i &lt; a.length) {
+        IO.print(" " + a[i]);
+
+        i = i + 1;
+    }
+    // end the line
+    IO.println();
+}
 </code></pre>
 <ul>
 <li>array type vs non-array type</li>
@@ -1190,22 +1386,64 @@ function call</li>
 </ul>
 <h1 id="java-25"><a class="header" href="#java-25">Java 25</a></h1>
 <ul>
-<li>Java 25 is available</li>
-<li>install Java 25 (see guide)
-<ul>
-<li>make sure <code>java -version</code> shows 25, not 24</li>
-<li>guide now covers uninstalling old versions</li>
-</ul>
-</li>
-<li>no longer need <code>--enable-preview</code> when running a program</li>
+<li>Java 25 is available: <a href="https://adoptium.net/temurin/releases/">https://adoptium.net/temurin/releases/</a></li>
+<li>install Java 25 and uninstall Java 24 (see the Guides website)</li>
+<li>make sure <code>java -version</code> and <code>javac -version</code> show 25, not 24</li>
+<li>you no longer need <code>--enable-preview</code> when running a program</li>
 </ul>
 <h1 id="assignments"><a class="header" href="#assignments">Assignments</a></h1>
 <ul>
-<li>review deadlines and weekly submissions</li>
-<li>explain first assignment</li>
-<li>...</li>
+<li>review deadlines and weekly submissions
+<ul>
+<li>deadlines and submission cutoffs are absolute</li>
+<li>"one submission per week" means you can submit any number of times
+(Blackboard won't stop you), but only last submission before the cutoff will
+be graded</li>
+<li>only limit on resubmitting is the assignment's final deadline</li>
+</ul>
+</li>
+<li>assignment website
+<ul>
+<li>autograded assignment requirements</li>
+<li>first assignment</li>
+</ul>
+</li>
 </ul>
 <h1 id="practice-2"><a class="header" href="#practice-2">Practice</a></h1>
+<ol>
+<li>Answer the questions in the <code>Functions.java</code> example.</li>
+<li>Take an earlier program you wrote that follows the pattern "read input,
+calculate result, print result" and answer the following questions:
+<ul>
+<li>For any input your program requires, what is that input's type and what
+name did you use for its variable?</li>
+<li>If the result of your program had to be stored in a single variable, what
+would be the most appropriate type for that variable?</li>
+<li>Rewrite your program as a function that doesn't call any IO functions.
+Instead, take the input by declaring parameters and return the result with
+a return statement.</li>
+<li>Write a main function that prompts the user for input, calls your new
+function, and prints the result of that function. Your main function is
+allowed to call IO functions.</li>
+</ul>
+</li>
+<li>Write a <code>clamp</code> function that takes three integers: a value, a minimum, and a
+maximum. Return the value if it is between the min and max, return the
+minimum if the value is less than the minimum, and return the maximum if the
+value is greater than the maximum. You may assume that the minimum is greater
+than the maximum (i.e. don't worry if someone calls your function with a min
+of 5 and a max of 0). Do not call any IO or Math functions! There are Math
+functions that can do all or part of this for you (<code>Math.min</code>, <code>Math.max</code>,
+<code>Math.clamp</code>), but I want you to write that logic yourself.</li>
+<li>Write a program that prompts the user for two numbers, multiplies them, and
+clamps the result between 0 and 100. Your program should call the clamp
+function you wrote in the previous problem (copy the clamp function into your
+program).</li>
+<li>Write a program that prompts a user for five numbers and store them in an
+array. Clamp each number in the array to be between -50 and 50 (modify the
+contents of the array), then print the array (see <code>Arrays.java</code> for an
+example of printing an array).</li>
+</ol>
 
                     </main>
 

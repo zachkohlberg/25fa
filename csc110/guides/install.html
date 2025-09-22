@@ -171,23 +171,34 @@ You can download an installer from the
 can use your <a href="https://www.geany.org/download/third-party/">package manager</a> to
 install it on Linux.</p>
 <h2 id="java"><a class="header" href="#java">Java</a></h2>
-<p>We'll be using some new features that were previewed in Java 24 and will be
-finalized in Java 25. You should install Java 25 when it becomes available on
-September 16th, but until then you can use Java 24 and enable preview features
-when running your programs. We'll cover enabling preview features when we write
-our first program.</p>
-<p>The Eclipse Foundation provides free builds of the JDK (Java Development Kit),
-which you can download from their
-<a href="https://adoptium.net/temurin/releases/">releases page</a>. Click "All Versions",
-then select your operating system, architecture, and version 25 (or 24 if 25 is
-not yet available). Choose the .MSI (Windows) or .PKG (Mac) installers. The .ZIP
-and .TAR.GZ archives require manual installation.</p>
-<p>On Linux, you should check your package manager to see whether it has version 24
-or 25 of Java. If not, then you can manually install the .TAR.GZ download.
-Please see me during office hours if you need help with this.</p>
+<p>This course relies on new features that were previewed starting in Java 21 and
+finalized in Java 25. You need to install the JDK (Java Development Kit) for
+Java 25 or later to access the correct version of these features.</p>
+<p>The Eclipse Foundation provides free builds of the JDK, which you can download
+from their <a href="https://adoptium.net/temurin/releases/">releases page</a>. Click the
+tab for "JDK 25 - LTS" and look for your operating system. Make sure you have
+selected jdk (not jre) and the correct architecture, then download the installer
+(.MSI for Windows or .PKG for Mac). The .ZIP and .TAR.GZ archives require manual
+installation.</p>
+<p>On Linux, you should check your package manager to see whether it has version 25
+of Java. If not, then you can manually install the .TAR.GZ download. Please see
+me during office hours if you need help with this.</p>
 <p>After you install java, you can confirm that it was installed correctly by
-restarting your terminal and running the command <code>java -version</code>. This should
-show the version number of your Java installation (24 or 25).</p>
+restarting your terminal and running the commands <code>java -version</code> and
+<code>javac -version</code>. Both commands should show a version number starting with 25.
+If either command shows a different version number, then there is a problem with
+your installation.</p>
+<h3 id="troubleshooting"><a class="header" href="#troubleshooting">Troubleshooting</a></h3>
+<p>Any of the following can cause problems. Before you ask for help, make sure
+you...</p>
+<ul>
+<li>downloaded the correct <strong>jdk</strong> (not jre) installer for your operating system</li>
+<li>did not download or run any other installers</li>
+<li>restarted your terminal before checking the version</li>
+</ul>
+<p>If you downloaded or ran multiple installers, then uninstall (see below) all
+incorrect versions and delete the incorrect installers. Then download and run
+the correct installer, restart your terminal, and check the version again.</p>
 <h3 id="uninstall-java"><a class="header" href="#uninstall-java">Uninstall Java</a></h3>
 <p>If you accidentally install the wrong version or need to upgrade to another
 version, then you may have to remove an existing installation. On Windows, you
