@@ -1,0 +1,387 @@
+<!DOCTYPE HTML>
+<html lang="en" class="navy sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>CSC110 Assignments</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">CSC110 Assignments</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="assignments"><a class="header" href="#assignments">Assignments</a></h1>
+<p>This site includes all assignments for our class. Deadlines can be found on
+Blackboard and on the course schedule. Most assignments are autograded, and
+these are subject to the rules in the <a href="./autograded.html">autograded assignments</a>
+section. The autograded assignments are also grouped into two projects, and each
+assignment in the series builds towards a larger program. You should complete
+them in order so that you can reuse material from earlier assignments in the
+series.</p>
+<p>Finally, a reminder that you are responsible for knowing the relevant policies
+in our syllabus and how they apply to these assignments, including:</p>
+<ul>
+<li><a href="../syllabus/grading">Grading</a></li>
+<li><a href="../syllabus/grading/deadlines">Deadlines</a></li>
+<li><a href="../syllabus/ai">Academic Integrity and Accountability</a></li>
+</ul>
+<h1 id="autograded-assignments"><a class="header" href="#autograded-assignments">Autograded Assignments</a></h1>
+<h2 id="testing"><a class="header" href="#testing">Testing</a></h2>
+<p>Autograded assignments are subject to the submission limits given in the
+deadline policy and will be checked by several programs I wrote to test student
+code. These tests will run your program or its functions with different inputs
+and check whether it produces the correct results.</p>
+<p>Tests will normally check the following:</p>
+<ul>
+<li>Output produced by <code>IO.println</code> and <code>IO.print</code>. Your program's output must
+match any requirements given in the assignment. Any difference (wrong
+spelling, capitalization, etc.) will fail an I/O test.</li>
+<li>Values returned by your function. If your function returns a value, then the
+value must match any requirements given in the assignment.</li>
+<li>Modifications to array arguments passed to your function. If your function
+takes any array parameters, then it must modify them as described in the
+assignment's requirements. Any extra modifications will usually cause a test
+to fail.</li>
+</ul>
+<p>Tests will always ignore any output produced by <code>IO.readln</code>. I will never
+specify how exactly to prompt the user for input, so you may word these prompts
+however you want. The tests will only look at your <code>print</code> and <code>println</code> output.</p>
+<p>A few other ways for a test to fail:</p>
+<ul>
+<li>Prompting for additional input or prompting in the wrong order. The test
+provides input in the order described in the assignment, so your code needs to
+read it in the same order.</li>
+<li>Printing output in the wrong order, combining separate lines into the same
+line, or splitting up one line into several lines.</li>
+<li>Generating extra random numbers. If a program involves random numbers, then
+the random number generator is "seeded" so that it produces the same sequence
+of values for your code that were used to generate the expected output. If you
+generate more random numbers than you need, then the sequence won't match and
+your code will produce different output.</li>
+</ul>
+<h2 id="test-feedback"><a class="header" href="#test-feedback">Test Feedback</a></h2>
+<p>My test program will generate markdown and pdf files with the results of any
+failed tests. This feedback will provide some information about the failed test
+to help you find and fix any mistakes in your program.</p>
+<h2 id="code-restrictions"><a class="header" href="#code-restrictions">Code Restrictions</a></h2>
+<p>To ensure your code is compatible with my tests, there are a few restrictions
+you need to follow. Ignoring any of these restrictions will usually cause your
+submission to fail all tests (or be marked invalid before even reaching the
+tests), and in some cases it will flag your code for review as potentially
+plagiarized or AI-generated.</p>
+<p>These restrictions aren't a problem if you are writing your code as shown in
+class and only write code that you understand. If you don't know what something
+means (like a <code>static</code> modifier), then you probably don't need to worry about
+using it by accident.</p>
+<h3 id="compact-source"><a class="header" href="#compact-source">Compact Source</a></h3>
+<p>You program must be a compact source file, and your <code>main</code> function must be
+declared as <code>void main()</code>. You must not use <code>static</code> or any other modifiers with
+your functions and variables.</p>
+<h3 id="io-functions"><a class="header" href="#io-functions">I/O Functions</a></h3>
+<p>Any I/O must use the <code>IO</code> functions we learned in class: <code>IO.readln</code>,
+<code>IO.print</code>, and <code>IO.println</code>. No <code>System.out</code>, <code>Console</code>, or <code>Scanner</code>.</p>
+<!-- ## Random Numbers -->
+<!---->
+<!-- TODO: either make tests work with Math.random() strategy or make students use -->
+<!-- csc110 library's random functions. -->
+<h3 id="standard-library"><a class="header" href="#standard-library">Standard Library</a></h3>
+<p>The Java standard library is a useful tool, and you should learn how to use it.
+However, these projects are meant to be completed with the limited tools we
+cover in class, and the standard library can trivialize some problems that
+you're meant to solve by hand. You're free to make use of any <code>String</code> methods,
+any of the <code>IO</code> and <code>Math</code> functions we've covered, and parsing functions (like
+<code>Integer.parseInt</code>). However, using other parts of the standard library that we
+haven't covered, such as <code>System</code> or <code>Scanner</code>, is not allowed. You're also not
+allowed to use any third-party libraries in autograded assignments.</p>
+<h3 id="java-keywordsfeatures"><a class="header" href="#java-keywordsfeatures">Java Keywords/Features</a></h3>
+<p>Your code should not declare classes, use try-catch, or otherwise rely on
+advanced features of the language that we haven't covered in class. The tools
+you have are more than adequate to solve these problems, and they allow for a
+variety of solutions to most of the programs.</p>
+<h3 id="other"><a class="header" href="#other">Other</a></h3>
+<p>Attempting to deliberately fool the test program, hide malicious code in your
+source file, or otherwise intentionally sabotage tests is not allowed and will
+be treated as an AIA violation.</p>
+<h1 id="character-sheet-project"><a class="header" href="#character-sheet-project">Character Sheet Project</a></h1>
+<p>This is some background information for the next four assignments. If you're not
+interested in the background and just want to write the programs, then feel free
+to skip this! You can code those programs without knowing anything about TTRPGs.</p>
+<h2 id="dungeons-and-dragons"><a class="header" href="#dungeons-and-dragons">Dungeons and Dragons</a></h2>
+<p><a href="https://en.wikipedia.org/wiki/Dungeons_%26_Dragons">Dungeons and Dragons</a> is a
+<a href="https://en.wikipedia.org/wiki/Tabletop_role-playing_game">tabletop roleplaying game</a>
+(TTRPG). Even if you haven't played a TTRPG before, you've probably still heard
+the name "Dungeons and Dragons" at some point. These assignments will use a
+modified version of some character creation rules from D&amp;D 5e. The real rules
+can be found in the <a href="https://www.5esrd.com/">5e System Reference Document</a>
+(SRD), which you can read if you're curious and want to learn more. However, you
+do not need to read the SRD for this assignment.</p>
+<h2 id="character-sheet"><a class="header" href="#character-sheet">Character Sheet</a></h2>
+<p>The idea behind these assignments is to write a program that generates a
+"character sheet" for someone playing a TTRPG like D&amp;D. A player normally
+controls a fictional character (their Player Character, or PC), and they track
+information about their character on a character sheet. This might include
+statistics, like how strong or fast the character is, the character's
+possessions, or information about the character's personality.</p>
+<p>The character sheet you generate will not cover all of the information about a
+real TTRPG character. This would get too complicated for an early programming
+assignment. Instead, we'll use a small subset of rules from the SRD, some of
+which will be simplified to better fit this assignment. You don't need to know
+any of these rules! The assignments will explain any calculations your code
+needs to perform.</p>
+<h2 id="terminology"><a class="header" href="#terminology">Terminology</a></h2>
+<p>Below is a summary of some terms that will come up in this assignment:</p>
+<ul>
+<li>A character's <strong>class</strong> is the role they fill in the game's world. In a game
+like D&amp;D, which focuses on fighting fantasy monsters, a character's class
+tells us their role in combat. A wizard casts spells, a rogue sneaks up on
+enemies, and a fighter... fights. Yes, everyone fights, but the fighter fights
+more directly, like with a sword and shield.</li>
+<li>A character's <strong>ancestry</strong> or <strong>race</strong> (the term varies by game, but I'll
+usually default to ancestry) represents what kind of creature they are. D&amp;D
+includes a lot of your standard fantasy races: elf, human, dwarf, goblin,
+gnome, halfling, and orc. However, depending on the game and who's running it,
+a TTRPG character could be anything: a ghost, a dragon, a talking bear, or a
+mannequin. I have run a game of D&amp;D that included both a talking bear and a
+mannequin as player characters. The mannequin also talked, and his name was
+Bob. The bear had a pet monkey. All of this will be on the exam<sup class="footnote-reference"><a href="#exam">1</a></sup>.</li>
+<li>A character's <strong>hit points</strong> (HP) represent how difficult they are to defeat
+in combat.</li>
+<li>A character's <strong>armor class</strong> (AC) represents how hard they are to hit with an
+attack. A high AC may mean that a character is very good at avoiding attacks,
+or that a character is wearing armor that blocks most attacks.</li>
+<li>A character's <strong>ability scores</strong> are numbers that represent a character's
+strength, cunning, speed, and other innate qualities. These affect most
+actions in the game.</li>
+<li>A character's <strong>ability modifiers</strong> are bonuses or penalties derived from
+their ability scores. The modifiers are the numbers we actually use in most
+calculations, and the scores only exist to determine the modifiers. At this
+point, you may be wondering why we bother with ability scores if we don't use
+them after calculating the modifiers. Good question! Anyway, let's talk about
+the character's level.</li>
+<li>A character's <strong>level</strong> represents how powerful and experienced they are. In
+most TTRPGs, characters gain experience and level up to represent how they've
+grown during their adventures.</li>
+<li>In addition to standard six-sided dice (referred to as D6 dice), D&amp;D uses
+several less common dice shapes: D4, D8, D10, D12, and D20.</li>
+</ul>
+<div class="footnote-definition" id="exam"><sup class="footnote-definition-label">1</sup>
+<p>We don't have exams, don't worry.</p>
+</div>
+<h1 id="assignment-1"><a class="header" href="#assignment-1">Assignment 1</a></h1>
+<p>In this assignment you will write a program that prompts the user for
+information and prints this information to the terminal. You'll also perform a
+few operations to show that the information was parsed as the correct type.</p>
+<h2 id="autograded"><a class="header" href="#autograded">Autograded</a></h2>
+<p>This is an autograded assignment. Read the
+<a href="./autograded.html">Autograded Assignments</a> page before starting.</p>
+<h2 id="directions"><a class="header" href="#directions">Directions</a></h2>
+<ol>
+<li>Write this program in a file named <code>CharacterSheet1.java</code>.</li>
+<li>Prompt the user for the following information (in order):
+<ul>
+<li>The player's name (String)</li>
+<li>The character's name (String)</li>
+<li>The character's class (String)</li>
+<li>The character's ancestry (String)</li>
+<li>The character's level (int)</li>
+<li>The character's strength score (int)</li>
+<li>The character's dexterity score (int)</li>
+<li>The character's constitution score (int)</li>
+</ul>
+</li>
+<li>Print each of these values back in the same order (player name, character
+name, etc.). Each value should be printed on a separate line. Print only the
+value, no label!</li>
+<li>Print the sum of the level, strength score, dexterity score, and constitution
+score.</li>
+</ol>
+<h2 id="submission"><a class="header" href="#submission">Submission</a></h2>
+<p>Upload your <code>CharacterSheet1.java</code> file using the submission link on Blackboard.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>

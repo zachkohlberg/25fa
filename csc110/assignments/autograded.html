@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Grading - CSC110 Syllabus</title>
+        <title>Autograded Assignments - CSC110 Assignments</title>
 
 
         <!-- Custom HTML head -->
@@ -120,7 +120,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">CSC110 Syllabus</h1>
+                    <h1 class="menu-title">CSC110 Assignments</h1>
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
@@ -152,45 +152,93 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="grading"><a class="header" href="#grading">Grading</a></h1>
-<p>This class uses something close to a labor-based grading system. While the idea
-of labor-based grading may be unfamiliar to many students, the implementation in
-this class should be easy to understand:</p>
+                        <h1 id="autograded-assignments"><a class="header" href="#autograded-assignments">Autograded Assignments</a></h1>
+<h2 id="testing"><a class="header" href="#testing">Testing</a></h2>
+<p>Autograded assignments are subject to the submission limits given in the
+deadline policy and will be checked by several programs I wrote to test student
+code. These tests will run your program or its functions with different inputs
+and check whether it produces the correct results.</p>
+<p>Tests will normally check the following:</p>
 <ul>
-<li>Individual assignments are marked either complete or incomplete depending on
-whether they meet a set of requirements.</li>
-<li>Assignments can be revised and resubmitted multiple times up until their
-deadline. An incomplete means "try again," not "you failed."</li>
-<li>Your final grade is determined by the number of assignments you complete. See
-the table below.</li>
+<li>Output produced by <code>IO.println</code> and <code>IO.print</code>. Your program's output must
+match any requirements given in the assignment. Any difference (wrong
+spelling, capitalization, etc.) will fail an I/O test.</li>
+<li>Values returned by your function. If your function returns a value, then the
+value must match any requirements given in the assignment.</li>
+<li>Modifications to array arguments passed to your function. If your function
+takes any array parameters, then it must modify them as described in the
+assignment's requirements. Any extra modifications will usually cause a test
+to fail.</li>
 </ul>
-<div class="table-wrapper"><table><thead><tr><th>Grade</th><th>Assignments</th></tr></thead><tbody>
-<tr><td>A</td><td>10+</td></tr>
-<tr><td>A-</td><td>9</td></tr>
-<tr><td>B</td><td>8</td></tr>
-<tr><td>B-</td><td>7</td></tr>
-<tr><td>C</td><td>6</td></tr>
-<tr><td>C-</td><td>5</td></tr>
-<tr><td>D</td><td>4</td></tr>
-<tr><td>F</td><td>0-3</td></tr>
-</tbody></table>
-</div>
-<p>Make sure you read the <a href="./grading/deadlines.html">deadline policy</a>. This covers
-more specific rules about submitting assignments. You should also take a look at
-the <a href="./grading/faq.html">FAQ</a>, which covers questions I've anticipated or been
-asked in the past about the grading system. Finally, there's an optional section
-about <a href="./grading/labor_based_grading.html">labor-based grading</a> in case you're
-curious.</p>
+<p>Tests will always ignore any output produced by <code>IO.readln</code>. I will never
+specify how exactly to prompt the user for input, so you may word these prompts
+however you want. The tests will only look at your <code>print</code> and <code>println</code> output.</p>
+<p>A few other ways for a test to fail:</p>
+<ul>
+<li>Prompting for additional input or prompting in the wrong order. The test
+provides input in the order described in the assignment, so your code needs to
+read it in the same order.</li>
+<li>Printing output in the wrong order, combining separate lines into the same
+line, or splitting up one line into several lines.</li>
+<li>Generating extra random numbers. If a program involves random numbers, then
+the random number generator is "seeded" so that it produces the same sequence
+of values for your code that were used to generate the expected output. If you
+generate more random numbers than you need, then the sequence won't match and
+your code will produce different output.</li>
+</ul>
+<h2 id="test-feedback"><a class="header" href="#test-feedback">Test Feedback</a></h2>
+<p>My test program will generate markdown and pdf files with the results of any
+failed tests. This feedback will provide some information about the failed test
+to help you find and fix any mistakes in your program.</p>
+<h2 id="code-restrictions"><a class="header" href="#code-restrictions">Code Restrictions</a></h2>
+<p>To ensure your code is compatible with my tests, there are a few restrictions
+you need to follow. Ignoring any of these restrictions will usually cause your
+submission to fail all tests (or be marked invalid before even reaching the
+tests), and in some cases it will flag your code for review as potentially
+plagiarized or AI-generated.</p>
+<p>These restrictions aren't a problem if you are writing your code as shown in
+class and only write code that you understand. If you don't know what something
+means (like a <code>static</code> modifier), then you probably don't need to worry about
+using it by accident.</p>
+<h3 id="compact-source"><a class="header" href="#compact-source">Compact Source</a></h3>
+<p>You program must be a compact source file, and your <code>main</code> function must be
+declared as <code>void main()</code>. You must not use <code>static</code> or any other modifiers with
+your functions and variables.</p>
+<h3 id="io-functions"><a class="header" href="#io-functions">I/O Functions</a></h3>
+<p>Any I/O must use the <code>IO</code> functions we learned in class: <code>IO.readln</code>,
+<code>IO.print</code>, and <code>IO.println</code>. No <code>System.out</code>, <code>Console</code>, or <code>Scanner</code>.</p>
+<!-- ## Random Numbers -->
+<!---->
+<!-- TODO: either make tests work with Math.random() strategy or make students use -->
+<!-- csc110 library's random functions. -->
+<h3 id="standard-library"><a class="header" href="#standard-library">Standard Library</a></h3>
+<p>The Java standard library is a useful tool, and you should learn how to use it.
+However, these projects are meant to be completed with the limited tools we
+cover in class, and the standard library can trivialize some problems that
+you're meant to solve by hand. You're free to make use of any <code>String</code> methods,
+any of the <code>IO</code> and <code>Math</code> functions we've covered, and parsing functions (like
+<code>Integer.parseInt</code>). However, using other parts of the standard library that we
+haven't covered, such as <code>System</code> or <code>Scanner</code>, is not allowed. You're also not
+allowed to use any third-party libraries in autograded assignments.</p>
+<h3 id="java-keywordsfeatures"><a class="header" href="#java-keywordsfeatures">Java Keywords/Features</a></h3>
+<p>Your code should not declare classes, use try-catch, or otherwise rely on
+advanced features of the language that we haven't covered in class. The tools
+you have are more than adequate to solve these problems, and they allow for a
+variety of solutions to most of the programs.</p>
+<h3 id="other"><a class="header" href="#other">Other</a></h3>
+<p>Attempting to deliberately fool the test program, hide malicious code in your
+source file, or otherwise intentionally sabotage tests is not allowed and will
+be treated as an AIA violation.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="course_material.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="assignments.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="grading/deadlines.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="character_sheet.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -200,11 +248,11 @@ curious.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="course_material.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="assignments.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="grading/deadlines.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="character_sheet.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
