@@ -340,6 +340,61 @@ score.</li>
 </ol>
 <h2 id="submission"><a class="header" href="#submission">Submission</a></h2>
 <p>Upload your <code>CharacterSheet1.java</code> file using the submission link on Blackboard.</p>
+<h2 id="requirements"><a class="header" href="#requirements">Requirements</a></h2>
+<p>The directions cover all requirements for this assignment. This section will
+normally explain additional details not included with the directions.</p>
+<h1 id="assignment-2"><a class="header" href="#assignment-2">Assignment 2</a></h1>
+<p>In this assignment you will add some formatting to your output and perform some
+calculations that would be used in a real 5e character sheet according to the
+SRD (see <a href="./character_sheet.html">background</a> page for more information).</p>
+<h2 id="autograded-1"><a class="header" href="#autograded-1">Autograded</a></h2>
+<p>This is an autograded assignment. Read the
+<a href="./autograded.html">Autograded Assignments</a> page before starting.</p>
+<h2 id="directions-1"><a class="header" href="#directions-1">Directions</a></h2>
+<p>These directions will use arrow brackets (<code>&lt;</code> and <code>&gt;</code>) to mark placeholder
+values in the output. Your code should print the relevant value instead of the
+arrow brackets and whatever text is between them.</p>
+<ol>
+<li>Write this program in a file named <code>CharacterSheet2.java</code>.</li>
+<li>Prompt for the same input as the previous assignment.</li>
+<li>Calculate the character's <strong>proficiency bonus</strong> using the formula in the
+requirements section.</li>
+<li>For each <strong>ability score</strong> (strength, dexterity, constitution), calculate a
+corresponding <strong>ability modifier</strong> using the formula in the requirements
+section.</li>
+<li>Print the player's name formatted as <code>Player: &lt;NAME&gt;</code>. For example, if the
+player's name is "Bob" then your code would print "Player: Bob".</li>
+<li>Print the character's name, level, ancestry, and class formatted as
+<code>&lt;NAME&gt;, Level &lt;LEVEL&gt; &lt;ANCESTRY&gt; &lt;CLASS&gt;</code>. For example, if the character's
+name was "Elrond", their level was 20, their ancestry was "elf", and their
+class was "Cleric", then your code would print "Elrond, Level 20 Elf Healer".</li>
+<li>Print the proficiency bonus in the format <code>Proficiency: &lt;PROFICIENCY&gt;</code>. For
+example, if the character's level is 7, then their proficiency bonus is 3
+(using the aforementioned formula) and your code will print "Proficiency: 3".</li>
+<li>Print each ability name ("Strength", "Dexterity", "Constitution"), score, and
+modifier in the following format: <code>&lt;NAME&gt;: &lt;SCORE&gt;, &lt;MODIFIER&gt;</code>. For example,
+if the character's strength score is 15, then their modifier is 2 (using the
+aforementioned formula) and your code will print "Strength: 15, 2". Each
+ability must be printed on a separate line.</li>
+</ol>
+<h2 id="submission-1"><a class="header" href="#submission-1">Submission</a></h2>
+<p>Upload your <code>CharacterSheet2.java</code> file using the submission link on Blackboard.</p>
+<h2 id="requirements-1"><a class="header" href="#requirements-1">Requirements</a></h2>
+<ul>
+<li>Prompt for input in the same order as the previous assignment.</li>
+<li>Print values in the order given in the directions. Abilities must be printed
+in the order strength, dexterity, constitution.</li>
+<li>Use the following formulas for your calculations:
+<ul>
+<li>proficiency bonus: <code>(level + 3) / 4 + 1</code></li>
+<li>ability modifier: <code>score / 2 - 5</code></li>
+</ul>
+</li>
+</ul>
+<p>Note: ability scores and ability modifiers are two separate numbers. You get the
+score from user input, and you calculate the modifier using a formula. The score
+remains the same after this calculation. "Modifier" is just the term used for
+this number; it doesn't actual change the score.</p>
 
                     </main>
 

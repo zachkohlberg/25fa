@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Assignment 1 - CSC110 Assignments</title>
+        <title>Assignment 2 - CSC110 Assignments</title>
 
 
         <!-- Custom HTML head -->
@@ -152,51 +152,67 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="assignment-1"><a class="header" href="#assignment-1">Assignment 1</a></h1>
-<p>In this assignment you will write a program that prompts the user for
-information and prints this information to the terminal. You'll also perform a
-few operations to show that the information was parsed as the correct type.</p>
+                        <h1 id="assignment-2"><a class="header" href="#assignment-2">Assignment 2</a></h1>
+<p>In this assignment you will add some formatting to your output and perform some
+calculations that would be used in a real 5e character sheet according to the
+SRD (see <a href="./character_sheet.html">background</a> page for more information).</p>
 <h2 id="autograded"><a class="header" href="#autograded">Autograded</a></h2>
 <p>This is an autograded assignment. Read the
 <a href="./autograded.html">Autograded Assignments</a> page before starting.</p>
 <h2 id="directions"><a class="header" href="#directions">Directions</a></h2>
+<p>These directions will use arrow brackets (<code>&lt;</code> and <code>&gt;</code>) to mark placeholder
+values in the output. Your code should print the relevant value instead of the
+arrow brackets and whatever text is between them.</p>
 <ol>
-<li>Write this program in a file named <code>CharacterSheet1.java</code>.</li>
-<li>Prompt the user for the following information (in order):
-<ul>
-<li>The player's name (String)</li>
-<li>The character's name (String)</li>
-<li>The character's class (String)</li>
-<li>The character's ancestry (String)</li>
-<li>The character's level (int)</li>
-<li>The character's strength score (int)</li>
-<li>The character's dexterity score (int)</li>
-<li>The character's constitution score (int)</li>
-</ul>
-</li>
-<li>Print each of these values back in the same order (player name, character
-name, etc.). Each value should be printed on a separate line. Print only the
-value, no label!</li>
-<li>Print the sum of the level, strength score, dexterity score, and constitution
-score.</li>
+<li>Write this program in a file named <code>CharacterSheet2.java</code>.</li>
+<li>Prompt for the same input as the previous assignment.</li>
+<li>Calculate the character's <strong>proficiency bonus</strong> using the formula in the
+requirements section.</li>
+<li>For each <strong>ability score</strong> (strength, dexterity, constitution), calculate a
+corresponding <strong>ability modifier</strong> using the formula in the requirements
+section.</li>
+<li>Print the player's name formatted as <code>Player: &lt;NAME&gt;</code>. For example, if the
+player's name is "Bob" then your code would print "Player: Bob".</li>
+<li>Print the character's name, level, ancestry, and class formatted as
+<code>&lt;NAME&gt;, Level &lt;LEVEL&gt; &lt;ANCESTRY&gt; &lt;CLASS&gt;</code>. For example, if the character's
+name was "Elrond", their level was 20, their ancestry was "elf", and their
+class was "Cleric", then your code would print "Elrond, Level 20 Elf Healer".</li>
+<li>Print the proficiency bonus in the format <code>Proficiency: &lt;PROFICIENCY&gt;</code>. For
+example, if the character's level is 7, then their proficiency bonus is 3
+(using the aforementioned formula) and your code will print "Proficiency: 3".</li>
+<li>Print each ability name ("Strength", "Dexterity", "Constitution"), score, and
+modifier in the following format: <code>&lt;NAME&gt;: &lt;SCORE&gt;, &lt;MODIFIER&gt;</code>. For example,
+if the character's strength score is 15, then their modifier is 2 (using the
+aforementioned formula) and your code will print "Strength: 15, 2". Each
+ability must be printed on a separate line.</li>
 </ol>
 <h2 id="submission"><a class="header" href="#submission">Submission</a></h2>
-<p>Upload your <code>CharacterSheet1.java</code> file using the submission link on Blackboard.</p>
+<p>Upload your <code>CharacterSheet2.java</code> file using the submission link on Blackboard.</p>
 <h2 id="requirements"><a class="header" href="#requirements">Requirements</a></h2>
-<p>The directions cover all requirements for this assignment. This section will
-normally explain additional details not included with the directions.</p>
+<ul>
+<li>Prompt for input in the same order as the previous assignment.</li>
+<li>Print values in the order given in the directions. Abilities must be printed
+in the order strength, dexterity, constitution.</li>
+<li>Use the following formulas for your calculations:
+<ul>
+<li>proficiency bonus: <code>(level + 3) / 4 + 1</code></li>
+<li>ability modifier: <code>score / 2 - 5</code></li>
+</ul>
+</li>
+</ul>
+<p>Note: ability scores and ability modifiers are two separate numbers. You get the
+score from user input, and you calculate the modifier using a formula. The score
+remains the same after this calculation. "Modifier" is just the term used for
+this number; it doesn't actual change the score.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="character_sheet.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="assign1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="assign2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -204,13 +220,10 @@ normally explain additional details not included with the directions.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="character_sheet.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="assign1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="assign2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
             </nav>
 
         </div>
