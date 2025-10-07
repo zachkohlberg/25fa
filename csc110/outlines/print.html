@@ -1573,10 +1573,9 @@ example of printing an array).</li>
 <ul>
 <li>fixed-size unsigned integers:
 <ul>
-<li>unsigned: can't be negative, no need to encode +/- sign in number</li>
 <li>same number of digits, leading zeroes</li>
 <li>what if we exceed this limit?</li>
-<li>show decimal and binary</li>
+<li>show decimal and binary examples</li>
 </ul>
 </li>
 </ul>
@@ -1586,7 +1585,6 @@ example of printing an array).</li>
 <ul>
 <li>compliment: something nice you say to somebody</li>
 <li>complement: completes something else, fills in whatever's missing</li>
-<li>signed: can be positive or negative, need to encode +/- sign</li>
 </ul>
 </li>
 <li>decimal
@@ -1601,13 +1599,19 @@ example of printing an array).</li>
 <li>two's complement</li>
 </ul>
 </li>
-<li>how two's complement encodes negative numbers</li>
+<li>how two's complement encodes negative numbers
+<ul>
+<li>x + (-x) should equal zero</li>
+<li>what did we learn about two's complement?</li>
+</ul>
+</li>
 </ul>
 <h1 id="integers"><a class="header" href="#integers">Integers</a></h1>
 <ul>
-<li>all integer types in Java</li>
+<li>signed vs unsigned</li>
+<li>common sizes</li>
+<li>integer overflow</li>
 <li><a href="https://integer.exposed/">https://integer.exposed/</a></li>
-<li><code>char</code> is an integer?</li>
 </ul>
 <h1 id="floating-point-numbers"><a class="header" href="#floating-point-numbers">Floating-Point Numbers</a></h1>
 <ul>
@@ -1616,7 +1620,6 @@ example of printing an array).</li>
 <li>you only have a few digits</li>
 <li>you want to represent very large real numbers</li>
 <li>you want to represent very small real numbers</li>
-<li>you're okay with limited precision</li>
 </ul>
 </li>
 <li>floating point!
@@ -1632,7 +1635,13 @@ example of printing an array).</li>
 <li>seven significant digits</li>
 </ul>
 </li>
-<li>floating point types in Java</li>
+<li>floating point types in programming
+<ul>
+<li>limited precision</li>
+<li>rounding errors</li>
+<li>accumulation of errors</li>
+</ul>
+</li>
 <li><a href="https://float.exposed/">https://float.exposed/</a></li>
 </ul>
 <h1 id="javas-primitive-types"><a class="header" href="#javas-primitive-types">Java's Primitive Types</a></h1>
@@ -1648,6 +1657,15 @@ example of printing an array).</li>
 <li>floating-point types</li>
 <li>characters</li>
 <li>booleans</li>
+<li>literals
+<ul>
+<li><code>int</code> vs <code>long</code></li>
+<li>integers in different bases</li>
+<li><code>double</code> vs <code>float</code></li>
+<li>scientific notation</li>
+<li><code>char</code></li>
+</ul>
+</li>
 </ul>
 <h1 id="characters"><a class="header" href="#characters">Characters</a></h1>
 <ul>
@@ -1657,15 +1675,63 @@ example of printing an array).</li>
 <li>demo: rot13 cipher</li>
 </ul>
 <h1 id="activity"><a class="header" href="#activity">Activity</a></h1>
-<ul>
-<li>evaluate programs (no running code, no jshell, just read and think about them)</li>
-<li>what do they look like they should do?</li>
-<li>why won't they do this?</li>
-<li>what do they actually do? (not really possible to get this one right without
-cheating)</li>
-</ul>
+<ol>
+<li>Read the three code snippets below. <strong>Do not run any code!</strong> The goal of this
+activity is to predict the code's behavior based on your understanding of
+binary numbers, integer types, and floating-point types.</li>
+<li>For each program, write down what it looks like the program is supposed to do
+and what the result <em>should</em> be if it actually does this.</li>
+<li>Think about why the program might not work as intended. Write down any
+potential reasons you can think of, even if you're not confident in these
+answers.</li>
+<li>Write down what you think each program actually does and what the real output
+will be. <strong>You will not get the right answer.</strong> With one exception, it's not
+realistically possible to know the output without cheating and running the
+code. Getting it wrong and seeing what actually happens is part of the fun.</li>
+</ol>
+<pre><code class="language-java">// Activity1.java
+void main() {
+    float a = 0f;
+
+    int i = 0;
+    while (i &lt; 10_000_000) {
+        a = a + 0.01f;
+        i = i + 1;
+    }
+
+    IO.println(a);
+}
+</code></pre>
+<pre><code class="language-java">// Activity2.java
+void main() {
+    float a = 0f;
+
+    int i = 0;
+    while (i &lt; 100_000_000) {
+        a = a + 0.01f;
+        i = i + 1;
+    }
+
+    IO.println(a);
+}
+</code></pre>
+<pre><code class="language-java">// Activity3.java
+void main() {
+    int i = 0;
+    while (i &lt;= 0) {
+        i = i - 1;
+    }
+
+    IO.println(i);
+}
+</code></pre>
 <h1 id="practice-3"><a class="header" href="#practice-3">Practice</a></h1>
-<p>TODO: add practice exercises</p>
+<ol>
+<li>Write a program that prompts the user for a number and uses the division
+method to construct the binary representation of that number. Your program
+should show each division performed during this process and the result of
+that division (quotient and remainder), then the actual answer.</li>
+</ol>
 <h1 id="week-8"><a class="header" href="#week-8">Week 8</a></h1>
 <h2 id="class-meetings-7"><a class="header" href="#class-meetings-7">Class Meetings</a></h2>
 <ul>
