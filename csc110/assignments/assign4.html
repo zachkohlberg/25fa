@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Assignment 2 - CSC110 Assignments</title>
+        <title>Assignment 4 - CSC110 Assignments</title>
 
 
         <!-- Custom HTML head -->
@@ -152,80 +152,116 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="assignment-2"><a class="header" href="#assignment-2">Assignment 2</a></h1>
-<p>In this assignment you will add some formatting to your output and perform some
-calculations that would be used in a real 5e character sheet according to the
-SRD (see <a href="./character_sheet.html">background</a> page for more information).</p>
+                        <h1 id="assignment-4"><a class="header" href="#assignment-4">Assignment 4</a></h1>
+<p>In this assignment you will allow the user to choose whether to use the previous
+point buy system or generate a set of random scores by simulating dice rolls.
+You will also break these parts of your program into separate functions to make
+them easier to test.</p>
 <h2 id="autograded"><a class="header" href="#autograded">Autograded</a></h2>
 <p>This is an autograded assignment. Read the
 <a href="./autograded.html">Autograded Assignments</a> page before starting.</p>
+<p>This program involves random numbers. Make sure you're following the random
+number generation requirements for autograded assignments so that your code is
+compatible with the tests.</p>
 <h2 id="directions"><a class="header" href="#directions">Directions</a></h2>
-<p>These directions will use arrow brackets (<code>&lt;</code> and <code>&gt;</code>) to mark placeholder
-values in the output. Your code should print the relevant value instead of the
-arrow brackets and whatever text is between them.</p>
 <ol>
-<li>Write this program in a file named <code>CharacterSheet2.java</code>.</li>
-<li>Prompt for the same input as the previous assignment.</li>
-<li>Calculate the character's <strong>proficiency bonus</strong> using the formula in the
-requirements section.</li>
-<li>For each <strong>ability score</strong> (strength, dexterity, constitution), calculate a
-corresponding <strong>ability modifier</strong> using the formula in the requirements
-section.</li>
-<li>Print the player's name formatted as <code>Player: &lt;NAME&gt;</code>. For example, if the
-player's name is "Bob" then your code would print "Player: Bob".</li>
-<li>Print the character's name, level, ancestry, and class formatted as
-<code>&lt;NAME&gt;, Level &lt;LEVEL&gt; &lt;ANCESTRY&gt; &lt;CLASS&gt;</code>. For example, if the character's
-name was "Elrond", their level was 20, their ancestry was "Elf", and their
-class was "Cleric", then your code would print "Elrond, Level 20 Elf Cleric".</li>
-<li>Print the proficiency bonus in the format <code>Proficiency: &lt;PROFICIENCY&gt;</code>. For
-example, if the character's level is 7, then their proficiency bonus is 3
-(using the aforementioned formula) and your code will print "Proficiency: 3".</li>
-<li>Print each ability name ("Strength", "Dexterity", "Constitution"), score, and
-modifier in the following format: <code>&lt;NAME&gt;: &lt;SCORE&gt;, &lt;MODIFIER&gt;</code>. For example,
-if the character's strength score is 15, then their modifier is 2 (using the
-aforementioned formula) and your code will print "Strength: 15, 2". Each
-ability must be printed on a separate line.</li>
+<li>Write this program in a file named <code>CharacterSheet4.java</code>.</li>
+<li>Copy your work from the previous assignment into your file. This assignment
+assumes you are starting from a working version of that program that passes
+all of its tests.</li>
+<li>Write a function named <code>buyScores</code> that takes no parameters and returns an
+array of <code>int</code>s. This function must perform the same process used in the old
+program for point buy, add the final scores to an array, and return the
+array. You can cut and paste that code from your old <code>main</code> function into
+this new <code>buyScores</code> function, then create and return the array after the
+loop.</li>
+<li>Write a function named <code>roll</code> that takes no parameters and returns an <code>int</code>.
+This function must generate four random <code>int</code>s from 1 to 6, then return the
+sum of the three largest numbers it generated. For example, if you generated
+the numbers 4, 6, 2, and 5 then you would return 15 (4 + 6 + 5), ignoring
+the 2. If there is a tie for lowest, then just ignore one of those values: 1,
+1, 5, and 4 would result in 10 (1 + 5 + 4).</li>
+<li>Write a function named <code>rollScores</code> that takes no parameters and returns an
+array of <code>int</code>s. It must call the <code>roll</code> function three times, put the
+results into an array, and return the array.</li>
+<li>In your <code>main</code> function, remove the old ability score prompts and ask the
+user whether they want to choose their scores. If they enter <code>y</code>, then
+generate their scores by calling the <code>buyScores</code> function. If they enter <code>n</code>,
+then generate their scores by calling the <code>rollScores</code> function. If they
+enter anything else, then print an error message and ask again until they
+enter <code>y</code> or <code>n</code>. Remember to store the return value from <code>buyScores</code> or
+<code>rollScores</code> in a variable and copy the elements of that array to your
+ability score variables. If you don't do this, then the rest of your program
+will no longer work!</li>
 </ol>
 <h2 id="submission"><a class="header" href="#submission">Submission</a></h2>
-<p>Upload your <code>CharacterSheet2.java</code> file using the submission link on Blackboard.</p>
+<p>Upload your <code>CharacterSheet4.java</code> file using the submission link on Blackboard.</p>
 <h2 id="requirements"><a class="header" href="#requirements">Requirements</a></h2>
 <ul>
-<li>Prompt for input in the same order as the previous assignment.</li>
-<li>Print values in the order given in the directions. Abilities must be printed
-in the order strength, dexterity, constitution.</li>
-<li>Use the following formulas for your calculations:
+<li>Prompt for input in the same order as the previous assignment, but with the
+added loop to choose whether to use point buy. If the user doesn't choose
+point buy, then your program must not prompt the user for their ability
+scores.</li>
+<li>Print the following warning/error messages where appropriate, using the
+erroneous input instead of the placeholder value. The quotes must still appear
+in your output.
 <ul>
-<li>proficiency bonus: <code>(level + 3) / 4 + 1</code></li>
-<li>ability modifier: <code>score / 2 - 5</code></li>
+<li><code>WARNING: The class "&lt;CLASS&gt;" is not supported by this program.</code></li>
+<li><code>WARNING: The ancestry "&lt;ANCESTRY&gt;" is not supported by this program.</code></li>
+<li><code>ERROR: You need to answer y or n.</code></li>
+<li><code>ERROR: Ability scores must sum to 36 or less! Try again.</code></li>
+</ul>
+</li>
+<li>All calculations must be handled the same as in the previous assignment. Once
+you have the ability scores, the rest of the program works exactly the same.</li>
+<li>This program's output should look the same as in the previous assignment. The
+only difference is in the score prompt and the additional error message that
+can be generated.</li>
+</ul>
+<h3 id="functions"><a class="header" href="#functions">Functions</a></h3>
+<p>Your program must implement the following functions and should call them where
+appropriate.</p>
+<ul>
+<li><code>buyScores</code>
+<ul>
+<li>parameters: none</li>
+<li>return type: array of <code>int</code></li>
+<li>This function must prompt the user for their ability scores until they enter
+a set of scores that add up to 36 or less. It must also print the
+appropriate error message each time they enter scores that add up to more
+than 36. This process is exactly the same as in the previous assignment.</li>
+<li>The returned array must contain the last set of scores entered by the user,
+which means its length will always be 3.</li>
+</ul>
+</li>
+<li><code>rollScores</code>
+<ul>
+<li>parameters: none</li>
+<li>return type: array of <code>int</code></li>
+<li>This function must generate three random scores by calling the <code>roll</code>
+function.</li>
+<li>The returned array must contain the three scores generated by calling <code>roll</code>
+and have a length of 3.</li>
+</ul>
+</li>
+<li><code>roll</code>
+<ul>
+<li>parameters: none</li>
+<li>return type: <code>int</code></li>
+<li>This function must generate four random <code>int</code>s from 1 to 6 and return the
+sum of the three highest of those numbers.</li>
 </ul>
 </li>
 </ul>
-<p>Note: ability scores and ability modifiers are two separate numbers. You get the
-score from user input, and you calculate the modifier using a formula. The score
-remains the same after this calculation. "Modifier" is just the term used for
-this number; it doesn't actual change the score.</p>
-<h2 id="output-sample"><a class="header" href="#output-sample">Output Sample</a></h2>
-<p>Here's an example of what the full output should look like when the program is
-finished:</p>
-<pre><code>Player: Bob
-Elrond, Level 20 Elf Cleric
-Proficiency: 6
-Strength: 8, -1
-Dexterity: 15, 2
-Constitution: 12, 1
-</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="assign1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="assign3.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="assign3.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -233,13 +269,10 @@ Constitution: 12, 1
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="assign1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="assign3.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="assign3.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
             </nav>
 
         </div>

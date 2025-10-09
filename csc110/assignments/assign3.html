@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Assignment 2 - CSC110 Assignments</title>
+        <title>Assignment 3 - CSC110 Assignments</title>
 
 
         <!-- Custom HTML head -->
@@ -152,78 +152,136 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="assignment-2"><a class="header" href="#assignment-2">Assignment 2</a></h1>
-<p>In this assignment you will add some formatting to your output and perform some
-calculations that would be used in a real 5e character sheet according to the
-SRD (see <a href="./character_sheet.html">background</a> page for more information).</p>
+                        <h1 id="assignment-3"><a class="header" href="#assignment-3">Assignment 3</a></h1>
+<p>In this assignment you will implement a point buy system for selecting the
+user's ability scores and calculate some more stats for the character. The point
+buy rules will be similar to but simpler than the rules given in the SRD.</p>
 <h2 id="autograded"><a class="header" href="#autograded">Autograded</a></h2>
 <p>This is an autograded assignment. Read the
 <a href="./autograded.html">Autograded Assignments</a> page before starting.</p>
 <h2 id="directions"><a class="header" href="#directions">Directions</a></h2>
-<p>These directions will use arrow brackets (<code>&lt;</code> and <code>&gt;</code>) to mark placeholder
-values in the output. Your code should print the relevant value instead of the
-arrow brackets and whatever text is between them.</p>
+<p>The requirements section will show the exact wording required for any
+warning/error messages printed by your code and the formulas required for any
+calculations. Anything not specified in this assignment should remain as it was
+in the previous assignment.</p>
 <ol>
-<li>Write this program in a file named <code>CharacterSheet2.java</code>.</li>
-<li>Prompt for the same input as the previous assignment.</li>
-<li>Calculate the character's <strong>proficiency bonus</strong> using the formula in the
-requirements section.</li>
-<li>For each <strong>ability score</strong> (strength, dexterity, constitution), calculate a
-corresponding <strong>ability modifier</strong> using the formula in the requirements
-section.</li>
-<li>Print the player's name formatted as <code>Player: &lt;NAME&gt;</code>. For example, if the
-player's name is "Bob" then your code would print "Player: Bob".</li>
-<li>Print the character's name, level, ancestry, and class formatted as
-<code>&lt;NAME&gt;, Level &lt;LEVEL&gt; &lt;ANCESTRY&gt; &lt;CLASS&gt;</code>. For example, if the character's
-name was "Elrond", their level was 20, their ancestry was "Elf", and their
-class was "Cleric", then your code would print "Elrond, Level 20 Elf Cleric".</li>
-<li>Print the proficiency bonus in the format <code>Proficiency: &lt;PROFICIENCY&gt;</code>. For
-example, if the character's level is 7, then their proficiency bonus is 3
-(using the aforementioned formula) and your code will print "Proficiency: 3".</li>
-<li>Print each ability name ("Strength", "Dexterity", "Constitution"), score, and
-modifier in the following format: <code>&lt;NAME&gt;: &lt;SCORE&gt;, &lt;MODIFIER&gt;</code>. For example,
-if the character's strength score is 15, then their modifier is 2 (using the
-aforementioned formula) and your code will print "Strength: 15, 2". Each
-ability must be printed on a separate line.</li>
+<li>
+<p>Write this program in a file named <code>CharacterSheet3.java</code>.</p>
+</li>
+<li>
+<p>Copy your work from the previous assignment into your file. This assignment
+assumes you are starting from a working version of that program that passes
+all of its tests.</p>
+</li>
+<li>
+<p>After the user inputs their class, check whether they chose one of the
+following options: "Fighter", "Rogue", or "Barbarian". If they chose a
+different class, then print a warning message to let them know their class
+isn't supported by our program.</p>
+</li>
+<li>
+<p>After the user inputs their ancestry, check whether they chose one of the
+following options: "Orc", "Elf", or "Gnome". If they chose a different
+ancestry, then print a warning message to let them know their ancestry isn't
+supported by our program.</p>
+</li>
+<li>
+<p>After you prompt the user for their ability scores, check whether those
+scores sum to more than 36. If they sum to more than 36, then print an error
+message and prompt the user for new ability scores. Repeat this process until
+the user enters a set of scores that sum to 36 or less.</p>
+</li>
+<li>
+<p>After the user enters a set of valid ability scores and <strong>before</strong> you
+calculate ability modifiers, make the following adjustment based on the
+character's ancestry:</p>
+<ul>
+<li>Orc: increase their strength score by 2</li>
+<li>Elf: increase their dexterity score by 2</li>
+<li>Gnome: increase their constitution score by 2</li>
+<li>Other (they chose an unsupported ancestry): don't change any scores</li>
+</ul>
+<p>Note: it's okay if this raises the total above 36! We're only enforcing that
+rule for the unadjusted scores we get from the user in the previous step.</p>
+</li>
+<li>
+<p>Determine the "hit die" depending on the character's class:</p>
+<ul>
+<li>Fighter: 10</li>
+<li>Rogue: 8</li>
+<li>Barbarian: 12</li>
+<li>Other (they chose an unsupported class): 6</li>
+</ul>
+</li>
+<li>
+<p>Calculate the character's proficiency bonus, ability modifiers, hit points,
+armor class, and attack using the formulas given in the requirements. Those
+last three depend on the ability modifiers and proficiency, so calculate them
+last.</p>
+</li>
+<li>
+<p>When printing the character sheet, add the following three lines before the
+proficiency:</p>
+<ul>
+<li><code>Hit Points(D&lt;HIT DIE&gt;): &lt;HIT POINTS&gt;</code></li>
+<li><code>Armor Class: &lt;ARMOR CLASS&gt;</code></li>
+<li><code>Attack: &lt;ATTACK&gt;</code></li>
+</ul>
+</li>
 </ol>
 <h2 id="submission"><a class="header" href="#submission">Submission</a></h2>
-<p>Upload your <code>CharacterSheet2.java</code> file using the submission link on Blackboard.</p>
+<p>Upload your <code>CharacterSheet3.java</code> file using the submission link on Blackboard.</p>
 <h2 id="requirements"><a class="header" href="#requirements">Requirements</a></h2>
 <ul>
-<li>Prompt for input in the same order as the previous assignment.</li>
-<li>Print values in the order given in the directions. Abilities must be printed
-in the order strength, dexterity, constitution.</li>
+<li>Prompt for input in the same order as the previous assignment, but with the
+added loop to enforce the maxmimum ability score total described in the
+directions.</li>
+<li>Print the following warning/error messages where appropriate, using the
+erroneous input instead of the placeholder value. The quotes must still appear
+in your output.
+<ul>
+<li><code>WARNING: The class "&lt;CLASS&gt;" is not supported by this program.</code></li>
+<li><code>WARNING: The ancestry "&lt;ANCESTRY&gt;" is not supported by this program.</code></li>
+<li><code>ERROR: Ability scores must sum to 36 or less! Try again.</code></li>
+</ul>
+</li>
 <li>Use the following formulas for your calculations:
 <ul>
 <li>proficiency bonus: <code>(level + 3) / 4 + 1</code></li>
 <li>ability modifier: <code>score / 2 - 5</code></li>
+<li>hit points: <code>level * (hit die + constitution modifier)</code></li>
+<li>armor class: <code>10 + proficiency bonus + dexterity modifier</code></li>
+<li>attack: <code>proficiency bonus + strength modifier</code></li>
 </ul>
 </li>
+<li>You may assume the user always enters their class and ancestry capitalized as
+shown in the directions. Your program doesn't need to be case-insensitive as
+long as it recognizes "Fighter", "Rogue", "Barbarian", "Orc", "Elf", and
+"Gnome".</li>
 </ul>
-<p>Note: ability scores and ability modifiers are two separate numbers. You get the
-score from user input, and you calculate the modifier using a formula. The score
-remains the same after this calculation. "Modifier" is just the term used for
-this number; it doesn't actual change the score.</p>
 <h2 id="output-sample"><a class="header" href="#output-sample">Output Sample</a></h2>
-<p>Here's an example of what the full output should look like when the program is
-finished:</p>
+<p>Here's an example of what the character sheet should look like when the program
+is finished (doesn't include any warning/error messages):</p>
 <pre><code>Player: Bob
-Elrond, Level 20 Elf Cleric
-Proficiency: 6
-Strength: 8, -1
-Dexterity: 15, 2
-Constitution: 12, 1
+Legolas, Level 11 Elf Fighter
+Hit Points (D10): 110
+Armor Class: 17
+Attack: 5
+Proficiency: 4
+Strength: 12, 1
+Dexterity: 16, 3
+Constitution: 10, 0
 </code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="assign1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="assign2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="assign3.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="assign4.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -233,11 +291,11 @@ Constitution: 12, 1
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="assign1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="assign2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="assign3.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="assign4.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

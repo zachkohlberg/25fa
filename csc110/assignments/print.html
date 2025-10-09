@@ -174,6 +174,11 @@ in our syllabus and how they apply to these assignments, including:</p>
 deadline policy and will be checked by several programs I wrote to test student
 code. These tests will run your program or its functions with different inputs
 and check whether it produces the correct results.</p>
+<h3 id="academic-integrity-and-accountability"><a class="header" href="#academic-integrity-and-accountability">Academic Integrity and Accountability</a></h3>
+<p>Attempting to deliberately fool the test programs, hide malicious code in your
+source file, or otherwise intentionally sabotage tests is not allowed and will
+be treated as an AIA violation.</p>
+<h3 id="test-criteria"><a class="header" href="#test-criteria">Test Criteria</a></h3>
 <p>Tests will normally check the following:</p>
 <ul>
 <li>Output produced by <code>IO.println</code> and <code>IO.print</code>. Your program's output must
@@ -186,9 +191,10 @@ takes any array parameters, then it must modify them as described in the
 assignment's requirements. Any extra modifications will usually cause a test
 to fail.</li>
 </ul>
-<p>Tests will always ignore any output produced by <code>IO.readln</code>. I will never
-specify how exactly to prompt the user for input, so you may word these prompts
-however you want. The tests will only look at your <code>print</code> and <code>println</code> output.</p>
+<p>Tests will always ignore any output produced by <code>IO.readln</code>. I never specify how
+exactly to prompt the user for input, so you may word these prompts however you
+want. The tests will only look at output from <code>IO.print</code> and <code>IO.println</code>. This
+also means you shouldn't use <code>IO.readln</code> to print any of the required output.</p>
 <p>A few other ways for a test to fail:</p>
 <ul>
 <li>Prompting for additional input or prompting in the wrong order. The test
@@ -196,16 +202,21 @@ provides input in the order described in the assignment, so your code needs to
 read it in the same order.</li>
 <li>Printing output in the wrong order, combining separate lines into the same
 line, or splitting up one line into several lines.</li>
-<li>Generating extra random numbers. If a program involves random numbers, then
-the random number generator is "seeded" so that it produces the same sequence
-of values for your code that were used to generate the expected output. If you
-generate more random numbers than you need, then the sequence won't match and
-your code will produce different output.</li>
 </ul>
+<h3 id="random-numbers"><a class="header" href="#random-numbers">Random Numbers</a></h3>
+<p>If your program needs to generate random numbers, then it must use
+<code>Math.random()</code> to generate the number and scale, adjust, and round this value
+as needed. For example, <code>(int)(Math.random() * 6) + 1</code> generates a random
+integer from 1 to 6.</p>
+<p>Your program must also avoid generating unnecessary random numbers. The tests
+will seed the random number generator to ensure your code receives the same
+sequence of "random" values that were used when generating the expected output,
+and generating extra random numbers in your code will change this sequence and
+cause you to fail tests.</p>
 <h2 id="test-feedback"><a class="header" href="#test-feedback">Test Feedback</a></h2>
-<p>My test program will generate markdown and pdf files with the results of any
-failed tests. This feedback will provide some information about the failed test
-to help you find and fix any mistakes in your program.</p>
+<p>My test program will generate markdown, html, and pdf files with the results of
+any failed tests. This feedback will provide some information about the failed
+test to help you find and fix any mistakes in your program.</p>
 <h2 id="code-restrictions"><a class="header" href="#code-restrictions">Code Restrictions</a></h2>
 <p>To ensure your code is compatible with my tests, there are a few restrictions
 you need to follow. Ignoring any of these restrictions will usually cause your
@@ -214,8 +225,8 @@ tests), and in some cases it will flag your code for review as potentially
 plagiarized or AI-generated.</p>
 <p>These restrictions aren't a problem if you are writing your code as shown in
 class and only write code that you understand. If you don't know what something
-means (like a <code>static</code> modifier), then you probably don't need to worry about
-using it by accident.</p>
+means and we haven't covered it in class (like a <code>static</code> modifier), then
+there's no reason you'd write it into your program.</p>
 <h3 id="compact-source"><a class="header" href="#compact-source">Compact Source</a></h3>
 <p>You program must be a compact source file, and your <code>main</code> function must be
 declared as <code>void main()</code>. You must not use <code>static</code> or any other modifiers with
@@ -223,10 +234,6 @@ your functions and variables.</p>
 <h3 id="io-functions"><a class="header" href="#io-functions">I/O Functions</a></h3>
 <p>Any I/O must use the <code>IO</code> functions we learned in class: <code>IO.readln</code>,
 <code>IO.print</code>, and <code>IO.println</code>. No <code>System.out</code>, <code>Console</code>, or <code>Scanner</code>.</p>
-<!-- ## Random Numbers -->
-<!---->
-<!-- TODO: either make tests work with Math.random() strategy or make students use -->
-<!-- csc110 library's random functions. -->
 <h3 id="standard-library"><a class="header" href="#standard-library">Standard Library</a></h3>
 <p>The Java standard library is a useful tool, and you should learn how to use it.
 However, these projects are meant to be completed with the limited tools we
@@ -241,10 +248,6 @@ allowed to use any third-party libraries in autograded assignments.</p>
 advanced features of the language that we haven't covered in class. The tools
 you have are more than adequate to solve these problems, and they allow for a
 variety of solutions to most of the programs.</p>
-<h3 id="other"><a class="header" href="#other">Other</a></h3>
-<p>Attempting to deliberately fool the test program, hide malicious code in your
-source file, or otherwise intentionally sabotage tests is not allowed and will
-be treated as an AIA violation.</p>
 <h1 id="character-sheet-project"><a class="header" href="#character-sheet-project">Character Sheet Project</a></h1>
 <p>This is some background information for the next four assignments. If you're not
 interested in the background and just want to write the programs, then feel free
@@ -410,6 +413,227 @@ Strength: 8, -1
 Dexterity: 15, 2
 Constitution: 12, 1
 </code></pre>
+<h1 id="assignment-3"><a class="header" href="#assignment-3">Assignment 3</a></h1>
+<p>In this assignment you will implement a point buy system for selecting the
+user's ability scores and calculate some more stats for the character. The point
+buy rules will be similar to but simpler than the rules given in the SRD.</p>
+<h2 id="autograded-2"><a class="header" href="#autograded-2">Autograded</a></h2>
+<p>This is an autograded assignment. Read the
+<a href="./autograded.html">Autograded Assignments</a> page before starting.</p>
+<h2 id="directions-2"><a class="header" href="#directions-2">Directions</a></h2>
+<p>The requirements section will show the exact wording required for any
+warning/error messages printed by your code and the formulas required for any
+calculations. Anything not specified in this assignment should remain as it was
+in the previous assignment.</p>
+<ol>
+<li>
+<p>Write this program in a file named <code>CharacterSheet3.java</code>.</p>
+</li>
+<li>
+<p>Copy your work from the previous assignment into your file. This assignment
+assumes you are starting from a working version of that program that passes
+all of its tests.</p>
+</li>
+<li>
+<p>After the user inputs their class, check whether they chose one of the
+following options: "Fighter", "Rogue", or "Barbarian". If they chose a
+different class, then print a warning message to let them know their class
+isn't supported by our program.</p>
+</li>
+<li>
+<p>After the user inputs their ancestry, check whether they chose one of the
+following options: "Orc", "Elf", or "Gnome". If they chose a different
+ancestry, then print a warning message to let them know their ancestry isn't
+supported by our program.</p>
+</li>
+<li>
+<p>After you prompt the user for their ability scores, check whether those
+scores sum to more than 36. If they sum to more than 36, then print an error
+message and prompt the user for new ability scores. Repeat this process until
+the user enters a set of scores that sum to 36 or less.</p>
+</li>
+<li>
+<p>After the user enters a set of valid ability scores and <strong>before</strong> you
+calculate ability modifiers, make the following adjustment based on the
+character's ancestry:</p>
+<ul>
+<li>Orc: increase their strength score by 2</li>
+<li>Elf: increase their dexterity score by 2</li>
+<li>Gnome: increase their constitution score by 2</li>
+<li>Other (they chose an unsupported ancestry): don't change any scores</li>
+</ul>
+<p>Note: it's okay if this raises the total above 36! We're only enforcing that
+rule for the unadjusted scores we get from the user in the previous step.</p>
+</li>
+<li>
+<p>Determine the "hit die" depending on the character's class:</p>
+<ul>
+<li>Fighter: 10</li>
+<li>Rogue: 8</li>
+<li>Barbarian: 12</li>
+<li>Other (they chose an unsupported class): 6</li>
+</ul>
+</li>
+<li>
+<p>Calculate the character's proficiency bonus, ability modifiers, hit points,
+armor class, and attack using the formulas given in the requirements. Those
+last three depend on the ability modifiers and proficiency, so calculate them
+last.</p>
+</li>
+<li>
+<p>When printing the character sheet, add the following three lines before the
+proficiency:</p>
+<ul>
+<li><code>Hit Points(D&lt;HIT DIE&gt;): &lt;HIT POINTS&gt;</code></li>
+<li><code>Armor Class: &lt;ARMOR CLASS&gt;</code></li>
+<li><code>Attack: &lt;ATTACK&gt;</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="submission-2"><a class="header" href="#submission-2">Submission</a></h2>
+<p>Upload your <code>CharacterSheet3.java</code> file using the submission link on Blackboard.</p>
+<h2 id="requirements-2"><a class="header" href="#requirements-2">Requirements</a></h2>
+<ul>
+<li>Prompt for input in the same order as the previous assignment, but with the
+added loop to enforce the maxmimum ability score total described in the
+directions.</li>
+<li>Print the following warning/error messages where appropriate, using the
+erroneous input instead of the placeholder value. The quotes must still appear
+in your output.
+<ul>
+<li><code>WARNING: The class "&lt;CLASS&gt;" is not supported by this program.</code></li>
+<li><code>WARNING: The ancestry "&lt;ANCESTRY&gt;" is not supported by this program.</code></li>
+<li><code>ERROR: Ability scores must sum to 36 or less! Try again.</code></li>
+</ul>
+</li>
+<li>Use the following formulas for your calculations:
+<ul>
+<li>proficiency bonus: <code>(level + 3) / 4 + 1</code></li>
+<li>ability modifier: <code>score / 2 - 5</code></li>
+<li>hit points: <code>level * (hit die + constitution modifier)</code></li>
+<li>armor class: <code>10 + proficiency bonus + dexterity modifier</code></li>
+<li>attack: <code>proficiency bonus + strength modifier</code></li>
+</ul>
+</li>
+<li>You may assume the user always enters their class and ancestry capitalized as
+shown in the directions. Your program doesn't need to be case-insensitive as
+long as it recognizes "Fighter", "Rogue", "Barbarian", "Orc", "Elf", and
+"Gnome".</li>
+</ul>
+<h2 id="output-sample-1"><a class="header" href="#output-sample-1">Output Sample</a></h2>
+<p>Here's an example of what the character sheet should look like when the program
+is finished (doesn't include any warning/error messages):</p>
+<pre><code>Player: Bob
+Legolas, Level 11 Elf Fighter
+Hit Points (D10): 110
+Armor Class: 17
+Attack: 5
+Proficiency: 4
+Strength: 12, 1
+Dexterity: 16, 3
+Constitution: 10, 0
+</code></pre>
+<h1 id="assignment-4"><a class="header" href="#assignment-4">Assignment 4</a></h1>
+<p>In this assignment you will allow the user to choose whether to use the previous
+point buy system or generate a set of random scores by simulating dice rolls.
+You will also break these parts of your program into separate functions to make
+them easier to test.</p>
+<h2 id="autograded-3"><a class="header" href="#autograded-3">Autograded</a></h2>
+<p>This is an autograded assignment. Read the
+<a href="./autograded.html">Autograded Assignments</a> page before starting.</p>
+<p>This program involves random numbers. Make sure you're following the random
+number generation requirements for autograded assignments so that your code is
+compatible with the tests.</p>
+<h2 id="directions-3"><a class="header" href="#directions-3">Directions</a></h2>
+<ol>
+<li>Write this program in a file named <code>CharacterSheet4.java</code>.</li>
+<li>Copy your work from the previous assignment into your file. This assignment
+assumes you are starting from a working version of that program that passes
+all of its tests.</li>
+<li>Write a function named <code>buyScores</code> that takes no parameters and returns an
+array of <code>int</code>s. This function must perform the same process used in the old
+program for point buy, add the final scores to an array, and return the
+array. You can cut and paste that code from your old <code>main</code> function into
+this new <code>buyScores</code> function, then create and return the array after the
+loop.</li>
+<li>Write a function named <code>roll</code> that takes no parameters and returns an <code>int</code>.
+This function must generate four random <code>int</code>s from 1 to 6, then return the
+sum of the three largest numbers it generated. For example, if you generated
+the numbers 4, 6, 2, and 5 then you would return 15 (4 + 6 + 5), ignoring
+the 2. If there is a tie for lowest, then just ignore one of those values: 1,
+1, 5, and 4 would result in 10 (1 + 5 + 4).</li>
+<li>Write a function named <code>rollScores</code> that takes no parameters and returns an
+array of <code>int</code>s. It must call the <code>roll</code> function three times, put the
+results into an array, and return the array.</li>
+<li>In your <code>main</code> function, remove the old ability score prompts and ask the
+user whether they want to choose their scores. If they enter <code>y</code>, then
+generate their scores by calling the <code>buyScores</code> function. If they enter <code>n</code>,
+then generate their scores by calling the <code>rollScores</code> function. If they
+enter anything else, then print an error message and ask again until they
+enter <code>y</code> or <code>n</code>. Remember to store the return value from <code>buyScores</code> or
+<code>rollScores</code> in a variable and copy the elements of that array to your
+ability score variables. If you don't do this, then the rest of your program
+will no longer work!</li>
+</ol>
+<h2 id="submission-3"><a class="header" href="#submission-3">Submission</a></h2>
+<p>Upload your <code>CharacterSheet4.java</code> file using the submission link on Blackboard.</p>
+<h2 id="requirements-3"><a class="header" href="#requirements-3">Requirements</a></h2>
+<ul>
+<li>Prompt for input in the same order as the previous assignment, but with the
+added loop to choose whether to use point buy. If the user doesn't choose
+point buy, then your program must not prompt the user for their ability
+scores.</li>
+<li>Print the following warning/error messages where appropriate, using the
+erroneous input instead of the placeholder value. The quotes must still appear
+in your output.
+<ul>
+<li><code>WARNING: The class "&lt;CLASS&gt;" is not supported by this program.</code></li>
+<li><code>WARNING: The ancestry "&lt;ANCESTRY&gt;" is not supported by this program.</code></li>
+<li><code>ERROR: You need to answer y or n.</code></li>
+<li><code>ERROR: Ability scores must sum to 36 or less! Try again.</code></li>
+</ul>
+</li>
+<li>All calculations must be handled the same as in the previous assignment. Once
+you have the ability scores, the rest of the program works exactly the same.</li>
+<li>This program's output should look the same as in the previous assignment. The
+only difference is in the score prompt and the additional error message that
+can be generated.</li>
+</ul>
+<h3 id="functions"><a class="header" href="#functions">Functions</a></h3>
+<p>Your program must implement the following functions and should call them where
+appropriate.</p>
+<ul>
+<li><code>buyScores</code>
+<ul>
+<li>parameters: none</li>
+<li>return type: array of <code>int</code></li>
+<li>This function must prompt the user for their ability scores until they enter
+a set of scores that add up to 36 or less. It must also print the
+appropriate error message each time they enter scores that add up to more
+than 36. This process is exactly the same as in the previous assignment.</li>
+<li>The returned array must contain the last set of scores entered by the user,
+which means its length will always be 3.</li>
+</ul>
+</li>
+<li><code>rollScores</code>
+<ul>
+<li>parameters: none</li>
+<li>return type: array of <code>int</code></li>
+<li>This function must generate three random scores by calling the <code>roll</code>
+function.</li>
+<li>The returned array must contain the three scores generated by calling <code>roll</code>
+and have a length of 3.</li>
+</ul>
+</li>
+<li><code>roll</code>
+<ul>
+<li>parameters: none</li>
+<li>return type: <code>int</code></li>
+<li>This function must generate four random <code>int</code>s from 1 to 6 and return the
+sum of the three highest of those numbers.</li>
+</ul>
+</li>
+</ul>
 
                     </main>
 

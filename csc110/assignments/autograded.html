@@ -158,6 +158,11 @@
 deadline policy and will be checked by several programs I wrote to test student
 code. These tests will run your program or its functions with different inputs
 and check whether it produces the correct results.</p>
+<h3 id="academic-integrity-and-accountability"><a class="header" href="#academic-integrity-and-accountability">Academic Integrity and Accountability</a></h3>
+<p>Attempting to deliberately fool the test programs, hide malicious code in your
+source file, or otherwise intentionally sabotage tests is not allowed and will
+be treated as an AIA violation.</p>
+<h3 id="test-criteria"><a class="header" href="#test-criteria">Test Criteria</a></h3>
 <p>Tests will normally check the following:</p>
 <ul>
 <li>Output produced by <code>IO.println</code> and <code>IO.print</code>. Your program's output must
@@ -170,9 +175,10 @@ takes any array parameters, then it must modify them as described in the
 assignment's requirements. Any extra modifications will usually cause a test
 to fail.</li>
 </ul>
-<p>Tests will always ignore any output produced by <code>IO.readln</code>. I will never
-specify how exactly to prompt the user for input, so you may word these prompts
-however you want. The tests will only look at your <code>print</code> and <code>println</code> output.</p>
+<p>Tests will always ignore any output produced by <code>IO.readln</code>. I never specify how
+exactly to prompt the user for input, so you may word these prompts however you
+want. The tests will only look at output from <code>IO.print</code> and <code>IO.println</code>. This
+also means you shouldn't use <code>IO.readln</code> to print any of the required output.</p>
 <p>A few other ways for a test to fail:</p>
 <ul>
 <li>Prompting for additional input or prompting in the wrong order. The test
@@ -180,16 +186,21 @@ provides input in the order described in the assignment, so your code needs to
 read it in the same order.</li>
 <li>Printing output in the wrong order, combining separate lines into the same
 line, or splitting up one line into several lines.</li>
-<li>Generating extra random numbers. If a program involves random numbers, then
-the random number generator is "seeded" so that it produces the same sequence
-of values for your code that were used to generate the expected output. If you
-generate more random numbers than you need, then the sequence won't match and
-your code will produce different output.</li>
 </ul>
+<h3 id="random-numbers"><a class="header" href="#random-numbers">Random Numbers</a></h3>
+<p>If your program needs to generate random numbers, then it must use
+<code>Math.random()</code> to generate the number and scale, adjust, and round this value
+as needed. For example, <code>(int)(Math.random() * 6) + 1</code> generates a random
+integer from 1 to 6.</p>
+<p>Your program must also avoid generating unnecessary random numbers. The tests
+will seed the random number generator to ensure your code receives the same
+sequence of "random" values that were used when generating the expected output,
+and generating extra random numbers in your code will change this sequence and
+cause you to fail tests.</p>
 <h2 id="test-feedback"><a class="header" href="#test-feedback">Test Feedback</a></h2>
-<p>My test program will generate markdown and pdf files with the results of any
-failed tests. This feedback will provide some information about the failed test
-to help you find and fix any mistakes in your program.</p>
+<p>My test program will generate markdown, html, and pdf files with the results of
+any failed tests. This feedback will provide some information about the failed
+test to help you find and fix any mistakes in your program.</p>
 <h2 id="code-restrictions"><a class="header" href="#code-restrictions">Code Restrictions</a></h2>
 <p>To ensure your code is compatible with my tests, there are a few restrictions
 you need to follow. Ignoring any of these restrictions will usually cause your
@@ -198,8 +209,8 @@ tests), and in some cases it will flag your code for review as potentially
 plagiarized or AI-generated.</p>
 <p>These restrictions aren't a problem if you are writing your code as shown in
 class and only write code that you understand. If you don't know what something
-means (like a <code>static</code> modifier), then you probably don't need to worry about
-using it by accident.</p>
+means and we haven't covered it in class (like a <code>static</code> modifier), then
+there's no reason you'd write it into your program.</p>
 <h3 id="compact-source"><a class="header" href="#compact-source">Compact Source</a></h3>
 <p>You program must be a compact source file, and your <code>main</code> function must be
 declared as <code>void main()</code>. You must not use <code>static</code> or any other modifiers with
@@ -207,10 +218,6 @@ your functions and variables.</p>
 <h3 id="io-functions"><a class="header" href="#io-functions">I/O Functions</a></h3>
 <p>Any I/O must use the <code>IO</code> functions we learned in class: <code>IO.readln</code>,
 <code>IO.print</code>, and <code>IO.println</code>. No <code>System.out</code>, <code>Console</code>, or <code>Scanner</code>.</p>
-<!-- ## Random Numbers -->
-<!---->
-<!-- TODO: either make tests work with Math.random() strategy or make students use -->
-<!-- csc110 library's random functions. -->
 <h3 id="standard-library"><a class="header" href="#standard-library">Standard Library</a></h3>
 <p>The Java standard library is a useful tool, and you should learn how to use it.
 However, these projects are meant to be completed with the limited tools we
@@ -225,10 +232,6 @@ allowed to use any third-party libraries in autograded assignments.</p>
 advanced features of the language that we haven't covered in class. The tools
 you have are more than adequate to solve these problems, and they allow for a
 variety of solutions to most of the programs.</p>
-<h3 id="other"><a class="header" href="#other">Other</a></h3>
-<p>Attempting to deliberately fool the test program, hide malicious code in your
-source file, or otherwise intentionally sabotage tests is not allowed and will
-be treated as an AIA violation.</p>
 
                     </main>
 
