@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Syllabus - CSC110 Lecture Outlines</title>
+        <title>Reference Types - CSC110 Lecture Outlines</title>
 
 
         <!-- Custom HTML head -->
@@ -152,25 +152,47 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="syllabus"><a class="header" href="#syllabus">Syllabus</a></h1>
+                        <h1 id="reference-types"><a class="header" href="#reference-types">Reference Types</a></h1>
 <ul>
-<li>Attendance</li>
-<li>Assignments and grading</li>
-<li>Deadlines</li>
-<li>Accommodations</li>
-<li>Academic Integrity</li>
-<li>Revisions</li>
+<li>reference vs value type
+<ul>
+<li>value: small, simple, fast, data in variable</li>
+<li>reference: more complex/multiple parts, data on the heap, reference to data
+in variable</li>
+</ul>
+</li>
+<li>remember spreadsheet analogy?</li>
+<li>familiar examples: <code>String</code>, any array type</li>
+<li>reference types are "objects" with built-in functions (methods)</li>
+<li>many other types, all named with <code>UpperCamelCase</code>
+<ul>
+<li>box types for primitives</li>
+<li>collections: lists, stacks, queues, hash maps</li>
+</ul>
+</li>
+<li>checking for equality
+<ul>
+<li><code>==</code> and <code>!=</code> compare value stored in variable</li>
+<li><code>a.equals(b)</code> compares as defined in the reference type
+<ul>
+<li><code>String</code> defines proper comparison with <code>.equals</code></li>
+<li>arrays do not define proper comparison with <code>.equals</code>, <code>arr1.equals(arr2)</code>
+will just work like <code>arr1 == arr2</code> (i.e. incorrectly)</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../week1/1_csc110.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../week8/value_types.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../week1/3_software.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../week8/mutability.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -180,11 +202,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../week1/1_csc110.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../week8/value_types.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../week1/3_software.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../week8/mutability.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

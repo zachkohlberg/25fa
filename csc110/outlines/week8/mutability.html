@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Fixed-Size, Overflow, and Two&#x27;s Complement - CSC110 Lecture Outlines</title>
+        <title>Mutability - CSC110 Lecture Outlines</title>
 
 
         <!-- Custom HTML head -->
@@ -152,45 +152,29 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="fixed-size-overflow-and-twos-complement"><a class="header" href="#fixed-size-overflow-and-twos-complement">Fixed-Size, Overflow, and Two's Complement</a></h1>
+                        <h1 id="mutability"><a class="header" href="#mutability">Mutability</a></h1>
 <ul>
-<li>fixed-size unsigned integers:
+<li>mutable vs immutable</li>
+<li>some reference types are mutable, some are immutable
 <ul>
-<li>same number of digits, leading zeroes</li>
-<li>what if we exceed this limit?</li>
-<li>show decimal and binary</li>
+<li><code>String</code>: immutable</li>
+<li>arrays: mutable</li>
 </ul>
 </li>
-<li>vocab
-<ul>
-<li>compliment: something nice you say to somebody</li>
-<li>complement: completes something else, fills in whatever's missing</li>
-</ul>
-</li>
-<li>decimal
-<ul>
-<li>nine's complement</li>
-<li>ten's complement</li>
-</ul>
-</li>
-<li>binary
-<ul>
-<li>one's complement</li>
-<li>two's complement</li>
-</ul>
-</li>
-<li>how two's complement encodes negative numbers</li>
+<li>sharing references to mutable objects is powerful but dangerous</li>
+<li>variable assignment: value vs reference</li>
+<li>example: mutating a shared array</li>
 </ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../week6/bin_hex.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../week8/reference_types.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../week6/float.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../week8/boolean_logic.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -200,11 +184,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../week6/bin_hex.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../week8/reference_types.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../week6/float.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../week8/boolean_logic.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
