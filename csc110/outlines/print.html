@@ -1762,17 +1762,6 @@ cases</li>
 <li>use a for loop to implement the counting loop pattern more concisely</li>
 <li>use an enhanced for loop to iterate over an array</li>
 </ul>
-<h1 id="characters"><a class="header" href="#characters">Characters</a></h1>
-<ul>
-<li><code>char</code> type is an unsigned integer
-<ul>
-<li>implicit conversion to <code>int</code></li>
-<li>explicit cast from <code>int</code> to <code>char</code></li>
-</ul>
-</li>
-<li><code>String</code>s consist of <code>char</code>s: <code>String.charAt(index)</code></li>
-<li>demo: rot13 cipher</li>
-</ul>
 <h1 id="random-numbers"><a class="header" href="#random-numbers">Random Numbers</a></h1>
 <ul>
 <li>pseudorandom number generators
@@ -1784,6 +1773,47 @@ cases</li>
 <li>simple function, use for projects: <code>Math.random()</code></li>
 <li>scale, offset, and cast for random integers</li>
 <li>faking random numbers for testing</li>
+</ul>
+<h1 id="boolean-logic"><a class="header" href="#boolean-logic">Boolean Logic</a></h1>
+<pre><code class="language-java">// ShortCircuit.java
+void main() {
+    IO.println("f &amp;&amp; t is " + (f() &amp;&amp; t()));
+    IO.println("t || f is " + (t() || f()));
+}
+
+boolean f() {
+    IO.println("Called f()");
+    return false;
+}
+
+boolean t() {
+    IO.println("Called t()");
+    return true;
+}
+
+// Questions
+// 1. What would you expect this program to print?
+// 2. What does the program actually print? How did this differ from your
+//    expectations?
+// 3. Try writing another print statement that exhibits this behavior and
+//    explain why it happens in that statement.
+</code></pre>
+<ul>
+<li>XOR</li>
+<li>parenthesis and order of operations</li>
+<li>short-circuiting</li>
+</ul>
+<h1 id="characters"><a class="header" href="#characters">Characters</a></h1>
+<ul>
+<li><code>char</code> type is an unsigned integer
+<ul>
+<li>implicit conversion to <code>int</code></li>
+<li>explicit cast from <code>int</code> to <code>char</code></li>
+</ul>
+</li>
+<li><code>String</code>s consist of <code>char</code>s: <code>String.charAt(index)</code></li>
+<li>demo: rot13 cipher</li>
+<li>interested in cryptography? <a href="https://www.cryptopals.com/">https://www.cryptopals.com/</a></li>
 </ul>
 <h1 id="value-types"><a class="header" href="#value-types">Value Types</a></h1>
 <ul>
@@ -1837,6 +1867,58 @@ will just work like <code>arr1 == arr2</code> (i.e. incorrectly)</li>
 </li>
 </ul>
 <h1 id="mutability"><a class="header" href="#mutability">Mutability</a></h1>
+<pre><code class="language-java">// Mutability.java
+void main() {
+    String[] a = new String[] { "A", "B", "C" };
+    String[] b = new String[] { "D", "E", "F" };
+    String[] c = b;
+
+    IO.println("Initial values:\n");
+    printArray("a", a);
+    printArray("b", b);
+    printArray("c", c);
+    IO.println("a == b is " + (a == b));
+    IO.println("a == c is " + (a == c));
+    IO.println("b == c is " + (b == c));
+
+    a[0] = "H";
+    a[1] = "I";
+    a[2] = "J";
+    c[0] = "H";
+    c[1] = "I";
+    c[2] = "J";
+
+    IO.println("\nAfter mutating c:\n");
+    printArray("a", a);
+    printArray("b", b);
+    printArray("c", c);
+    IO.println("a == b is " + (a == b));
+    IO.println("a == c is " + (a == c));
+    IO.println("b == c is " + (b == c));
+}
+
+void printArray(String label, String[] array) {
+    int i = 0;
+    IO.print(label + ":");
+    while (i &lt; array.length) {
+        IO.print(" " + array[i]);
+    }
+    IO.println();
+}
+
+// Questions
+// 1. Execute this code by hand, tracking the values of a, b, and c as they
+//    change. What does it look like the output should be?
+// 2. Run the program. How does your expected output differ from the actual
+//    output?
+// 3. Explain the differences. Specifically consider the following:
+//    - What happens when we initialize an array with new String[]?
+//    - What happens when we initialize an array by assigning an existing
+//      array?
+//    - What happens when we compare arrays with ==?
+//    - What happens when we reassign elements of a?
+//    - What happens when we reassign elements of c?
+</code></pre>
 <ul>
 <li>mutable vs immutable</li>
 <li>some reference types are mutable, some are immutable
@@ -1849,14 +1931,35 @@ will just work like <code>arr1 == arr2</code> (i.e. incorrectly)</li>
 <li>variable assignment: value vs reference</li>
 <li>example: mutating a shared array</li>
 </ul>
-<h1 id="boolean-logic"><a class="header" href="#boolean-logic">Boolean Logic</a></h1>
-<ul>
-<li>XOR</li>
-<li>parenthesis and order of operations</li>
-<li>short-circuiting</li>
-</ul>
 <h1 id="practice-4"><a class="header" href="#practice-4">Practice</a></h1>
-<p>TODO: will add practice exercises before Thursday's class</p>
+<ol>
+<li>Answer the questions in the comments of the example programs.</li>
+<li>Given two integers <code>a</code> and <code>b</code>, write a boolean expression that is true when
+<code>a / b</code> is greater than <code>b / a</code> and false otherwise. If either number is
+zero, then the condition must evaluate to false without triggering an
+exception. Hint: take advantage of short-circuiting!</li>
+<li>Write a function that:
+<ul>
+<li>takes two <code>int</code> parameters, a lower bound and an upper bound</li>
+<li>returns a random int between the lower bound (inclusive) and the upper
+bound (exclusive)</li>
+<li>generates its random value with <code>Math.random()</code> and adjusts it to be in the
+correct range with an equal chance of being any number in that range</li>
+</ul>
+</li>
+<li>Write a function that compares two <code>int</code> arrays and returns whether they are
+equal (same size, same elements in the same order).</li>
+<li>Write two versions of an "increment array" function:
+<ul>
+<li><code>incrementArrayCopy</code> takes an <code>int[]</code> parameter and returns a new <code>int[]</code>
+of the same length where each element is equal to the corresponding element
+in the parameter plus one</li>
+<li><code>incrementArrayMutate</code> takes an <code>int[]</code> parameter and returns nothing
+(<code>void</code>), but it increases the value of each element in the parameter by
+one</li>
+</ul>
+</li>
+</ol>
 
                     </main>
 

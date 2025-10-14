@@ -153,6 +153,29 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="boolean-logic"><a class="header" href="#boolean-logic">Boolean Logic</a></h1>
+<pre><code class="language-java">// ShortCircuit.java
+void main() {
+    IO.println("f &amp;&amp; t is " + (f() &amp;&amp; t()));
+    IO.println("t || f is " + (t() || f()));
+}
+
+boolean f() {
+    IO.println("Called f()");
+    return false;
+}
+
+boolean t() {
+    IO.println("Called t()");
+    return true;
+}
+
+// Questions
+// 1. What would you expect this program to print?
+// 2. What does the program actually print? How did this differ from your
+//    expectations?
+// 3. Try writing another print statement that exhibits this behavior and
+//    explain why it happens in that statement.
+</code></pre>
 <ul>
 <li>XOR</li>
 <li>parenthesis and order of operations</li>
@@ -163,11 +186,11 @@
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../week8/mutability.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../week8/random_numbers.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../week8/practice.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../week8/characters.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -177,11 +200,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../week8/mutability.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../week8/random_numbers.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../week8/practice.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../week8/characters.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
