@@ -19,7 +19,7 @@ void main() {
     c[1] = "I";
     c[2] = "J";
 
-    IO.println("\nAfter mutating c:\n");
+    IO.println("\nAfter mutating a and c:\n");
     printArray("a", a);
     printArray("b", b);
     printArray("c", c);
@@ -33,6 +33,8 @@ void printArray(String label, String[] array) {
     IO.print(label + ":");
     while (i < array.length) {
         IO.print(" " + array[i]);
+
+        i = i + 1;
     }
     IO.println();
 }
