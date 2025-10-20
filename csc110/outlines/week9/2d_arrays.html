@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Practice - CSC110 Lecture Outlines</title>
+        <title>2D Arrays - CSC110 Lecture Outlines</title>
 
 
         <!-- Custom HTML head -->
@@ -152,47 +152,56 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="practice"><a class="header" href="#practice">Practice</a></h1>
-<ol>
-<li>Answer the questions in the comments of the example programs.</li>
-<li>Given two integers <code>a</code> and <code>b</code>, write a boolean expression that is true when
-<code>a / b</code> is greater than <code>b / a</code> and false otherwise. If either number is
-zero, then the condition must evaluate to false without triggering an
-exception. Hint: take advantage of short-circuiting!</li>
-<li>Write a function that:
+                        <h1 id="2d-arrays"><a class="header" href="#2d-arrays">2D Arrays</a></h1>
 <ul>
-<li>takes two <code>int</code> parameters, a lower bound and an upper bound</li>
-<li>returns a random int between the lower bound (inclusive) and the upper
-bound (exclusive)</li>
-<li>generates its random value with <code>Math.random()</code> and adjusts it to be in the
-correct range with an equal chance of being any number in that range</li>
+<li>array of arrays</li>
+<li>rectangular vs ragged arrays</li>
+<li>iterating with nested loops</li>
 </ul>
-</li>
-<li>Write a function that compares two <code>int</code> arrays and returns whether they are
-equal (same size, same elements in the same order).</li>
-<li>Write two versions of an "increment array" function:
-<ul>
-<li><code>incrementArrayCopy</code> takes an <code>int[]</code> parameter and returns a new <code>int[]</code>
-of the same length where each element is equal to the corresponding element
-in the parameter plus one</li>
-<li><code>incrementArrayMutate</code> takes an <code>int[]</code> parameter and returns nothing
-(<code>void</code>), but it increases the value of each element in the parameter by
-one</li>
-</ul>
-</li>
-</ol>
+<pre><code class="language-java">// MultiplicationTable.java
+void main() {
+    int[][] table = generateTable(12);
+    printLookup(table, 5, 7);
+    printLookup(table, 8, 3);
+    printLookup(table, 12, 11);
+    printTable(table);
+}
+
+int[][] generateTable(int size) {
+    int[][] table = new int[12][12];
+    for (int row = 0; row &lt; size; row++) {
+        for (int col = 0; col &lt; size; col++) {
+            // Why do we need to add 1 to row and col?
+            table[row][col] = (row + 1) * (col + 1);
+        }
+    }
+    return table;
+}
+
+// Note: assumes numbers are not greater than 4 digits or the spacing will be off
+void printTable(int[][] table) {
+    for (int row = 0; row &lt; table.length; row++) {
+        for (int col = 0; col &lt; table[row].length; col++) {
+            IO.print(String.format("%5d", table[row][col]));
+        }
+        // Why is this necessary?
+        IO.println();
+    }
+}
+
+void printLookup(int[][] table, int a, int b) {
+    IO.println(String.format("%d x %d = %d", a, b, table[a - 1][b - 1]));
+}
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../week8/mutability.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../week9/arrays.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../week9.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -200,13 +209,10 @@ one</li>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../week8/mutability.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../week9/arrays.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../week9.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
             </nav>
 
         </div>

@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Practice - CSC110 Lecture Outlines</title>
+        <title>For Loops - CSC110 Lecture Outlines</title>
 
 
         <!-- Custom HTML head -->
@@ -152,45 +152,87 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="practice"><a class="header" href="#practice">Practice</a></h1>
-<ol>
-<li>Answer the questions in the comments of the example programs.</li>
-<li>Given two integers <code>a</code> and <code>b</code>, write a boolean expression that is true when
-<code>a / b</code> is greater than <code>b / a</code> and false otherwise. If either number is
-zero, then the condition must evaluate to false without triggering an
-exception. Hint: take advantage of short-circuiting!</li>
-<li>Write a function that:
+                        <h1 id="for-loops"><a class="header" href="#for-loops">For Loops</a></h1>
 <ul>
-<li>takes two <code>int</code> parameters, a lower bound and an upper bound</li>
-<li>returns a random int between the lower bound (inclusive) and the upper
-bound (exclusive)</li>
-<li>generates its random value with <code>Math.random()</code> and adjusts it to be in the
-correct range with an equal chance of being any number in that range</li>
+<li>for loop structure</li>
+<li>operators
+<ul>
+<li><code>+=</code>, <code>-=</code>, etc.</li>
+<li><code>++</code>, <code>--</code></li>
 </ul>
 </li>
-<li>Write a function that compares two <code>int</code> arrays and returns whether they are
-equal (same size, same elements in the same order).</li>
-<li>Write two versions of an "increment array" function:
+<li>counting loop pattern: while vs for</li>
+<li>enhanced for</li>
+<li>iterating over arrays
 <ul>
-<li><code>incrementArrayCopy</code> takes an <code>int[]</code> parameter and returns a new <code>int[]</code>
-of the same length where each element is equal to the corresponding element
-in the parameter plus one</li>
-<li><code>incrementArrayMutate</code> takes an <code>int[]</code> parameter and returns nothing
-(<code>void</code>), but it increases the value of each element in the parameter by
-one</li>
+<li>for</li>
+<li>enhanced for</li>
+<li>limitations</li>
 </ul>
 </li>
-</ol>
+</ul>
+<pre><code class="language-java">// For.java
+void main() {
+    // original counting loop pattern with while
+    int sumWhile = 0;
+    int count = 1;
+    while (count &lt;= 1000) {
+        sumWhile += count;
+
+        count += 1;
+    }
+    IO.println("WHILE");
+    IO.println("The numbers 1 to 1000 sum to " + sumWhile + ".");
+
+    // for gives up a more compact counting loop
+    int sumFor = 0;
+    for (int i = 1; i &lt;= 1000; i++) {
+        sumFor += i;
+    }
+    IO.println("FOR");
+    IO.println("The numbers 1 to 1000 sum to " + sumFor + ".");
+
+    // some fibonacci numbers
+    int[] fib = new int[] { 1, 1, 2, 3, 5, 8, 13, 21, 34, 55 };
+
+    // iterate over array with while loop
+    int index = 0;
+    IO.println("WHILE");
+    IO.print("fib = { ");
+    while (index &lt; fib.length) {
+        IO.print(fib[index] + " ");
+
+        index++;
+    }
+    IO.println("}");
+
+    // iterate over array with normal for loop
+    IO.println("FOR");
+    IO.print("fib = { ");
+    for (int i = 0; i &lt; fib.length; i++) {
+        IO.print(fib[i] + " ");
+    }
+    IO.println("}");
+
+    // iterate over array with enhanced for loop
+    IO.println("ENHANCED FOR");
+    IO.print("fib = { ");
+    for (int n : fib) {
+        IO.print(n + " ");
+    }
+    IO.println("}");
+}
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../week8/mutability.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../week9/switch.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../week9.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../week9/arrays.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -200,11 +242,11 @@ one</li>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../week8/mutability.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../week9/switch.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../week9.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../week9/arrays.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
