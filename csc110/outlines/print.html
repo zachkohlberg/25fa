@@ -1969,16 +1969,27 @@ one</li>
 <li>2025/10/23</li>
 </ul>
 <h2 id="review-6"><a class="header" href="#review-6">Review</a></h2>
-<p>Week 8 practice exercise?</p>
+<ul>
+<li>Week 8 practice exercise?
+<ul>
+<li>If nothing, cover input validation loop</li>
+</ul>
+</li>
+<li>Topic/project requests for end of semester
+<ul>
+<li>What are you curious about? What do you think would be fun to learn?</li>
+<li>Extra material, not required for any projects, can use for final project</li>
+</ul>
+</li>
+</ul>
 <h2 id="goals-5"><a class="header" href="#goals-5">Goals</a></h2>
 <p>After this week, you should be able to</p>
 <ul>
 <li>use a switch statement to choose from multiple cases</li>
 <li>use a for loop to implement the counting loop pattern</li>
 <li>use a for loop and enhanced for loop to iterate over arrays</li>
-<li>write code to operate an array by either creating a copy (preserving the
-original) or modifying the original</li>
-<li>use <code>String.split</code> to process large amounts of user input</li>
+<li>use <code>String</code>'s <code>.split</code> method to process large amounts of user input</li>
+<li>use <code>String.format</code> function to format output</li>
 <li>explain some trade-offs involved in copying vs mutating arrays</li>
 <li>create, modify, and print a 2D array</li>
 </ul>
@@ -2214,6 +2225,61 @@ void printLookup(int[][] table, int a, int b) {
     IO.println(String.format("%d x %d = %d", a, b, table[a - 1][b - 1]));
 }
 </code></pre>
+<h1 id="demo-state-machine"><a class="header" href="#demo-state-machine">Demo: State Machine</a></h1>
+<ul>
+<li>state machines
+<ul>
+<li>model a system with limited "modes"</li>
+<li>implement with OOP patterns or just a switch</li>
+</ul>
+</li>
+<li>example: clock
+<ul>
+<li>use "global" variables for data</li>
+<li>modes: normal, set time, set alarm</li>
+<li>functions: display, prompt</li>
+<li>valid commands for each mode:
+<ul>
+<li>normal: time, alarm, quit</li>
+<li>set time: h, m, quit</li>
+<li>set alarm: h, m, quit</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="demo-tic-tac-toe-board"><a class="header" href="#demo-tic-tac-toe-board">Demo: Tic-Tac-Toe Board</a></h1>
+<ul>
+<li>create a 3x3 array</li>
+<li>function to play a move</li>
+<li>function to print board</li>
+</ul>
+<h1 id="practice-5"><a class="header" href="#practice-5">Practice</a></h1>
+<ol>
+<li>Review the example programs and answer any questions in the comments.</li>
+<li>Write a function to parse days of the week into the corresponding number from
+1 to 7, with weeks beginning on Sunday. Allow three-letter abbreviations for
+each day and make the function case-insensitive.</li>
+<li>Read a string from the user and print a new string where every character that
+isn't a letter or digit is replaced with an underscore. Don't use any
+built-in methods or functions other than <code>charAt</code>.</li>
+<li>Prompt the user for input in the format "amount unit1 unit2", where amount is
+a double and unit1 and unit2 are either "mm" (millimeter), "cm" (centimeter),
+"m" (meter), or "km" (kilometer). Each part of the input is separated by
+exactly one space. Convert the amount from unit1 to unit2, printing the
+result rounded to two decimal places followed by the unit. For example, given
+the input "307.8 cm m" your program would print "3.08 m".</li>
+<li>Write a function that takes a tic-tac-toe board array (a 3x3 <code>int[][]</code>
+containing 0 for empty spaces, 1 for Xs, and 2 for Os) and return whether the
+X player has won. You can break this into separate, smaller questions and
+check each of them separately:
+<ul>
+<li>Does any row have three Xs?</li>
+<li>Does any column have three Xs?</li>
+<li>Does either diagonal have three Xs?</li>
+</ul>
+</li>
+</ol>
 
                     </main>
 

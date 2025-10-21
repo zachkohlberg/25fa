@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>2D Arrays - CSC110 Lecture Outlines</title>
+        <title>Demo: State Machine - CSC110 Lecture Outlines</title>
 
 
         <!-- Custom HTML head -->
@@ -152,57 +152,39 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="2d-arrays"><a class="header" href="#2d-arrays">2D Arrays</a></h1>
+                        <h1 id="demo-state-machine"><a class="header" href="#demo-state-machine">Demo: State Machine</a></h1>
 <ul>
-<li>array of arrays</li>
-<li>rectangular vs ragged arrays</li>
-<li>iterating with nested loops</li>
+<li>state machines
+<ul>
+<li>model a system with limited "modes"</li>
+<li>implement with OOP patterns or just a switch</li>
 </ul>
-<pre><code class="language-java">// MultiplicationTable.java
-void main() {
-    int[][] table = generateTable(12);
-    printLookup(table, 5, 7);
-    printLookup(table, 8, 3);
-    printLookup(table, 12, 11);
-    printTable(table);
-}
-
-int[][] generateTable(int size) {
-    int[][] table = new int[12][12];
-    for (int row = 0; row &lt; size; row++) {
-        for (int col = 0; col &lt; size; col++) {
-            // Why do we need to add 1 to row and col?
-            table[row][col] = (row + 1) * (col + 1);
-        }
-    }
-    return table;
-}
-
-// Note: assumes numbers are not greater than 4 digits or the spacing will be off
-void printTable(int[][] table) {
-    for (int row = 0; row &lt; table.length; row++) {
-        for (int col = 0; col &lt; table[row].length; col++) {
-            IO.print(String.format("%5d", table[row][col]));
-        }
-        // Why is this necessary?
-        IO.println();
-    }
-}
-
-void printLookup(int[][] table, int a, int b) {
-    IO.println(String.format("%d x %d = %d", a, b, table[a - 1][b - 1]));
-}
-</code></pre>
+</li>
+<li>example: clock
+<ul>
+<li>use "global" variables for data</li>
+<li>modes: normal, set time, set alarm</li>
+<li>functions: display, prompt</li>
+<li>valid commands for each mode:
+<ul>
+<li>normal: time, alarm, quit</li>
+<li>set time: h, m, quit</li>
+<li>set alarm: h, m, quit</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../week9/arrays.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../week9/2d_arrays.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../week9/state_machine.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../week9/tic_tac_toe.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -212,11 +194,11 @@ void printLookup(int[][] table, int a, int b) {
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../week9/arrays.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../week9/2d_arrays.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../week9/state_machine.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../week9/tic_tac_toe.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
