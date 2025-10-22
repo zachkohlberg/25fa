@@ -183,13 +183,15 @@ be treated as an AIA violation.</p>
 <ul>
 <li>Output produced by <code>IO.println</code> and <code>IO.print</code>. Your program's output must
 match any requirements given in the assignment. Any difference (wrong
-spelling, capitalization, etc.) will fail an I/O test.</li>
+spelling, capitalization, spacing, etc.) will fail an I/O test. All programs
+should end their output with a newline character, which usually means using
+<code>IO.println</code> for your last print statement, and avoid trailing whitespace in
+their output.</li>
 <li>Values returned by your function. If your function returns a value, then the
 value must match any requirements given in the assignment.</li>
 <li>Modifications to array arguments passed to your function. If your function
 takes any array parameters, then it must modify them as described in the
-assignment's requirements. Any extra modifications will usually cause a test
-to fail.</li>
+assignment's requirements. Any extra modifications will cause a test to fail.</li>
 </ul>
 <p>Tests will always ignore any output produced by <code>IO.readln</code>. I never specify how
 exactly to prompt the user for input, so you may word these prompts however you
@@ -245,9 +247,9 @@ haven't covered, such as <code>System</code> or <code>Scanner</code>, is not all
 allowed to use any third-party libraries in autograded assignments.</p>
 <h3 id="java-keywordsfeatures"><a class="header" href="#java-keywordsfeatures">Java Keywords/Features</a></h3>
 <p>Your code should not declare classes, use try-catch, or otherwise rely on
-advanced features of the language that we haven't covered in class. The tools
-you have are more than adequate to solve these problems, and they allow for a
-variety of solutions to most of the programs.</p>
+advanced features of the language or use Java keywords that we haven't covered
+in class. The tools you have are more than adequate to solve these problems, and
+they allow for a variety of solutions to most of the programs.</p>
 <h1 id="character-sheet-project"><a class="header" href="#character-sheet-project">Character Sheet Project</a></h1>
 <p>This is some background information for the next four assignments. If you're not
 interested in the background and just want to write the programs, then feel free
@@ -631,6 +633,530 @@ and have a length of 3.</li>
 <li>return type: <code>int</code></li>
 <li>This function must generate four random <code>int</code>s from 1 to 6 and return the
 sum of the three highest of those numbers.</li>
+</ul>
+</li>
+</ul>
+<h1 id="dice-game-project"><a class="header" href="#dice-game-project">Dice Game Project</a></h1>
+<p>This is some background information for assignments 5-8. You should familiarize
+yourself with the rules of Yahtzee before starting these assignments.</p>
+<h2 id="yahtzee"><a class="header" href="#yahtzee">Yahtzee</a></h2>
+<p><a href="https://en.wikipedia.org/wiki/Yahtzee">Yahtzee</a> is a game played with five dice
+per player over 13 rounds. Each player's goal is to earn the most points by the
+end of the game. A round of Yahtzee consists of the following steps:</p>
+<ol>
+<li>Each player rolls all of their dice.</li>
+<li>Each player chooses any number of their dice to reroll and rerolls all of the
+chosen dice at the same time. They can then repeat this process one more
+time.</li>
+<li>Each player chooses one of thirteen categories on their scorecard. Each
+category can only be chosen once per player and is worth points based on the
+dice rolled. For example, choosing the yahtzee category is worth 50 points if
+all of your dice show the same number and 0 points otherwise.</li>
+</ol>
+<p>At the end of the game, each player adds up their points. The player with the
+most points wins.</p>
+<h2 id="our-dice-game"><a class="header" href="#our-dice-game">Our Dice Game</a></h2>
+<p>We'll be coding a dice game with most of the same rules as Yahtzee, but we'll
+leave out or simplify a few rules. Our game will be single-player, with one
+person playing on the terminal by typing in commands and trying to earn the
+highest possible score.</p>
+<h1 id="assignment-5"><a class="header" href="#assignment-5">Assignment 5</a></h1>
+<p>In this assignment you will write some functions to help with coding your dice
+game. You won't really have a program at the end of this assignment, but you
+will get to use all of this code unmodified in the next assignment.</p>
+<h2 id="autograded-4"><a class="header" href="#autograded-4">Autograded</a></h2>
+<p>This is an autograded assignment. Read the
+<a href="./autograded.html">Autograded Assignments</a> page before starting.</p>
+<p>This program involves random numbers. Make sure you're following the random
+number generation requirements for autograded assignments so that your code is
+compatible with the tests.</p>
+<h2 id="directions-4"><a class="header" href="#directions-4">Directions</a></h2>
+<ol>
+<li>Write this program in a file named <code>DiceGame1.java</code>.</li>
+<li>Implement each of the required functions described in the requirements
+section. These functions will be used in the next assignment to make the
+first version of the dice game. For now, your code will just be a collection
+of functions rather than an interactive program.</li>
+<li>Test your functions by calling them from <code>main</code> and printing any relevant
+information. Before submitting, delete all code from <code>main</code> and just print
+"Dice Game". There's one test case for <code>main</code>, and it just expects to see
+this message.</li>
+</ol>
+<h2 id="submission-4"><a class="header" href="#submission-4">Submission</a></h2>
+<p>Upload your <code>DiceGame1.java</code> file using the submission link on Blackboard.</p>
+<h2 id="requirements-4"><a class="header" href="#requirements-4">Requirements</a></h2>
+<p>Most requirements are covered by the function descriptions below. The expected
+format for printing dice is:</p>
+<pre><code> A   B   C   D   E
++-+ +-+ +-+ +-+ +-+
+|1| |5| |3| |3| |6|
++-+ +-+ +-+ +-+ +-+
+</code></pre>
+<p>There must be no trailing whitespace on these lines, and it must end with a line
+break (println, not print). If you use a loop to print the die values, then you
+can include an if statement in the loop to control whether a space is printed
+after the last part:</p>
+<pre><code class="language-java">loop (...) {
+    // print the die and vertical lines
+    IO.print(...);
+    // only print a space if we're not on the last index of the array
+    if (index &lt; array.length - 1) {
+        IO.print(" ");
+    }
+}
+// end the middle line
+IO.println();
+</code></pre>
+<h3 id="functions-1"><a class="header" href="#functions-1">Functions</a></h3>
+<ul>
+<li><code>main</code>
+<ul>
+<li>parameters: none</li>
+<li>return type: <code>void</code></li>
+<li>This function must print "Dice Game" as its only output and not attempt to
+read any input.</li>
+</ul>
+</li>
+<li><code>countDice</code>
+<ul>
+<li>parameters: an <code>int</code> array representing five dice and an <code>int</code> representing
+the die value to count</li>
+<li>return type: <code>int</code></li>
+<li>This function must return how many times the die value appears in the array.</li>
+</ul>
+</li>
+<li><code>printDice</code>
+<ul>
+<li>parameters: an <code>int</code> array representing five dice</li>
+<li>return type: <code>void</code></li>
+<li>This function must print the dice in the format specified earlier.</li>
+</ul>
+</li>
+<li><code>calculateScore</code>
+<ul>
+<li>parameters: an <code>int</code> array representing five dice and an <code>int</code> representing
+the die value to score</li>
+<li>return type: <code>int</code></li>
+<li>This function must return the score for the given die value, which is equal
+to the die value multiplied by the number of times it appears in the array.</li>
+<li>Hint: call your <code>countDice</code> function to figure out how many times the die
+value appears in the array, then multiply this count by the die value.</li>
+</ul>
+</li>
+<li><code>rollAllDice</code>
+<ul>
+<li>parameters: an <code>int</code> array representing five dice</li>
+<li>return type: <code>void</code></li>
+<li>This function must replace each value in the array with a random number from
+1 to 6.</li>
+<li>The random numbers must be generated in the order they will appear in the
+array to ensure compatibility with the tests.</li>
+</ul>
+</li>
+<li><code>rollSomeDice</code>
+<ul>
+<li>parameters: an <code>int</code> array representing five dice and a <code>boolean</code> array
+representing whether the die at the same index should be rolled</li>
+<li>return type: <code>void</code></li>
+<li>This function must replace each value in the <code>int</code> array with a random
+number from 1 to 6 <strong>if and only if</strong> the element at the same index in the
+<code>boolean</code> array is <code>true</code>.</li>
+<li>The random numbers must be generated in the order they will appear in the
+array to ensure compatibility with the tests.</li>
+</ul>
+</li>
+<li><code>parseReroll</code>
+<ul>
+<li>parameters: a <code>String</code>
+<ul>
+<li>you may assume this string contains zero or more of the lowercase letters
+from 'a' to 'e'</li>
+<li>the letters may be in any order, so don't assume the first character is
+'a'</li>
+</ul>
+</li>
+<li>return type: a <code>boolean</code> array</li>
+<li>This function must return an array of five booleans, each indicating whether
+a letter appeared in the string. Each index of the array corresponds to a
+different lowercase letter:
+<ul>
+<li>at index 0: whether 'a' appears in the string</li>
+<li>at index 1: whether 'b' appears in the string</li>
+<li>at index 2: whether 'c' appears in the string</li>
+<li>at index 3: whether 'd' appears in the string</li>
+<li>at index 4: whether 'e' appears in the string</li>
+</ul>
+</li>
+<li>Hint: you can check whether a character appears in a string with the
+string's <code>indexOf</code> method. If the index is -1, then the character is not in
+the string. If the index is anything else, then the character is in the
+string.</li>
+</ul>
+</li>
+</ul>
+<h1 id="assignment-6"><a class="header" href="#assignment-6">Assignment 6</a></h1>
+<p>In this assignment you will use your functions from the previous assignment to
+implement part of the dice game. Your program will include the partial rerolling
+mechanic used in Yahtzee and the ability to score your dice using the rules from
+Yahtzee's upper categories.</p>
+<h2 id="autograded-5"><a class="header" href="#autograded-5">Autograded</a></h2>
+<p>This is an autograded assignment. Read the
+<a href="./autograded.html">Autograded Assignments</a> page before starting.</p>
+<p>This program involves random numbers. Make sure you're following the random
+number generation requirements for autograded assignments so that your code is
+compatible with the tests.</p>
+<h2 id="directions-5"><a class="header" href="#directions-5">Directions</a></h2>
+<ol>
+<li>Write this program in a file named <code>DiceGame2.java</code> and start with a copy of
+your code from the previous assignment.</li>
+<li>Remove the "Dice Game" print statement from your <code>main</code> function and divide
+it into three sections (you can mark the sections with comments):
+initialization, rerolling, and scoring.</li>
+<li>Initialization:
+<ul>
+<li>Create an <code>int</code> array for your dice and randomize its elements with your
+<code>rollAllDice</code> function.</li>
+<li>Create a variable to track your remaining rerolls and initialize it to 2.</li>
+</ul>
+</li>
+<li>Rerolling: create a loop that repeats while the user has at least one reroll
+left. Inside the loop:
+<ul>
+<li>Print the dice using <code>printDice</code> and prompt the user for a command.</li>
+<li>If the user enters "skip", then set their rerolls to 0. This should end the
+loop.</li>
+<li>If the user enters "roll", then
+<ul>
+<li>Ask them which dice to reroll. Assume their answer consists only of
+letters from 'a' to 'e' and use your <code>parseReroll</code> and <code>rollSomeDice</code>
+functions to reroll the appropriate dice.</li>
+<li>Decrease their rerolls by 1.</li>
+</ul>
+</li>
+<li>If the user enters anything else, then print an error message.</li>
+</ul>
+</li>
+<li>Scoring:
+<ul>
+<li>Print the user's dice so they can see the result of their last reroll.</li>
+<li>Prompt the user for a die value to score (an integer from 1 to 6). If the
+user enters a number outside this range, then print an error message and
+repeat the prompt until you get a valid number.</li>
+<li>Calculate the user's score with <code>calculateScore</code> and print it.</li>
+</ul>
+</li>
+</ol>
+<h2 id="submission-5"><a class="header" href="#submission-5">Submission</a></h2>
+<p>Upload your <code>DiceGame2.java</code> file using the submission link on Blackboard.</p>
+<h2 id="requirements-5"><a class="header" href="#requirements-5">Requirements</a></h2>
+<p>The function requirements and the dice format requirements from the previous
+assignment still apply. New requirements:</p>
+<ul>
+<li>Your program processes commands in the reroll phase until the user runs out of
+rerolls. It correctly responds to any number of invalid commands.</li>
+<li>Your program reads integers in the scoring phase until it reads a number from
+1 to 6 and resonds correctly to integers outside this range.</li>
+<li>Error messages must be formatted as follows:
+<ul>
+<li><code>ERROR: The command "&lt;COMMAND&gt;" is not recognized.</code></li>
+<li><code>ERROR: The number "&lt;N&gt;" doesn't appear on a six-sided die.</code></li>
+</ul>
+</li>
+<li>The score at the end of the program must be formatted
+<code>You scored &lt;SCORE&gt; points!</code>.</li>
+</ul>
+<h1 id="assignment-7"><a class="header" href="#assignment-7">Assignment 7</a></h1>
+<p>This assignment will add functions for some of the missing score categories to
+prepare for a more complete dice game, but we won't actually use these functions
+until the next assignment. We'll also add the ability to print potential scores
+for each category so the user doesn't have to calculate those on their own.</p>
+<h2 id="autograded-6"><a class="header" href="#autograded-6">Autograded</a></h2>
+<p>This is an autograded assignment. Read the
+<a href="./autograded.html">Autograded Assignments</a> page before starting.</p>
+<p>This program involves random numbers. Make sure you're following the random
+number generation requirements for autograded assignments so that your code is
+compatible with the tests.</p>
+<h2 id="directions-6"><a class="header" href="#directions-6">Directions</a></h2>
+<ol>
+<li>Write this program in a file named <code>DiceGame3.java</code> and start with a copy of
+your code from the previous assignment.</li>
+<li>Implement each of the required functions described in the requirements
+section. Most of these functions are new, but there is also an update to the
+<code>calculateScore</code> function.</li>
+<li>Rename your <code>main</code> function to <code>playRound</code>. <strong>You must keep <code>playRound()</code>'s
+implementation the same as the previous assignment's <code>main()</code> to pass the
+tests</strong>. You'll update it to use all ten categories in the next assignment.</li>
+<li>Test your functions by calling them from <code>main</code> and printing any relevant
+information. Before submitting, delete all code from <code>main</code> and just print
+"Dice Game". There's one test case for <code>main</code>, and it just expects to see
+this message.</li>
+</ol>
+<h2 id="submission-6"><a class="header" href="#submission-6">Submission</a></h2>
+<p>Upload your <code>DiceGame3.java</code> file using the submission link on Blackboard.</p>
+<h2 id="requirements-6"><a class="header" href="#requirements-6">Requirements</a></h2>
+<p>Requirements are the same as previous assignments except as noted here and in
+the directions.</p>
+<h3 id="score-categories"><a class="header" href="#score-categories">Score Categories</a></h3>
+<p>The game allows the user to choose from ten different score categories:</p>
+<ol>
+<li>Aces</li>
+<li>Twos</li>
+<li>Threes</li>
+<li>Fours</li>
+<li>Fives</li>
+<li>Sixes</li>
+<li>3 of a Kind</li>
+<li>4 of a Kind</li>
+<li>Yahtzee</li>
+<li>Chance</li>
+</ol>
+<p>The rules for calculating these scores are as follows:</p>
+<ul>
+<li>The first six categories (the "upper categories" in Yahtzee) are scored the
+same as in previous assignments: the category number multiplied by how many
+dice equal that number.</li>
+<li>The 3 and 4 of a kind categories follow similar rules:
+<ul>
+<li>If the user has at least three (3 of a kind) or at least four (4 of a kind)
+dice with the same number, then these categories are worth the sum of
+<strong>all</strong> dice (not just the matching dice).</li>
+<li>If the user doesn't meet the 3/4 of a kind requirement, then these
+categories are worth 0 points.</li>
+</ul>
+</li>
+<li>The Yahtzee category is worth 50 points if all of the dice are the same and 0
+points otherwise.</li>
+<li>The chance category is always worth the sum of all dice.</li>
+</ul>
+<h3 id="io"><a class="header" href="#io">I/O</a></h3>
+<p>The expected format for printing scores is:</p>
+<pre><code>Score Categories:
+
+1. Aces: X
+2. Twos: X
+3. Threes: X
+4. Fours: X
+5. Fives: X
+6. Sixes: X
+7. 3 of a Kind: X
+8. 4 of a Kind: X
+9. Yahtzee: X
+10. Chance: X
+</code></pre>
+<p>Note the blank line between "Score Categories:" and the list. Each "X" should be
+replaced with the score the user would receive for that category. You can print
+this with a loop if you put the category names in an array and iterate over the
+array, but remember that the numbers next to the categories are 1 greater than
+the corresponding array index. Here's some code to create an array with all the
+category names:</p>
+<pre><code class="language-java">String[] names = new String[] {
+    "Aces",
+    "Twos",
+    "Threes",
+    "Fours",
+    "Fives",
+    "Sixes",
+    "3 of a Kind",
+    "4 of a Kind",
+    "Yahtzee",
+    "Chance"
+};
+</code></pre>
+<h3 id="functions-2"><a class="header" href="#functions-2">Functions</a></h3>
+<ul>
+<li><code>main</code>
+<ul>
+<li>parameters: none</li>
+<li>return type: <code>void</code></li>
+<li>This function must print "Dice Game" as its only output and not attempt to
+read any input.</li>
+</ul>
+</li>
+<li><code>calculateScore</code>
+<ul>
+<li>parameters: an <code>int</code> array representing five dice and an <code>int</code> representing
+the category (1 to 10)</li>
+<li>return type: <code>int</code></li>
+<li>This function must return the score for the given category.</li>
+</ul>
+</li>
+<li><code>sumDice</code>
+<ul>
+<li>parameters: an <code>int</code> array representing five dice</li>
+<li>return type: <code>int</code></li>
+<li>This function must return the sum of all numbers in the array.</li>
+<li>This is a helper function that you should call when scoring 3/4 of a Kind
+and Chance.</li>
+</ul>
+</li>
+<li><code>countMostCommon</code>
+<ul>
+<li>parameters: an <code>int</code> array representing five dice</li>
+<li>return type: <code>int</code></li>
+<li>This function must find the most common number in the array and return how
+many times that number appears in the array.</li>
+<li>This is a helper function that you should call when scoring 3/4 of a Kind
+and Yahtzee to check whether the dice meet the requirement for that
+category.</li>
+<li>Hint: you can use <code>countDice</code> to find out how many times each possible die
+value (1 to 6) appears in the array and return the largest count. <code>Math.max</code>
+or an if statement can take the larger of two numbers.</li>
+</ul>
+</li>
+<li><code>scoreUpper</code>
+<ul>
+<li>parameters: an <code>int</code> array representing five dice and an <code>int</code> representing
+a die value</li>
+<li>return type: <code>int</code></li>
+<li>Other than the name, this function should be identical to your
+<code>calculateScore</code> function from the previous assignment.</li>
+</ul>
+</li>
+<li><code>scoreChance</code>, <code>score3OfAKind</code>, <code>score4OfAKind</code>, and <code>scoreYahtzee</code>
+<ul>
+<li>parameters: an <code>int</code> array representing five dice</li>
+<li>return type: <code>int</code></li>
+<li>Each of these functions must calculate the score for their category
+according to the <a href="assign7.html#score-categories">Score Categories</a> requirements.</li>
+</ul>
+</li>
+<li><code>printScores</code>
+<ul>
+<li>parameters: an <code>int</code> array representing five dice</li>
+<li>return type: <code>void</code></li>
+<li>This function must print the score categories as specified in the <a href="assign7.html#io">I/O</a>
+requirements.</li>
+</ul>
+</li>
+<li><code>playRound</code>
+<ul>
+<li>parameters: none</li>
+<li>return type: <code>void</code></li>
+<li>This should contain all the code from the previous assignment's <code>main</code>
+function. It will be given the exact same I/O tests used for <code>main</code> in the
+previous assignment.</li>
+</ul>
+</li>
+</ul>
+<h1 id="assignment-8"><a class="header" href="#assignment-8">Assignment 8</a></h1>
+<p>This assignment will add multiple rounds and persistent scoring between rounds.
+You can finally play a full game (of a partial Yahtzee implementation) and keep
+track of scores from previous rounds.</p>
+<h2 id="autograded-7"><a class="header" href="#autograded-7">Autograded</a></h2>
+<p>This is an autograded assignment. Read the
+<a href="./autograded.html">Autograded Assignments</a> page before starting.</p>
+<p>This program involves random numbers. Make sure you're following the random
+number generation requirements for autograded assignments so that your code is
+compatible with the tests.</p>
+<h2 id="directions-7"><a class="header" href="#directions-7">Directions</a></h2>
+<ol>
+<li>Write this program in a file named <code>DiceGame4.java</code> and start with a copy of
+your code from the previous assignment.</li>
+<li>Modify your <code>printScores</code> function to take two parameters: an array of ten
+scores and an array of five dice. The array of scores represents scores from
+previous rounds, with a negative value indicating a category that hasn't been
+selected. When you print each category:
+<ul>
+<li>if the score in the array isn't negative, show that number instead of
+calculating a score with the dice</li>
+<li>if the score in the array is negative, show "available (X)", where X is the
+score calculated for the given dice, to indicate that the user can choose
+this category and would receive the amount of points shown</li>
+</ul>
+</li>
+<li>Modify your <code>playRound</code> function to take a parameter for the scores array.
+You'll need to pass this array when you print the scores. Make the following
+changes to the scoring part of the function:
+<ul>
+<li>Change your input validation to ensure the user chooses a category from 1
+to 10 with a negative score. Remember to subtract 1 from the category
+number before using it to index the scores array (categories are 1-10, but
+score indexes are 0-9).</li>
+<li>Change the error message to <code>ERROR: You cannot score category X.</code>, where X
+is the user's invalid input. The old message doesn't make sense now that
+we're choosing from ten categories instead of six die values.</li>
+<li>Store the user's score in the scores array at the appropriate index.</li>
+</ul>
+</li>
+<li>Modify your <code>main</code> function to do the following:
+<ul>
+<li>Create an array of ten scores and initialize each element to -1.</li>
+<li>Call your <code>playRound</code> function ten times (use a loop), passing it the
+scores array as an argument. It will add one score to the array with each
+round, replacing the negative number.</li>
+<li>Find the total score after ten rounds and print
+<code>Game Over! Your total score is: X.</code>, replacing X with the total score.</li>
+<li>Print the score categories one more time. You'll need to pass it an array
+for the dice, even though it won't use the array, so just make a new
+temporary array and pass that as the second argument.</li>
+</ul>
+</li>
+</ol>
+<h2 id="submission-7"><a class="header" href="#submission-7">Submission</a></h2>
+<p>Upload your <code>DiceGame4.java</code> file using the submission link on Blackboard.</p>
+<h2 id="requirements-7"><a class="header" href="#requirements-7">Requirements</a></h2>
+<p>Requirements are the same as previous assignments except as noted here and in
+the directions.</p>
+<h3 id="io-1"><a class="header" href="#io-1">I/O</a></h3>
+<p>The <code>printScores</code> function must show which categories are available (negative
+value in the scores array) along with a score calculated for the given dice. For
+other categories, it must show the score in the scores array. The sample below
+is for a score array of -1, -1, -1, 12, 5, -1, 23, -1, 50, 11 and a dice array
+of 6, 6, 6, 5, 6.</p>
+<pre><code>Score Categories:
+
+1. Aces: available (0)
+2. Twos: available (0)
+3. Threes: available (0)
+4. Fours: 12
+5. Fives: 5
+6. Sixes: available (24)
+7. 3 of a Kind: 23
+8. 4 of a Kind: available (29)
+9. Yahtzee: 50
+10. Chance: 11
+</code></pre>
+<p>The message at the end of the game must be formatted as shown below, immediately
+followed by the <code>printScores</code> output:</p>
+<pre><code>Game Over! Your total score is: 166.
+Score Categories:
+
+1. Aces: 2
+2. Twos: 8
+3. Threes: 6
+4. Fours: 12
+5. Fives: 5
+6. Sixes: 24
+7. 3 of a Kind: 23
+8. 4 of a Kind: 25
+9. Yahtzee: 50
+10. Chance: 11
+</code></pre>
+<h3 id="functions-3"><a class="header" href="#functions-3">Functions</a></h3>
+<ul>
+<li><code>printScores</code>
+<ul>
+<li>parameters: an <code>int</code> array representing ten scores and an <code>int</code> array
+representing five dice</li>
+<li>return type: <code>void</code></li>
+<li>This function must print the score categories as specified in the <a href="assign8.html#io">I/O</a>
+requirements.</li>
+</ul>
+</li>
+<li><code>playRound</code>
+<ul>
+<li>parameters: an <code>int</code> array representing ten scores</li>
+<li>return type: <code>void</code></li>
+<li>This function must play a round of the game as described in the directions,
+updating the score array with a new score.</li>
+</ul>
+</li>
+<li><code>main</code>
+<ul>
+<li>parameters: none</li>
+<li>return type: <code>void</code></li>
+<li>This function must play all ten rounds and print the scores at the end as
+described in the directions.</li>
 </ul>
 </li>
 </ul>

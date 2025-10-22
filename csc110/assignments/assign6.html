@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Assignment 4 - CSC110 Assignments</title>
+        <title>Assignment 6 - CSC110 Assignments</title>
 
 
         <!-- Custom HTML head -->
@@ -152,11 +152,11 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="assignment-4"><a class="header" href="#assignment-4">Assignment 4</a></h1>
-<p>In this assignment you will allow the user to choose whether to use the previous
-point buy system or generate a set of random scores by simulating dice rolls.
-You will also break these parts of your program into separate functions to make
-them easier to test.</p>
+                        <h1 id="assignment-6"><a class="header" href="#assignment-6">Assignment 6</a></h1>
+<p>In this assignment you will use your functions from the previous assignment to
+implement part of the dice game. Your program will include the partial rerolling
+mechanic used in Yahtzee and the ability to score your dice using the rules from
+Yahtzee's upper categories.</p>
 <h2 id="autograded"><a class="header" href="#autograded">Autograded</a></h2>
 <p>This is an autograded assignment. Read the
 <a href="./autograded.html">Autograded Assignments</a> page before starting.</p>
@@ -165,104 +165,74 @@ number generation requirements for autograded assignments so that your code is
 compatible with the tests.</p>
 <h2 id="directions"><a class="header" href="#directions">Directions</a></h2>
 <ol>
-<li>Write this program in a file named <code>CharacterSheet4.java</code>.</li>
-<li>Copy your work from the previous assignment into your file. This assignment
-assumes you are starting from a working version of that program that passes
-all of its tests.</li>
-<li>Write a function named <code>buyScores</code> that takes no parameters and returns an
-array of <code>int</code>s. This function must perform the same process used in the old
-program for point buy, add the final scores to an array, and return the
-array. You can cut and paste that code from your old <code>main</code> function into
-this new <code>buyScores</code> function, then create and return the array after the
+<li>Write this program in a file named <code>DiceGame2.java</code> and start with a copy of
+your code from the previous assignment.</li>
+<li>Remove the "Dice Game" print statement from your <code>main</code> function and divide
+it into three sections (you can mark the sections with comments):
+initialization, rerolling, and scoring.</li>
+<li>Initialization:
+<ul>
+<li>Create an <code>int</code> array for your dice and randomize its elements with your
+<code>rollAllDice</code> function.</li>
+<li>Create a variable to track your remaining rerolls and initialize it to 2.</li>
+</ul>
+</li>
+<li>Rerolling: create a loop that repeats while the user has at least one reroll
+left. Inside the loop:
+<ul>
+<li>Print the dice using <code>printDice</code> and prompt the user for a command.</li>
+<li>If the user enters "skip", then set their rerolls to 0. This should end the
 loop.</li>
-<li>Write a function named <code>roll</code> that takes no parameters and returns an <code>int</code>.
-This function must generate four random <code>int</code>s from 1 to 6, then return the
-sum of the three largest numbers it generated. For example, if you generated
-the numbers 4, 6, 2, and 5 then you would return 15 (4 + 6 + 5), ignoring
-the 2. If there is a tie for lowest, then just ignore one of those values: 1,
-1, 5, and 4 would result in 10 (1 + 5 + 4).</li>
-<li>Write a function named <code>rollScores</code> that takes no parameters and returns an
-array of <code>int</code>s. It must call the <code>roll</code> function three times, put the
-results into an array, and return the array.</li>
-<li>In your <code>main</code> function, remove the old ability score prompts and ask the
-user whether they want to choose their scores. If they enter <code>y</code>, then
-generate their scores by calling the <code>buyScores</code> function. If they enter <code>n</code>,
-then generate their scores by calling the <code>rollScores</code> function. If they
-enter anything else, then print an error message and ask again until they
-enter <code>y</code> or <code>n</code>. Remember to store the return value from <code>buyScores</code> or
-<code>rollScores</code> in a variable and copy the elements of that array to your
-ability score variables. If you don't do this, then the rest of your program
-will no longer work!</li>
+<li>If the user enters "roll", then
+<ul>
+<li>Ask them which dice to reroll. Assume their answer consists only of
+letters from 'a' to 'e' and use your <code>parseReroll</code> and <code>rollSomeDice</code>
+functions to reroll the appropriate dice.</li>
+<li>Decrease their rerolls by 1.</li>
+</ul>
+</li>
+<li>If the user enters anything else, then print an error message.</li>
+</ul>
+</li>
+<li>Scoring:
+<ul>
+<li>Print the user's dice so they can see the result of their last reroll.</li>
+<li>Prompt the user for a die value to score (an integer from 1 to 6). If the
+user enters a number outside this range, then print an error message and
+repeat the prompt until you get a valid number.</li>
+<li>Calculate the user's score with <code>calculateScore</code> and print it.</li>
+</ul>
+</li>
 </ol>
 <h2 id="submission"><a class="header" href="#submission">Submission</a></h2>
-<p>Upload your <code>CharacterSheet4.java</code> file using the submission link on Blackboard.</p>
+<p>Upload your <code>DiceGame2.java</code> file using the submission link on Blackboard.</p>
 <h2 id="requirements"><a class="header" href="#requirements">Requirements</a></h2>
+<p>The function requirements and the dice format requirements from the previous
+assignment still apply. New requirements:</p>
 <ul>
-<li>Prompt for input in the same order as the previous assignment, but with the
-added loop to choose whether to use point buy. If the user doesn't choose
-point buy, then your program must not prompt the user for their ability
-scores.</li>
-<li>Print the following warning/error messages where appropriate, using the
-erroneous input instead of the placeholder value. The quotes must still appear
-in your output.
+<li>Your program processes commands in the reroll phase until the user runs out of
+rerolls. It correctly responds to any number of invalid commands.</li>
+<li>Your program reads integers in the scoring phase until it reads a number from
+1 to 6 and resonds correctly to integers outside this range.</li>
+<li>Error messages must be formatted as follows:
 <ul>
-<li><code>WARNING: The class "&lt;CLASS&gt;" is not supported by this program.</code></li>
-<li><code>WARNING: The ancestry "&lt;ANCESTRY&gt;" is not supported by this program.</code></li>
-<li><code>ERROR: You need to answer y or n.</code></li>
-<li><code>ERROR: Ability scores must sum to 36 or less! Try again.</code></li>
+<li><code>ERROR: The command "&lt;COMMAND&gt;" is not recognized.</code></li>
+<li><code>ERROR: The number "&lt;N&gt;" doesn't appear on a six-sided die.</code></li>
 </ul>
 </li>
-<li>All calculations must be handled the same as in the previous assignment. Once
-you have the ability scores, the rest of the program works exactly the same.</li>
-<li>This program's output should look the same as in the previous assignment. The
-only difference is in the score prompt and the additional error message that
-can be generated.</li>
-</ul>
-<h3 id="functions"><a class="header" href="#functions">Functions</a></h3>
-<p>Your program must implement the following functions and should call them where
-appropriate.</p>
-<ul>
-<li><code>buyScores</code>
-<ul>
-<li>parameters: none</li>
-<li>return type: array of <code>int</code></li>
-<li>This function must prompt the user for their ability scores until they enter
-a set of scores that add up to 36 or less. It must also print the
-appropriate error message each time they enter scores that add up to more
-than 36. This process is exactly the same as in the previous assignment.</li>
-<li>The returned array must contain the last set of scores entered by the user,
-which means its length will always be 3.</li>
-</ul>
-</li>
-<li><code>rollScores</code>
-<ul>
-<li>parameters: none</li>
-<li>return type: array of <code>int</code></li>
-<li>This function must generate three random scores by calling the <code>roll</code>
-function.</li>
-<li>The returned array must contain the three scores generated by calling <code>roll</code>
-and have a length of 3.</li>
-</ul>
-</li>
-<li><code>roll</code>
-<ul>
-<li>parameters: none</li>
-<li>return type: <code>int</code></li>
-<li>This function must generate four random <code>int</code>s from 1 to 6 and return the
-sum of the three highest of those numbers.</li>
-</ul>
-</li>
+<li>The score at the end of the program must be formatted
+<code>You scored &lt;SCORE&gt; points!</code>.</li>
 </ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="assign3.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="assign5.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="dice_game.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="assign7.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -272,11 +242,11 @@ sum of the three highest of those numbers.</li>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="assign3.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="assign5.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="dice_game.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="assign7.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

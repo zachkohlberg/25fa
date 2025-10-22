@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Assignment 4 - CSC110 Assignments</title>
+        <title>Assignment 7 - CSC110 Assignments</title>
 
 
         <!-- Custom HTML head -->
@@ -152,11 +152,11 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="assignment-4"><a class="header" href="#assignment-4">Assignment 4</a></h1>
-<p>In this assignment you will allow the user to choose whether to use the previous
-point buy system or generate a set of random scores by simulating dice rolls.
-You will also break these parts of your program into separate functions to make
-them easier to test.</p>
+                        <h1 id="assignment-7"><a class="header" href="#assignment-7">Assignment 7</a></h1>
+<p>This assignment will add functions for some of the missing score categories to
+prepare for a more complete dice game, but we won't actually use these functions
+until the next assignment. We'll also add the ability to print potential scores
+for each category so the user doesn't have to calculate those on their own.</p>
 <h2 id="autograded"><a class="header" href="#autograded">Autograded</a></h2>
 <p>This is an autograded assignment. Read the
 <a href="./autograded.html">Autograded Assignments</a> page before starting.</p>
@@ -165,91 +165,163 @@ number generation requirements for autograded assignments so that your code is
 compatible with the tests.</p>
 <h2 id="directions"><a class="header" href="#directions">Directions</a></h2>
 <ol>
-<li>Write this program in a file named <code>CharacterSheet4.java</code>.</li>
-<li>Copy your work from the previous assignment into your file. This assignment
-assumes you are starting from a working version of that program that passes
-all of its tests.</li>
-<li>Write a function named <code>buyScores</code> that takes no parameters and returns an
-array of <code>int</code>s. This function must perform the same process used in the old
-program for point buy, add the final scores to an array, and return the
-array. You can cut and paste that code from your old <code>main</code> function into
-this new <code>buyScores</code> function, then create and return the array after the
-loop.</li>
-<li>Write a function named <code>roll</code> that takes no parameters and returns an <code>int</code>.
-This function must generate four random <code>int</code>s from 1 to 6, then return the
-sum of the three largest numbers it generated. For example, if you generated
-the numbers 4, 6, 2, and 5 then you would return 15 (4 + 6 + 5), ignoring
-the 2. If there is a tie for lowest, then just ignore one of those values: 1,
-1, 5, and 4 would result in 10 (1 + 5 + 4).</li>
-<li>Write a function named <code>rollScores</code> that takes no parameters and returns an
-array of <code>int</code>s. It must call the <code>roll</code> function three times, put the
-results into an array, and return the array.</li>
-<li>In your <code>main</code> function, remove the old ability score prompts and ask the
-user whether they want to choose their scores. If they enter <code>y</code>, then
-generate their scores by calling the <code>buyScores</code> function. If they enter <code>n</code>,
-then generate their scores by calling the <code>rollScores</code> function. If they
-enter anything else, then print an error message and ask again until they
-enter <code>y</code> or <code>n</code>. Remember to store the return value from <code>buyScores</code> or
-<code>rollScores</code> in a variable and copy the elements of that array to your
-ability score variables. If you don't do this, then the rest of your program
-will no longer work!</li>
+<li>Write this program in a file named <code>DiceGame3.java</code> and start with a copy of
+your code from the previous assignment.</li>
+<li>Implement each of the required functions described in the requirements
+section. Most of these functions are new, but there is also an update to the
+<code>calculateScore</code> function.</li>
+<li>Rename your <code>main</code> function to <code>playRound</code>. <strong>You must keep <code>playRound()</code>'s
+implementation the same as the previous assignment's <code>main()</code> to pass the
+tests</strong>. You'll update it to use all ten categories in the next assignment.</li>
+<li>Test your functions by calling them from <code>main</code> and printing any relevant
+information. Before submitting, delete all code from <code>main</code> and just print
+"Dice Game". There's one test case for <code>main</code>, and it just expects to see
+this message.</li>
 </ol>
 <h2 id="submission"><a class="header" href="#submission">Submission</a></h2>
-<p>Upload your <code>CharacterSheet4.java</code> file using the submission link on Blackboard.</p>
+<p>Upload your <code>DiceGame3.java</code> file using the submission link on Blackboard.</p>
 <h2 id="requirements"><a class="header" href="#requirements">Requirements</a></h2>
+<p>Requirements are the same as previous assignments except as noted here and in
+the directions.</p>
+<h3 id="score-categories"><a class="header" href="#score-categories">Score Categories</a></h3>
+<p>The game allows the user to choose from ten different score categories:</p>
+<ol>
+<li>Aces</li>
+<li>Twos</li>
+<li>Threes</li>
+<li>Fours</li>
+<li>Fives</li>
+<li>Sixes</li>
+<li>3 of a Kind</li>
+<li>4 of a Kind</li>
+<li>Yahtzee</li>
+<li>Chance</li>
+</ol>
+<p>The rules for calculating these scores are as follows:</p>
 <ul>
-<li>Prompt for input in the same order as the previous assignment, but with the
-added loop to choose whether to use point buy. If the user doesn't choose
-point buy, then your program must not prompt the user for their ability
-scores.</li>
-<li>Print the following warning/error messages where appropriate, using the
-erroneous input instead of the placeholder value. The quotes must still appear
-in your output.
+<li>The first six categories (the "upper categories" in Yahtzee) are scored the
+same as in previous assignments: the category number multiplied by how many
+dice equal that number.</li>
+<li>The 3 and 4 of a kind categories follow similar rules:
 <ul>
-<li><code>WARNING: The class "&lt;CLASS&gt;" is not supported by this program.</code></li>
-<li><code>WARNING: The ancestry "&lt;ANCESTRY&gt;" is not supported by this program.</code></li>
-<li><code>ERROR: You need to answer y or n.</code></li>
-<li><code>ERROR: Ability scores must sum to 36 or less! Try again.</code></li>
+<li>If the user has at least three (3 of a kind) or at least four (4 of a kind)
+dice with the same number, then these categories are worth the sum of
+<strong>all</strong> dice (not just the matching dice).</li>
+<li>If the user doesn't meet the 3/4 of a kind requirement, then these
+categories are worth 0 points.</li>
 </ul>
 </li>
-<li>All calculations must be handled the same as in the previous assignment. Once
-you have the ability scores, the rest of the program works exactly the same.</li>
-<li>This program's output should look the same as in the previous assignment. The
-only difference is in the score prompt and the additional error message that
-can be generated.</li>
+<li>The Yahtzee category is worth 50 points if all of the dice are the same and 0
+points otherwise.</li>
+<li>The chance category is always worth the sum of all dice.</li>
 </ul>
+<h3 id="io"><a class="header" href="#io">I/O</a></h3>
+<p>The expected format for printing scores is:</p>
+<pre><code>Score Categories:
+
+1. Aces: X
+2. Twos: X
+3. Threes: X
+4. Fours: X
+5. Fives: X
+6. Sixes: X
+7. 3 of a Kind: X
+8. 4 of a Kind: X
+9. Yahtzee: X
+10. Chance: X
+</code></pre>
+<p>Note the blank line between "Score Categories:" and the list. Each "X" should be
+replaced with the score the user would receive for that category. You can print
+this with a loop if you put the category names in an array and iterate over the
+array, but remember that the numbers next to the categories are 1 greater than
+the corresponding array index. Here's some code to create an array with all the
+category names:</p>
+<pre><code class="language-java">String[] names = new String[] {
+    "Aces",
+    "Twos",
+    "Threes",
+    "Fours",
+    "Fives",
+    "Sixes",
+    "3 of a Kind",
+    "4 of a Kind",
+    "Yahtzee",
+    "Chance"
+};
+</code></pre>
 <h3 id="functions"><a class="header" href="#functions">Functions</a></h3>
-<p>Your program must implement the following functions and should call them where
-appropriate.</p>
 <ul>
-<li><code>buyScores</code>
+<li><code>main</code>
 <ul>
 <li>parameters: none</li>
-<li>return type: array of <code>int</code></li>
-<li>This function must prompt the user for their ability scores until they enter
-a set of scores that add up to 36 or less. It must also print the
-appropriate error message each time they enter scores that add up to more
-than 36. This process is exactly the same as in the previous assignment.</li>
-<li>The returned array must contain the last set of scores entered by the user,
-which means its length will always be 3.</li>
+<li>return type: <code>void</code></li>
+<li>This function must print "Dice Game" as its only output and not attempt to
+read any input.</li>
 </ul>
 </li>
-<li><code>rollScores</code>
+<li><code>calculateScore</code>
 <ul>
-<li>parameters: none</li>
-<li>return type: array of <code>int</code></li>
-<li>This function must generate three random scores by calling the <code>roll</code>
-function.</li>
-<li>The returned array must contain the three scores generated by calling <code>roll</code>
-and have a length of 3.</li>
-</ul>
-</li>
-<li><code>roll</code>
-<ul>
-<li>parameters: none</li>
+<li>parameters: an <code>int</code> array representing five dice and an <code>int</code> representing
+the category (1 to 10)</li>
 <li>return type: <code>int</code></li>
-<li>This function must generate four random <code>int</code>s from 1 to 6 and return the
-sum of the three highest of those numbers.</li>
+<li>This function must return the score for the given category.</li>
+</ul>
+</li>
+<li><code>sumDice</code>
+<ul>
+<li>parameters: an <code>int</code> array representing five dice</li>
+<li>return type: <code>int</code></li>
+<li>This function must return the sum of all numbers in the array.</li>
+<li>This is a helper function that you should call when scoring 3/4 of a Kind
+and Chance.</li>
+</ul>
+</li>
+<li><code>countMostCommon</code>
+<ul>
+<li>parameters: an <code>int</code> array representing five dice</li>
+<li>return type: <code>int</code></li>
+<li>This function must find the most common number in the array and return how
+many times that number appears in the array.</li>
+<li>This is a helper function that you should call when scoring 3/4 of a Kind
+and Yahtzee to check whether the dice meet the requirement for that
+category.</li>
+<li>Hint: you can use <code>countDice</code> to find out how many times each possible die
+value (1 to 6) appears in the array and return the largest count. <code>Math.max</code>
+or an if statement can take the larger of two numbers.</li>
+</ul>
+</li>
+<li><code>scoreUpper</code>
+<ul>
+<li>parameters: an <code>int</code> array representing five dice and an <code>int</code> representing
+a die value</li>
+<li>return type: <code>int</code></li>
+<li>Other than the name, this function should be identical to your
+<code>calculateScore</code> function from the previous assignment.</li>
+</ul>
+</li>
+<li><code>scoreChance</code>, <code>score3OfAKind</code>, <code>score4OfAKind</code>, and <code>scoreYahtzee</code>
+<ul>
+<li>parameters: an <code>int</code> array representing five dice</li>
+<li>return type: <code>int</code></li>
+<li>Each of these functions must calculate the score for their category
+according to the <a href="#score-categories">Score Categories</a> requirements.</li>
+</ul>
+</li>
+<li><code>printScores</code>
+<ul>
+<li>parameters: an <code>int</code> array representing five dice</li>
+<li>return type: <code>void</code></li>
+<li>This function must print the score categories as specified in the <a href="#io">I/O</a>
+requirements.</li>
+</ul>
+</li>
+<li><code>playRound</code>
+<ul>
+<li>parameters: none</li>
+<li>return type: <code>void</code></li>
+<li>This should contain all the code from the previous assignment's <code>main</code>
+function. It will be given the exact same I/O tests used for <code>main</code> in the
+previous assignment.</li>
 </ul>
 </li>
 </ul>
@@ -258,11 +330,11 @@ sum of the three highest of those numbers.</li>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="assign3.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="assign6.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="dice_game.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="assign8.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -272,11 +344,11 @@ sum of the three highest of those numbers.</li>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="assign3.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="assign6.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="dice_game.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="assign8.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
