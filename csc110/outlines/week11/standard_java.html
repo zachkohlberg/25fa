@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Practice - CSC110 Lecture Outlines</title>
+        <title>Standard Java - CSC110 Lecture Outlines</title>
 
 
         <!-- Custom HTML head -->
@@ -152,44 +152,47 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="practice"><a class="header" href="#practice">Practice</a></h1>
-<ol>
-<li>Review the example programs and answer any questions in the comments.</li>
-<li>Write a function to parse days of the week into the corresponding number from
-1 to 7, with weeks beginning on Sunday. Allow three-letter abbreviations for
-each day and make the function case-insensitive.</li>
-<li>Read a string from the user and print a new string where every character that
-isn't a letter or digit is replaced with an underscore. Don't use any
-built-in methods or functions other than <code>charAt</code>.</li>
-<li>Prompt the user for input in the format "amount unit1 unit2", where amount is
-a double and unit1 and unit2 are either "mm" (millimeter), "cm" (centimeter),
-"m" (meter), or "km" (kilometer). Each part of the input is separated by
-exactly one space. Convert the amount from unit1 to unit2, printing the
-result rounded to two decimal places followed by the unit. For example, given
-the input "307.8 cm m" your program would print "3.08 m".</li>
-<li>Write a function that takes a tic-tac-toe board array (a 3x3 <code>int[][]</code>
-containing 0 for empty spaces, 1 for Xs, and 2 for Os) and return whether the
-X player has won. You can break this into separate, smaller questions and
-check each of them separately:
+                        <h1 id="standard-java"><a class="header" href="#standard-java">Standard Java</a></h1>
 <ul>
-<li>Does any row have three Xs?</li>
-<li>Does any column have three Xs?</li>
-<li>Does either diagonal have three Xs?</li>
+<li>standard Java structure (without compact source) is more verbose (see
+<code>Repeat.java</code> below)</li>
+<li>new concepts
+<ul>
+<li>classes</li>
+<li>public access modifier</li>
+<li>static method</li>
+<li>main and program arguments</li>
+<li>System and standard I/O objects</li>
+<li>Scanners</li>
 </ul>
 </li>
-</ol>
+</ul>
+<pre><code class="language-java">void main() {
+    String s = IO.readln("Enter some text: ");
+    IO.println("You typed: " + s);
+}
+</code></pre>
+<pre><code class="language-java">public class Repeat {
+    public static void main(String[] args) {
+        java.util.Scanner input = new java.util.Scanner(System.in);
+
+        System.out.print("Enter some text: ");
+        String s = input.nextLine();
+        System.out.println("You typed: " + s);
+
+        input.close();
+    }
+}
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../week9/tic_tac_toe.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../week11/encapsulation.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../week10.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -197,13 +200,10 @@ check each of them separately:
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../week9/tic_tac_toe.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../week11/encapsulation.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../week10.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
             </nav>
 
         </div>

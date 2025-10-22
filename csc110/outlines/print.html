@@ -2280,6 +2280,336 @@ check each of them separately:
 </ul>
 </li>
 </ol>
+<h1 id="week-10"><a class="header" href="#week-10">Week 10</a></h1>
+<h2 id="class-meetings-9"><a class="header" href="#class-meetings-9">Class Meetings</a></h2>
+<ul>
+<li>2025/10/28</li>
+<li>2025/10/30</li>
+</ul>
+<h2 id="review-7"><a class="header" href="#review-7">Review</a></h2>
+<ul>
+<li>Week 9 practice exercise?</li>
+<li>Autograded assignments 1-8</li>
+<li>Final projects
+<ul>
+<li>In-class proposal</li>
+<li>Final week presentation</li>
+</ul>
+</li>
+</ul>
+<h2 id="goals-6"><a class="header" href="#goals-6">Goals</a></h2>
+<p>After this week, you should be able to</p>
+<ul>
+<li>explain some pros and cons of functions with side-effects</li>
+<li>explain some pros and cons of functions without side-effects</li>
+<li>write functions without side-effects</li>
+<li>design a program by breaking it into smaller functions</li>
+</ul>
+<h1 id="program-io-vs-function-io"><a class="header" href="#program-io-vs-function-io">Program I/O vs Function I/O</a></h1>
+<ul>
+<li>I/O at program level with standard in/out
+<ul>
+<li>input: read from user with <code>IO.readln</code></li>
+<li>output: print with <code>IO.println</code></li>
+</ul>
+</li>
+<li>I/O at function level with parameters and return values
+<ul>
+<li>input:
+<ul>
+<li>function definition declares a parameter</li>
+<li>function call passes an argument</li>
+</ul>
+</li>
+<li>output:
+<ul>
+<li>function definition declare a return type and implementation returns a
+value</li>
+<li>function call is assigned to a variable or passed to another function</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Prefer function-level I/O wherever reasonable
+<ul>
+<li>easier to reuse functions if they're not tied to program level I/O</li>
+<li>only use readln/println when necessary</li>
+</ul>
+</li>
+</ul>
+<h1 id="side-effects"><a class="header" href="#side-effects">Side-Effects</a></h1>
+<ul>
+<li>anything that has an effect outside of the function body is a side-effect
+<ul>
+<li>performing program level I/O with readln/println</li>
+<li>mutating a variable outside the function</li>
+<li>mutating an object passed as a parameter (like an array)</li>
+<li>generating a random number</li>
+</ul>
+</li>
+</ul>
+<h1 id="pure-functions"><a class="header" href="#pure-functions">Pure Functions</a></h1>
+<ul>
+<li>functional programming paradigm focused on "pure" functions and immutable
+state</li>
+<li>pure function has no side-effects and only depends on its parameters, no
+references to variables outside the function</li>
+<li>pure functions are useful:
+<ul>
+<li>easier to debug and reason about</li>
+<li>easier to reuse in other parts of program</li>
+</ul>
+</li>
+<li>pure functions are limited:
+<ul>
+<li>need to perform I/O and mutate state at some point</li>
+</ul>
+</li>
+</ul>
+<h1 id="designing-code-problem-decomposition"><a class="header" href="#designing-code-problem-decomposition">Designing Code: Problem Decomposition</a></h1>
+<ul>
+<li>how to tackle complex problem?
+<ul>
+<li>break it into smaller problems</li>
+<li>solve each smaller problem</li>
+</ul>
+</li>
+<li>how to code large program?
+<ul>
+<li>the program is just one big function</li>
+<li>break it into smaller functions</li>
+<li>code the smaller functions</li>
+</ul>
+</li>
+<li>coding and design are iterative processes!
+<ul>
+<li>initial goal is to make a working solution, not a good solution</li>
+<li>first solve the problem and make sure the code works</li>
+<li>then revise code and test to make sure it still works</li>
+<li>repeat (iterate on your design) until it's good</li>
+</ul>
+</li>
+</ul>
+<h1 id="demo-rock-paper-scissors"><a class="header" href="#demo-rock-paper-scissors">Demo: Rock, Paper, Scissors</a></h1>
+<ul>
+<li>design a rock, paper, scissors program by breaking it into small functions</li>
+<li>useful trick: write the calling code first, then implement the functions
+<ul>
+<li>easier to design function based on how you want to use it</li>
+<li>just write the functions you actually need when you need them</li>
+</ul>
+</li>
+</ul>
+<h1 id="practice-6"><a class="header" href="#practice-6">Practice</a></h1>
+<p>With a group or a partner, try designing a program that reads the following
+information:</p>
+<ul>
+<li>A list of student names</li>
+<li>A list of assignment weights that add up to 1.0</li>
+<li>For each student, a list of grades from 0.0 to 100.0 on every assignment</li>
+</ul>
+<p>You can read each list as one line of input and use the <code>.split</code> method covered
+last week to break it into an array.</p>
+<p>After reading and parsing all of the input, print the average grade on each
+assignment and the weighted average for each student.</p>
+<p>Try designing this program like we designed the rock, paper, scissors program:
+write the <code>main</code> function and make up a function call for each task you need to
+perform. Make sure you clearly define the name, parameter types, and return type
+when you write these function calls. Split the functions between yourselves and
+write the functions separately before combining them into the full program.</p>
+<p>After you finish writing the program, discuss the following questions with your
+group:</p>
+<ol>
+<li>What was challenging about writing the <code>main</code> function?</li>
+<li>What was challenging about writing your separate functions?</li>
+<li>What was challenging about combining the functions into a working program?</li>
+<li>Which part of this process was the easiest? Which was the hardest? Why?</li>
+<li>If you were to do this again (same process, but a new program), what do you
+think you could do differently to make it easier?</li>
+</ol>
+<h1 id="week-11"><a class="header" href="#week-11">Week 11</a></h1>
+<h2 id="class-meetings-10"><a class="header" href="#class-meetings-10">Class Meetings</a></h2>
+<ul>
+<li>2025/11/04</li>
+<li>2025/11/06</li>
+</ul>
+<h2 id="review-8"><a class="header" href="#review-8">Review</a></h2>
+<ul>
+<li>Week 10 practice exercise?</li>
+<li>Now entering bonus topics!
+<ul>
+<li>Nothing from weeks 11-14 is needed or should be used on autograded
+assignments.</li>
+<li>We'll still get practice with the material from weeks 1-10.</li>
+</ul>
+</li>
+<li>This week will help with the transition to CSC111 and SER120 and with
+understanding Java tutorials/examples you read online.</li>
+</ul>
+<h2 id="goals-7"><a class="header" href="#goals-7">Goals</a></h2>
+<p>After this week, you should be able to</p>
+<ul>
+<li>use a Scanner to read from <code>System.in</code></li>
+<li>write standard Java versions of our compact source programs</li>
+<li>define a new reference type using a class</li>
+<li>write methods for your new type</li>
+<li>override the <code>toString</code> and <code>equals</code> methods for your new type</li>
+</ul>
+<h1 id="oop"><a class="header" href="#oop">OOP</a></h1>
+<ul>
+<li>Object-Oriented Programming (OOP)
+<ul>
+<li>model program as a collection of objects</li>
+<li>objects have data (variables) and methods (functions)</li>
+<li>objects encapsulate (hide) their data to maintain invariants</li>
+<li>often use other features (inheritance, polymorphism, etc.) to aid code reuse
+and make a design more modular</li>
+</ul>
+</li>
+<li>Programming paradigms and software architecture
+<ul>
+<li>different approaches to designing software</li>
+<li>concerned with how we model/think about problems and organize code</li>
+<li>different paradigms and architectures have different trade-offs and are good
+for solving different problems</li>
+</ul>
+</li>
+</ul>
+<h1 id="classes"><a class="header" href="#classes">Classes</a></h1>
+<ul>
+<li>Java defines objects with classes</li>
+<li>some OOP languages use prototypes instead of classes (Javascript)</li>
+<li><code>class</code> keyword in Java has multiple uses:
+<ul>
+<li>define a new type of object</li>
+<li>create a namespace to organize <code>static</code> functions</li>
+<li>can be used for either or both at the same time</li>
+</ul>
+</li>
+<li>defining a type
+<ul>
+<li>instance variables: each instance has its own copy of these variables</li>
+<li>constructor: special type of function, initializes instance variables</li>
+<li>methods: built-in functions we can call on instances of the class</li>
+</ul>
+</li>
+<li>instantiating/using our type
+<ul>
+<li>instantiate: create an instance of a class, <code>new</code> followed by calling
+constructor</li>
+<li>variables/methods: access class members with "dot syntax"</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-java">// PointDemo.java
+void main() {
+    Point a = new Point(5, 10);
+    Point b = new Point(0, 0);
+
+    double distance = a.distanceTo(b);
+    a.printMe("a");
+    b.printMe("b");
+    IO.println("Distance from a to b: " + distance + ".");
+}
+
+// declare class
+class Point {
+    // declare instance variables
+    double x;
+    double y;
+
+    // constructor
+    Point(double initX, double initY) {
+        // initialize instance variables
+        this.x = initX;
+        this.y = initY;
+    }
+
+    // method to calculate distance to a second point
+    double distanceTo(Point other) {
+        double dx = this.x - other.x;
+        double dy = this.y - other.y;
+        return Math.sqrt(dx * dx + dy * dy);
+    }
+
+    void printMe(String label) {
+        IO.println(String.format("%s(%.3f, %.3f)", label, this.x, this.y));
+    }
+}
+</code></pre>
+<h1 id="inheritance"><a class="header" href="#inheritance">Inheritance</a></h1>
+<ul>
+<li>common OOP feature</li>
+<li>class can "extend" another class
+<ul>
+<li>inherits all variables and methods from the extended class (superclass)</li>
+<li>instances can be used in any code that uses the superclass</li>
+</ul>
+</li>
+<li>Java's hierarchy
+<ul>
+<li>every class inherits from exactly one other class</li>
+<li>if you don't declare a superclass, your class inherits from <code>Object</code></li>
+<li>everything in the inheritance hierarchy traces back to <code>Object</code></li>
+</ul>
+</li>
+<li>overriding inherited methods
+<ul>
+<li>can replace inherited method with our own version</li>
+<li>every class inherits <code>.equals(Object)</code> and <code>.toString()</code> from <code>Object</code></li>
+<li>can override to make them more useful</li>
+<li><code>.toString()</code> called whenever implicitly converting an object to a string</li>
+</ul>
+</li>
+<li>example: override equals and toString for our point class</li>
+</ul>
+<h1 id="encapsulation"><a class="header" href="#encapsulation">Encapsulation</a></h1>
+<ul>
+<li>in object-oriented design
+<ul>
+<li>classes are responsible for maintaining valid internal state</li>
+<li>hide instance variables from outside code and allow limited access</li>
+<li>Java provides <code>public</code>, <code>private</code>, and <code>protected</code> keywords for controlling
+access to variables and methods from outside a class</li>
+</ul>
+</li>
+<li>not going to deal with encapsulation this week, but remember that this is not
+considered good practice in OOP</li>
+<li>we're treating our objects as collections of related variables with no
+invariants</li>
+</ul>
+<h1 id="standard-java"><a class="header" href="#standard-java">Standard Java</a></h1>
+<ul>
+<li>standard Java structure (without compact source) is more verbose (see
+<code>Repeat.java</code> below)</li>
+<li>new concepts
+<ul>
+<li>classes</li>
+<li>public access modifier</li>
+<li>static method</li>
+<li>main and program arguments</li>
+<li>System and standard I/O objects</li>
+<li>Scanners</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-java">void main() {
+    String s = IO.readln("Enter some text: ");
+    IO.println("You typed: " + s);
+}
+</code></pre>
+<pre><code class="language-java">public class Repeat {
+    public static void main(String[] args) {
+        java.util.Scanner input = new java.util.Scanner(System.in);
+
+        System.out.print("Enter some text: ");
+        String s = input.nextLine();
+        System.out.println("You typed: " + s);
+
+        input.close();
+    }
+}
+</code></pre>
 
                     </main>
 
