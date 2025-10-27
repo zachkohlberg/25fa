@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Assignment 8 - CSC110 Assignments</title>
+        <title>Final Project - CSC110 Assignments</title>
 
 
         <!-- Custom HTML head -->
@@ -152,140 +152,126 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="assignment-8"><a class="header" href="#assignment-8">Assignment 8</a></h1>
-<p>This assignment will add multiple rounds and persistent scoring between rounds.
-You can finally play a full game (of a partial Yahtzee implementation) and keep
-track of scores from previous rounds.</p>
-<h2 id="autograded"><a class="header" href="#autograded">Autograded</a></h2>
-<p>This is an autograded assignment. Read the
-<a href="./autograded.html">Autograded Assignments</a> page before starting.</p>
-<p>This program involves random numbers. Make sure you're following the random
-number generation requirements for autograded assignments so that your code is
-compatible with the tests.</p>
-<h2 id="directions"><a class="header" href="#directions">Directions</a></h2>
+                        <h1 id="final-project"><a class="header" href="#final-project">Final Project</a></h1>
+<p>The final project is an open-ended assignment. You're free to explore any topic
+that interests you, as long as it is relevant to CSC110 and you can produce a
+working program to demo at the end of the semester.</p>
+<p>This assignment counts as two normal assignments for the purpose of final
+grades:</p>
+<ul>
+<li>Submitting the program and other required material on time counts as one
+completed assignment</li>
+<li>Participating in the in-class demos and discussing your program with me counts
+as one completed assignment</li>
+</ul>
+<h2 id="groups"><a class="header" href="#groups">Groups</a></h2>
+<p>You can complete this project on your own or work in a group. Groups must be
+established in your proposal, and all group members must be present when making
+the proposal.</p>
+<h2 id="proposal"><a class="header" href="#proposal">Proposal</a></h2>
+<p>Before you begin the project, you must present the idea for your project during
+class or during my in-person office hours. I will reserve some time at the end
+of class meetings for these proposals.</p>
+<p>A proposal should take no more than five minutes to present and must answer the
+questions below. You can format this information however you want as long as it
+can be displayed with your laptop.</p>
 <ol>
-<li>Write this program in a file named <code>DiceGame4.java</code> and start with a copy of
-your code from the previous assignment.</li>
-<li>Modify your <code>printScores</code> function to take two parameters: an array of ten
-scores and an array of five dice. The array of scores represents scores from
-previous rounds, with a negative value indicating a category that hasn't been
-selected. When you print each category:
-<ul>
-<li>if the score in the array isn't negative, show that number instead of
-calculating a score with the dice</li>
-<li>if the score in the array is negative, show "available (X)", where X is the
-score calculated for the given dice, to indicate that the user can choose
-this category and would receive the amount of points shown</li>
-</ul>
-</li>
-<li>Modify your <code>playRound</code> function to take a parameter for the scores array.
-You'll need to pass this array when you print the scores. Make the following
-changes to the scoring part of the function:
-<ul>
-<li>Change your input validation to ensure the user chooses a category from 1
-to 10 with a negative score. Remember to subtract 1 from the category
-number before using it to index the scores array (categories are 1-10, but
-score indexes are 0-9).</li>
-<li>Change the error message to <code>ERROR: You cannot score category X.</code>, where X
-is the user's invalid input. The old message doesn't make sense now that
-we're choosing from ten categories instead of six die values.</li>
-<li>Store the user's score in the scores array at the appropriate index.</li>
-</ul>
-</li>
-<li>Modify your <code>main</code> function to do the following:
-<ul>
-<li>Create an array of ten scores and initialize each element to -1.</li>
-<li>Call your <code>playRound</code> function ten times (use a loop), passing it the
-scores array as an argument. It will add one score to the array with each
-round, replacing the negative number.</li>
-<li>Find the total score after ten rounds and print
-<code>Game Over! Your total score is: X.</code>, replacing X with the total score.</li>
-<li>Print the score categories one more time. You'll need to pass it an array
-for the dice, even though it won't use the array, so just make a new
-temporary array and pass that as the second argument.</li>
-</ul>
-</li>
+<li>Who is working on the project?</li>
+<li>What will your program do when the project is complete?</li>
+<li>What do you expect to learn from creating this program? Different group
+members may have different learning goals depending on how the work is
+divided.</li>
+<li>If working in a group, what is the primary responsibility of each group
+member? Everyone must contribute substantially to the code written for a
+group project. I expect group projects to be large enough that each member
+can "own" a specific part of the program, even if other portions are a shared
+responsibility.</li>
+<li>What are some concrete objectives that can be used to assess whether you have
+completed the project? These are the criteria I will use to grade the
+submitted program.</li>
 </ol>
-<h2 id="submission"><a class="header" href="#submission">Submission</a></h2>
-<p>Upload your <code>DiceGame4.java</code> file using the submission link on Blackboard.</p>
-<h2 id="requirements"><a class="header" href="#requirements">Requirements</a></h2>
-<p>Requirements are the same as previous assignments except as noted here and in
-the directions.</p>
-<h3 id="io"><a class="header" href="#io">I/O</a></h3>
-<p>The <code>printScores</code> function must show which categories are available (negative
-value in the scores array) along with a score calculated for the given dice. For
-other categories, it must show the score in the scores array. The sample below
-is for a score array of -1, -1, -1, 12, 5, -1, 23, -1, 50, 11 and a dice array
-of 6, 6, 6, 5, 6.</p>
-<pre><code>Score Categories:
-
-1. Aces: available (0)
-2. Twos: available (0)
-3. Threes: available (0)
-4. Fours: 12
-5. Fives: 5
-6. Sixes: available (24)
-7. 3 of a Kind: 23
-8. 4 of a Kind: available (29)
-9. Yahtzee: 50
-10. Chance: 11
-</code></pre>
-<p>The message at the end of the game must be formatted as shown below, immediately
-followed by the <code>printScores</code> output:</p>
-<pre><code>Game Over! Your total score is: 166.
-Score Categories:
-
-1. Aces: 2
-2. Twos: 8
-3. Threes: 6
-4. Fours: 12
-5. Fives: 5
-6. Sixes: 24
-7. 3 of a Kind: 23
-8. 4 of a Kind: 25
-9. Yahtzee: 50
-10. Chance: 11
-</code></pre>
-<h3 id="functions"><a class="header" href="#functions">Functions</a></h3>
+<p>I may ask for changes before approving your project. When assessing a proposal,
+I will consider the following:</p>
 <ul>
-<li><code>printScores</code>
-<ul>
-<li>parameters: an <code>int</code> array representing ten scores and an <code>int</code> array
-representing five dice</li>
-<li>return type: <code>void</code></li>
-<li>This function must print the score categories as specified in the <a href="#io">I/O</a>
-requirements.</li>
+<li>Did you address everything listed above?</li>
+<li>Are your objectives clear enough that I can use them to assess your finished
+program?</li>
+<li>Does the project have a clear and reasonable scope? Projects that are too
+ambitious to complete in a few weeks or so small as to be trivial aren't
+suitable for this assignment. Let's assume you will work on this for three
+weeks and spend 2-5 hours per week. That means it should involve somewhere
+from 5 to 15 hours of work per group member to complete. This does not include
+unproductive time, like spending two hours debugging a small problem that
+would have taken a few minutes if you had asked for help. If you spend time
+poorly, then expect to spend significantly more than the estimated 5-15 hours.</li>
 </ul>
-</li>
-<li><code>playRound</code>
-<ul>
-<li>parameters: an <code>int</code> array representing ten scores</li>
-<li>return type: <code>void</code></li>
-<li>This function must play a round of the game as described in the directions,
-updating the score array with a new score.</li>
-</ul>
-</li>
-<li><code>main</code>
-<ul>
-<li>parameters: none</li>
-<li>return type: <code>void</code></li>
-<li>This function must play all ten rounds and print the scores at the end as
-described in the directions.</li>
-</ul>
-</li>
-</ul>
+<p>Final projects will not be accepted without an approved proposal. If, while
+working on the project, you wish to make significant changes from what was
+covered in your proposal, then you must present an updated proposal for the new
+version by the proposal deadline. If you don't do this, or if I don't approve
+the new version, then you will be held to the version that I did approve.</p>
+<p>All material used for your presentation must be uploaded to Blackboard before
+you present it. If we don't have enough time for everyone who wishes to present
+on a given day, then I will prioritize groups based on how early their material
+was uploaded to Blackboard.</p>
+<p>Finally, a reminder not to use an LLM or other AI tool to write your proposal or
+generate material for a proposal. I want to hear <em>you</em> explain <em>your idea</em> for
+<em>your project</em>. Unauthorized AI use or plagiarism on the proposal will be
+treated just as seriously as if you had cheated on the program.</p>
+<h2 id="demo-1-point"><a class="header" href="#demo-1-point">Demo (1 Point)</a></h2>
+<p>At the end of the semester, either during the last week of class or during our
+final exam period, we will demo final projects. This will be an informal
+process: each group who completed a project should have their program ready to
+run on a laptop, and all students will be free to wander around and check out
+other project demos. Be prepared to explain your program, show how it works,
+and, if you're comfortable doing so, allow other people to try using it.</p>
+<p>I will look at every project during this time and ask each group to demonstrate
+their finished program. Presenting your work on this day is worth 1 completed
+assignment. To receive credit, you must:</p>
+<ol>
+<li>Be present for this class meeting.</li>
+<li>Have a working program that matches what you described in your proposal.</li>
+<li>Help demonstrate your program to me and answer questions about it.</li>
+</ol>
+<p>If you cannot attend the demo and want to schedule a make-up, then I expect you
+to notify me as early as possible and explain why you cannot attend. I will only
+allow make-ups if notified promptly and if the absence was necessary (not, for
+example, because you decided to go on a vacation that day or wanted to leave
+early for winter break).</p>
+<h2 id="program-submission-1-point"><a class="header" href="#program-submission-1-point">Program Submission (1 Point)</a></h2>
+<p>Your finished program must be submitted on Blackboard before the deadline. This
+submission on its own is worth 1 completed assignment, provided the following
+requirements are met:</p>
+<ol>
+<li>The program is submitted on time.</li>
+<li>The program compiles, runs, and is what you described in your proposal. It
+must meet your stated objectives or be reasonably close to meeting each
+objective.</li>
+<li>Your program should be runnable with the <code>java</code> command on your main source
+file. If it requires additional steps to compile/run, then include
+compile/run instructions with your submission.</li>
+<li>Your program should provide clear prompts and directions for the user. If a
+user would need to know something that the program doesn't explain to them,
+then include instructions for using the program with your submission. The
+user should not have to read your code to understand how to use the program.</li>
+<li>If your program has significant bugs or there was a problem meeting some of
+your objectives, then you must include an explanation of these issues with
+the submission. I expect to see a good faith effort towards completing each
+objective, and the program must be close to meeting each objective even if
+you ran into issues.</li>
+<li>If you worked in a group, then your submission must include a summary of each
+member's contributions to the project. These must be consistent with the
+individual responsibilities given in your proposal.</li>
+</ol>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="assign7.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="assign8.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="final.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -293,13 +279,10 @@ described in the directions.</li>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="assign7.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="assign8.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="final.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
             </nav>
 
         </div>
