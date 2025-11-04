@@ -1271,6 +1271,64 @@ you ran into issues.</li>
 member's contributions to the project. These must be consistent with the
 individual responsibilities given in your proposal.</li>
 </ol>
+<h1 id="sample-proposal"><a class="header" href="#sample-proposal">Sample Proposal</a></h1>
+<p>Below is an example proposal based on work I'll be doing to prepare week 12-14
+material for this class. I chose to write it as a markdown file and render it to
+html with <code>mdbook</code>, but remember that you can use whatever format you want for
+your own proposal as long as you can present it on a laptop screen.</p>
+<h2 id="proposal-terminal-game-demos"><a class="header" href="#proposal-terminal-game-demos">Proposal: Terminal Game Demos</a></h2>
+<p>Author(s): Zach Kohlberg</p>
+<p>Program Summary:</p>
+<ul>
+<li>Several small programs demonstrating various topics, such as File I/O,
+exception handling, ANSI escape sequences, enums, and networking.</li>
+<li>One larger program that implements a Wordle-like game, either as a
+single-player game or, if time permits, as a two-player game played over a
+network.</li>
+</ul>
+<p>Learning Goals:</p>
+<ul>
+<li>I know relatively little about ANSI escapes and will have fun learning to code
+some TUI features from scratch.</li>
+<li>I've written network code in Java before, but I'm curious to see how much I
+can simplify a networked program to make it accessible to CSC110 students. I
+think I can avoid some of the topics I'd normally need to cover for such a
+program:
+<ul>
+<li>Multithreading isn't necessary if we keep our program to two users and don't
+try to handle any errors that might occur. This also removes the need for a
+queue or any concurrent data structures to handle incoming messages or allow
+users to join/reconnect in the middle of the game.</li>
+<li>We can avoid introducing any GUI elements if we just print to the terminal,
+and we can use ANSI escapes to avoid mangling user input with new output.</li>
+</ul>
+</li>
+</ul>
+<p>Concrete Objectives:</p>
+<ul>
+<li>Separate example programs, each demonstrating a simple usecase for one of the
+following topics:
+<ul>
+<li>Exception handling</li>
+<li>File I/O</li>
+<li>Enums</li>
+<li>ANSI escapes</li>
+</ul>
+</li>
+<li>A functioning Password/Wordle-like terminal game, probably single-player, that
+uses some of the above topics (minimally reads a word list file to establish
+valid word choices)</li>
+</ul>
+<p>Additional Goals (time permitting, not part of grading criteria):</p>
+<ul>
+<li>Example programs covering:
+<ul>
+<li>Additional reader/writer classes from the standard library</li>
+<li>Minimal networking code for a two-user chatroom</li>
+</ul>
+</li>
+<li>Make the game two-player over a TCP connection</li>
+</ul>
 
                     </main>
 
