@@ -170,11 +170,13 @@ compatible with the tests.</p>
 assumes you are starting from a working version of that program that passes
 all of its tests.</li>
 <li>Write a function named <code>buyScores</code> that takes no parameters and returns an
-array of <code>int</code>s. This function must perform the same process used in the old
-program for point buy, add the final scores to an array, and return the
-array. You can cut and paste that code from your old <code>main</code> function into
-this new <code>buyScores</code> function, then create and return the array after the
-loop.</li>
+array of <code>int</code>s. The previous assignment implemented a simplified "point buy"
+system: the user can choose any three numbers for their ability scores as
+long as these numbers add up to 36 or less. Your <code>buyScores</code> function must
+perform that same process used in the previous assignment and return the
+scores as an <code>int</code> array. You've already written most of this function: just
+copy and paste that point buy process from your old <code>main</code> function into this
+new <code>buyScores</code> function, then create and return the array after the loop.</li>
 <li>Write a function named <code>roll</code> that takes no parameters and returns an <code>int</code>.
 This function must generate four random <code>int</code>s from 1 to 6, then return the
 sum of the three largest numbers it generated. For example, if you generated
