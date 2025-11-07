@@ -2639,6 +2639,200 @@ to cover them</li>
     }
 }
 </code></pre>
+<h1 id="weeks-12-14"><a class="header" href="#weeks-12-14">Weeks 12-14</a></h1>
+<h1 id="static-vs-instance"><a class="header" href="#static-vs-instance">Static vs Instance</a></h1>
+<ul>
+<li>classes that define types
+<ul>
+<li>instance: object of that type</li>
+<li>instance variables: each instance gets a copy</li>
+<li>instance methods: runs on a specific instance</li>
+</ul>
+</li>
+<li>static: non-instance
+<ul>
+<li>static variable: only one copy for the class, effectively a global variable
+<ul>
+<li>except static constants, usually a bad idea</li>
+</ul>
+</li>
+<li>static method: doesn't need to be called on an instance, effectively a
+standalone function</li>
+</ul>
+</li>
+<li>the <code>main</code> method
+<ul>
+<li>entry point for a Java program</li>
+<li>before Java 25, had to be static</li>
+<li>Java 25 allows "instance main" (see JEP 512), meaning a non-static main can
+be an entry point for a program</li>
+</ul>
+</li>
+</ul>
+<h1 id="program-arguments"><a class="header" href="#program-arguments">Program Arguments</a></h1>
+<ul>
+<li>program argument: arguments provided to a program
+<ul>
+<li>when you call a function, you sometimes pass arguments to the function call</li>
+<li>when you run a program on the terminal, you sometimes pass arguments to the
+program</li>
+<li>example: <code>cd ~/csc110/assignment6</code>
+<ul>
+<li>the <code>cd</code> command is being run with the argument <code>~/csc110/assignment6</code></li>
+</ul>
+</li>
+<li>example: <code>java Program.java 1 2 3</code>
+<ul>
+<li>the <code>java</code> command is being run with the arguments <code>Program.java</code>, <code>1</code>,
+<code>2</code>, and <code>3</code></li>
+<li>the <code>java</code> command will pass all arguments after <code>Program.java</code> to
+<code>Program.java</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>before Java 25
+<ul>
+<li><code>main</code> must always declare one parameter, an array of strings, which is
+often named <code>args</code></li>
+<li>this array is initialized with any program arguments</li>
+</ul>
+</li>
+<li>after Java 25
+<ul>
+<li><code>main</code> can declare no parameters and ignore program arguments</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-java">// Average.java
+// This program gets its input from its args array instead of interactively
+// prompting the user while it's running.
+void main(String[] args) {
+    // parse the arguments as doubles and sum them
+    double sum = 0.0;
+    for (int i = 0; i &lt; numbers.length; i++) {
+        sum += Double.parseDouble(args[i]);
+    }
+    // divide by number of args to compute the mean average
+    double average = sum / args.length;
+    // print average rounded to four decimal places
+    IO.println(String.format("Average: %.4f", average));
+}
+</code></pre>
+<h1 id="system"><a class="header" href="#system">System</a></h1>
+<ul>
+<li><code>System</code> class contains commonly-used functions and standard i/o streams</li>
+<li>before Java 25
+<ul>
+<li>use the <code>System.out</code> and <code>System.err</code> output streams to print to standard
+out and standard err</li>
+<li>create a <code>Scanner</code> or other reader object to read standard in from
+<code>System.in</code></li>
+</ul>
+</li>
+<li>after Java 25
+<ul>
+<li>added the <code>IO</code> class with convenient static methods for printing to standard
+out and reading from standard in</li>
+</ul>
+</li>
+<li>other useful features of <code>System</code>:
+<ul>
+<li><code>System.exit(code)</code>: exit the running Java program, with a zero code
+indicating your program succeeded and a nonzero code indicating an
+error/failure</li>
+<li><code>System.nanoTime()</code>: get time in nanoseconds
+<ul>
+<li>not useful for checking current time, just how much time has elapsed since
+the last time you called <code>System.nanoTime()</code></li>
+</ul>
+</li>
+<li><code>System.currentTimeMillis()</code>: get milliseconds since the "Unix epoch" (one
+way to check the current time)</li>
+</ul>
+</li>
+</ul>
+<h1 id="scanner"><a class="header" href="#scanner">Scanner</a></h1>
+<ul>
+<li>one type of I/O object that can be used to read from <code>System.in</code>, text files,
+and other I/O objects</li>
+<li>can read one line at a time with its <code>nextLine()</code> method, much like
+<code>IO.readln()</code> but without the option to display a message prompting the user
+for input</li>
+<li>can also read and parse input with methods like <code>nextInt()</code>, <code>nextDouble()</code>,
+etc., but when mixed with <code>nextLine()</code> these methods can cause surprising
+behavior</li>
+<li>scanners should be closed when no longer needed to avoid memory leaks</li>
+<li>closing a scanner closes the source it reads from</li>
+<li>multiple scanners should not be created reading from the same source</li>
+</ul>
+<h1 id="the-java-api"><a class="header" href="#the-java-api">The Java API</a></h1>
+<ul>
+<li>API: Application Programming Interface
+<ul>
+<li>describes the public/user-facing part of a library or piece of software</li>
+<li>the public functions and classes in your Java code can be viewed as an API</li>
+<li>the Java API refers to the parts of the standard library that you can use in
+your own code</li>
+<li>Java includes a <code>javadoc</code> utility to generate the API website from comments
+that follow a set of formatting rules</li>
+</ul>
+</li>
+<li>the Java API is a useful resource when working with a part of the standard
+library you don't yet know</li>
+<li>requires a baseline understanding of Java to be useful and will become more
+useful as you learn more about Java</li>
+<li>Java 25 API: <a href="https://docs.oracle.com/en/java/javase/25/docs/api/index.html">https://docs.oracle.com/en/java/javase/25/docs/api/index.html</a></li>
+</ul>
+<h1 id="packages-and-imports"><a class="header" href="#packages-and-imports">Packages and Imports</a></h1>
+<ul>
+<li>packages are used to organize larger Java codebases</li>
+<li>the standard library is organized into packages</li>
+<li>normally, referring to a class requires you to also state its package:
+<code>java.lang.Math</code> instead of just <code>Math</code></li>
+<li>the <code>import</code> keyword can allow you to access a package or a class within a
+package without typing the full package name</li>
+<li>the contents of the <code>java.lang</code> package are imported automatically, and the
+compact source files described in JEP 512 will import a much larger portion of
+the standard library on-demand, meaning you rarely need to use import in these
+programs (we haven't used it at all yet)</li>
+</ul>
+<h1 id="exceptions"><a class="header" href="#exceptions">Exceptions</a></h1>
+<ul>
+<li>exceptions are objects that represent runtime errors</li>
+<li>checked exceptions
+<ul>
+<li>represent errors that your code is expected to anticipate and react to</li>
+<li>require error-handling code such as a <code>throws</code> declaration or a
+<code>try</code>-<code>catch</code> statement</li>
+<li>we haven't dealt with checked exceptions yet</li>
+</ul>
+</li>
+<li>unchecked exceptions
+<ul>
+<li>represent errors that a programmer may not want to explicitly handle, often
+because they can prevent the error with well-designed code and judge whether
+the error is actually possible</li>
+<li>we've seen a few of these: <code>NumberFormatException</code>,
+<code>ArrayIndexOutOfBoundsException</code>, <code>StringIndexOutOfBoundsException</code>,
+<code>NullPointerException</code>, and <code>ArithmeticException</code> are all unchecked
+exceptions</li>
+</ul>
+</li>
+<li><code>throws</code> keyword is used to declare that a method may throw a checked
+exception and that the caller needs to handle or throw the exception</li>
+<li><code>throw</code> keyword throws an exception to the caller</li>
+<li><code>try</code>, <code>catch</code>, and <code>finally</code> are used to create error-handling code that
+deals with an exception and allows the program to continue running instead of
+crashing</li>
+</ul>
+<h1 id="files"><a class="header" href="#files">Files</a></h1>
+<ul>
+<li><code>java.io.File</code> class represents the location of a file <strong>or a directory</strong> on
+your hard drive</li>
+<li>Can be used to search for files/directories or to create an I/O object (like a
+Scanner) that reads from or writes to the file on the hard drive</li>
+</ul>
 
                     </main>
 

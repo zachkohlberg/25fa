@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Standard Java - CSC110 Lecture Outlines</title>
+        <title>The Java API - CSC110 Lecture Outlines</title>
 
 
         <!-- Custom HTML head -->
@@ -152,48 +152,34 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="standard-java"><a class="header" href="#standard-java">Standard Java</a></h1>
+                        <h1 id="the-java-api"><a class="header" href="#the-java-api">The Java API</a></h1>
 <ul>
-<li>standard Java structure (without compact source) is more verbose (see
-<code>Repeat.java</code> below)</li>
-<li>new concepts
+<li>API: Application Programming Interface
 <ul>
-<li>classes</li>
-<li>public access modifier</li>
-<li>static method</li>
-<li>main and program arguments</li>
-<li>System and standard I/O objects</li>
-<li>Scanners</li>
+<li>describes the public/user-facing part of a library or piece of software</li>
+<li>the public functions and classes in your Java code can be viewed as an API</li>
+<li>the Java API refers to the parts of the standard library that you can use in
+your own code</li>
+<li>Java includes a <code>javadoc</code> utility to generate the API website from comments
+that follow a set of formatting rules</li>
 </ul>
 </li>
+<li>the Java API is a useful resource when working with a part of the standard
+library you don't yet know</li>
+<li>requires a baseline understanding of Java to be useful and will become more
+useful as you learn more about Java</li>
+<li>Java 25 API: <a href="https://docs.oracle.com/en/java/javase/25/docs/api/index.html">https://docs.oracle.com/en/java/javase/25/docs/api/index.html</a></li>
 </ul>
-<pre><code class="language-java">void main() {
-    String s = IO.readln("Enter some text: ");
-    IO.println("You typed: " + s);
-}
-</code></pre>
-<pre><code class="language-java">public class Repeat {
-    public static void main(String[] args) {
-        java.util.Scanner input = new java.util.Scanner(System.in);
-
-        System.out.print("Enter some text: ");
-        String s = input.nextLine();
-        System.out.println("You typed: " + s);
-
-        input.close();
-    }
-}
-</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../week11/encapsulation.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../bonus/scanner.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../bonus.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../bonus/import.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -203,11 +189,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../week11/encapsulation.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../bonus/scanner.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../bonus.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../bonus/import.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

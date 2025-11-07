@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Standard Java - CSC110 Lecture Outlines</title>
+        <title>System - CSC110 Lecture Outlines</title>
 
 
         <!-- Custom HTML head -->
@@ -152,48 +152,49 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="standard-java"><a class="header" href="#standard-java">Standard Java</a></h1>
+                        <h1 id="system"><a class="header" href="#system">System</a></h1>
 <ul>
-<li>standard Java structure (without compact source) is more verbose (see
-<code>Repeat.java</code> below)</li>
-<li>new concepts
+<li><code>System</code> class contains commonly-used functions and standard i/o streams</li>
+<li>before Java 25
 <ul>
-<li>classes</li>
-<li>public access modifier</li>
-<li>static method</li>
-<li>main and program arguments</li>
-<li>System and standard I/O objects</li>
-<li>Scanners</li>
+<li>use the <code>System.out</code> and <code>System.err</code> output streams to print to standard
+out and standard err</li>
+<li>create a <code>Scanner</code> or other reader object to read standard in from
+<code>System.in</code></li>
+</ul>
+</li>
+<li>after Java 25
+<ul>
+<li>added the <code>IO</code> class with convenient static methods for printing to standard
+out and reading from standard in</li>
+</ul>
+</li>
+<li>other useful features of <code>System</code>:
+<ul>
+<li><code>System.exit(code)</code>: exit the running Java program, with a zero code
+indicating your program succeeded and a nonzero code indicating an
+error/failure</li>
+<li><code>System.nanoTime()</code>: get time in nanoseconds
+<ul>
+<li>not useful for checking current time, just how much time has elapsed since
+the last time you called <code>System.nanoTime()</code></li>
+</ul>
+</li>
+<li><code>System.currentTimeMillis()</code>: get milliseconds since the "Unix epoch" (one
+way to check the current time)</li>
 </ul>
 </li>
 </ul>
-<pre><code class="language-java">void main() {
-    String s = IO.readln("Enter some text: ");
-    IO.println("You typed: " + s);
-}
-</code></pre>
-<pre><code class="language-java">public class Repeat {
-    public static void main(String[] args) {
-        java.util.Scanner input = new java.util.Scanner(System.in);
-
-        System.out.print("Enter some text: ");
-        String s = input.nextLine();
-        System.out.println("You typed: " + s);
-
-        input.close();
-    }
-}
-</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../week11/encapsulation.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../bonus/args.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../bonus.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../bonus/scanner.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -203,11 +204,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../week11/encapsulation.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../bonus/args.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../bonus.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../bonus/scanner.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

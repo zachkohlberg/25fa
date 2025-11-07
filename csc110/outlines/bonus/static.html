@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Standard Java - CSC110 Lecture Outlines</title>
+        <title>Static vs Instance - CSC110 Lecture Outlines</title>
 
 
         <!-- Custom HTML head -->
@@ -152,48 +152,45 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="standard-java"><a class="header" href="#standard-java">Standard Java</a></h1>
+                        <h1 id="static-vs-instance"><a class="header" href="#static-vs-instance">Static vs Instance</a></h1>
 <ul>
-<li>standard Java structure (without compact source) is more verbose (see
-<code>Repeat.java</code> below)</li>
-<li>new concepts
+<li>classes that define types
 <ul>
-<li>classes</li>
-<li>public access modifier</li>
-<li>static method</li>
-<li>main and program arguments</li>
-<li>System and standard I/O objects</li>
-<li>Scanners</li>
+<li>instance: object of that type</li>
+<li>instance variables: each instance gets a copy</li>
+<li>instance methods: runs on a specific instance</li>
+</ul>
+</li>
+<li>static: non-instance
+<ul>
+<li>static variable: only one copy for the class, effectively a global variable
+<ul>
+<li>except static constants, usually a bad idea</li>
+</ul>
+</li>
+<li>static method: doesn't need to be called on an instance, effectively a
+standalone function</li>
+</ul>
+</li>
+<li>the <code>main</code> method
+<ul>
+<li>entry point for a Java program</li>
+<li>before Java 25, had to be static</li>
+<li>Java 25 allows "instance main" (see JEP 512), meaning a non-static main can
+be an entry point for a program</li>
 </ul>
 </li>
 </ul>
-<pre><code class="language-java">void main() {
-    String s = IO.readln("Enter some text: ");
-    IO.println("You typed: " + s);
-}
-</code></pre>
-<pre><code class="language-java">public class Repeat {
-    public static void main(String[] args) {
-        java.util.Scanner input = new java.util.Scanner(System.in);
-
-        System.out.print("Enter some text: ");
-        String s = input.nextLine();
-        System.out.println("You typed: " + s);
-
-        input.close();
-    }
-}
-</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../week11/encapsulation.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../bonus.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../bonus.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../bonus/args.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -203,11 +200,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../week11/encapsulation.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../bonus.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../bonus.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../bonus/args.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
