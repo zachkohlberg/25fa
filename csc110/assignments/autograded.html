@@ -167,16 +167,26 @@ be treated as an AIA violation.</p>
 <ul>
 <li>Output produced by <code>IO.println</code> and <code>IO.print</code>. Your program's output must
 match any requirements given in the assignment. Any difference (wrong
-spelling, capitalization, spacing, etc.) will fail an I/O test. All programs
-should end their output with a newline character, which usually means using
-<code>IO.println</code> for your last print statement, and avoid trailing whitespace in
-their output.</li>
+spelling, capitalization, spacing, etc.) will fail an I/O test.</li>
 <li>Values returned by your function. If your function returns a value, then the
 value must match any requirements given in the assignment.</li>
 <li>Modifications to array arguments passed to your function. If your function
 takes any array parameters, then it must modify them as described in the
 assignment's requirements. Any extra modifications will cause a test to fail.</li>
 </ul>
+<p>Your programs should avoid printing trailing whitespace (such as spaces at the
+end of a line) and should end their output with a <code>println</code> rather than a
+<code>print</code>, but the autograder (as of 11/14) will take the following steps to
+normalize your output:</p>
+<ul>
+<li>trim trailing whitespace</li>
+<li>delete any blank lines or lines that only contain whitespace</li>
+<li>add a newline to the end of your output if one is missing</li>
+</ul>
+<p>This means trailing whitespace, blank lines, and whether or not your output ends
+in a newline <strong>should not</strong> cause your program to fail any I/O tests. Spaces in
+the middle of a line or at the beginning of a line will still affect the outcome
+of a test.</p>
 <p>Tests will always ignore any output produced by <code>IO.readln</code>. I never specify how
 exactly to prompt the user for input, so you may word these prompts however you
 want. The tests will only look at output from <code>IO.print</code> and <code>IO.println</code>. This

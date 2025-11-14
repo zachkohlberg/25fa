@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Exceptions - CSC110 Lecture Outlines</title>
+        <title>Git - CSC110 Lecture Outlines</title>
 
 
         <!-- Custom HTML head -->
@@ -152,45 +152,84 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="exceptions"><a class="header" href="#exceptions">Exceptions</a></h1>
+                        <h1 id="git"><a class="header" href="#git">Git</a></h1>
+<p>Requested topic: how to use git with a group to share/merge code</p>
 <ul>
-<li>exceptions are objects that represent runtime errors</li>
-<li>checked exceptions
+<li>general git advice
 <ul>
-<li>represent errors that your code is expected to anticipate and react to</li>
-<li>require error-handling code such as a <code>throws</code> declaration or a
-<code>try</code>-<code>catch</code> statement</li>
-<li>we haven't dealt with checked exceptions yet</li>
+<li>git is powerful, which means it's both useful and dangerous</li>
+<li>easy to learn a few commands and use them to collaborate in normal
+conditions</li>
+<li>easy for inexperienced git users to lose work or create nightmare merge
+conflict
+<ul>
+<li>not always easy to fix these problems, especially when you lack git
+experience</li>
 </ul>
 </li>
-<li>unchecked exceptions
-<ul>
-<li>represent errors that a programmer may not want to explicitly handle, often
-because they can prevent the error with well-designed code and judge whether
-the error is actually possible</li>
-<li>we've seen a few of these: <code>NumberFormatException</code>,
-<code>ArrayIndexOutOfBoundsException</code>, <code>StringIndexOutOfBoundsException</code>,
-<code>NullPointerException</code>, and <code>ArithmeticException</code> are all unchecked
-exceptions</li>
+<li>git is worth learning, but learning git and dealing with problems at this
+stage may be more work than using a less sophisticated method like sharing
+via email and merging changes by hand</li>
 </ul>
 </li>
-<li><code>throws</code> keyword is used to declare that a method may throw a checked
-exception and that the caller needs to handle or throw the exception</li>
-<li><code>throw</code> keyword throws an exception to the caller</li>
-<li><code>try</code>, <code>catch</code>, and <code>finally</code> are used to create error-handling code that
-deals with an exception and allows the program to continue running instead of
-crashing</li>
+<li>basic git commands
+<ul>
+<li>clone</li>
+<li>branch, checkout</li>
+<li>add, reset</li>
+<li>commit</li>
+<li>push, pull</li>
+<li>rebase, merge</li>
+</ul>
+</li>
+<li>recommended workflow
+<ul>
+<li>keep current working version on main branch</li>
+<li>starting a new feature/change
+<ul>
+<li>pull main</li>
+<li>make new feature branch from main</li>
+<li>do all work on your new feature branch</li>
+<li>avoid touching the same code as other group members to prevent merge
+conflicts</li>
+</ul>
+</li>
+<li>merging work
+<ul>
+<li>commit work to feature branch</li>
+<li>checkout and pull main to get latest version</li>
+<li>rebase your feature branch onto main
+<ul>
+<li>you may need to address merge conflicts at this point</li>
+<li>test the program to ensure it's in a working state</li>
+</ul>
+</li>
+<li>fast-forward merge into main and push</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>problems and merge conflicts</li>
+<li>Atlassian and GitHub have many articles and tutorials (personally I like
+Atlassian's):
+<ul>
+<li><a href="https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet">https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet</a></li>
+<li><a href="https://www.atlassian.com/git/tutorials/merging-vs-rebasing">https://www.atlassian.com/git/tutorials/merging-vs-rebasing</a></li>
+<li><a href="https://education.github.com/git-cheat-sheet-education.pdf">https://education.github.com/git-cheat-sheet-education.pdf</a></li>
+<li><a href="https://docs.github.com/en/get-started/git-basics">https://docs.github.com/en/get-started/git-basics</a></li>
+</ul>
+</li>
 </ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../bonus/git.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../bonus/import.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../bonus/files.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../bonus/exceptions.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -200,11 +239,11 @@ crashing</li>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../bonus/git.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../bonus/import.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../bonus/files.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../bonus/exceptions.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

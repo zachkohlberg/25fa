@@ -2824,6 +2824,74 @@ compact source files described in JEP 512 will import a much larger portion of
 the standard library on-demand, meaning you rarely need to use import in these
 programs (we haven't used it at all yet)</li>
 </ul>
+<h1 id="git"><a class="header" href="#git">Git</a></h1>
+<p>Requested topic: how to use git with a group to share/merge code</p>
+<ul>
+<li>general git advice
+<ul>
+<li>git is powerful, which means it's both useful and dangerous</li>
+<li>easy to learn a few commands and use them to collaborate in normal
+conditions</li>
+<li>easy for inexperienced git users to lose work or create nightmare merge
+conflict
+<ul>
+<li>not always easy to fix these problems, especially when you lack git
+experience</li>
+</ul>
+</li>
+<li>git is worth learning, but learning git and dealing with problems at this
+stage may be more work than using a less sophisticated method like sharing
+via email and merging changes by hand</li>
+</ul>
+</li>
+<li>basic git commands
+<ul>
+<li>clone</li>
+<li>branch, checkout</li>
+<li>add, reset</li>
+<li>commit</li>
+<li>push, pull</li>
+<li>rebase, merge</li>
+</ul>
+</li>
+<li>recommended workflow
+<ul>
+<li>keep current working version on main branch</li>
+<li>starting a new feature/change
+<ul>
+<li>pull main</li>
+<li>make new feature branch from main</li>
+<li>do all work on your new feature branch</li>
+<li>avoid touching the same code as other group members to prevent merge
+conflicts</li>
+</ul>
+</li>
+<li>merging work
+<ul>
+<li>commit work to feature branch</li>
+<li>checkout and pull main to get latest version</li>
+<li>rebase your feature branch onto main
+<ul>
+<li>you may need to address merge conflicts at this point</li>
+<li>test the program to ensure it's in a working state</li>
+</ul>
+</li>
+<li>fast-forward merge into main and push</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>problems and merge conflicts</li>
+<li>Atlassian and GitHub have many articles and tutorials (personally I like
+Atlassian's):
+<ul>
+<li><a href="https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet">https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet</a></li>
+<li><a href="https://www.atlassian.com/git/tutorials/merging-vs-rebasing">https://www.atlassian.com/git/tutorials/merging-vs-rebasing</a></li>
+<li><a href="https://education.github.com/git-cheat-sheet-education.pdf">https://education.github.com/git-cheat-sheet-education.pdf</a></li>
+<li><a href="https://docs.github.com/en/get-started/git-basics">https://docs.github.com/en/get-started/git-basics</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="exceptions"><a class="header" href="#exceptions">Exceptions</a></h1>
 <ul>
 <li>exceptions are objects that represent runtime errors</li>
