@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Files - CSC110 Lecture Outlines</title>
+        <title>Readers and Writers - CSC110 Lecture Outlines</title>
 
 
         <!-- Custom HTML head -->
@@ -152,23 +152,56 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="files"><a class="header" href="#files">Files</a></h1>
+                        <h1 id="readers-and-writers"><a class="header" href="#readers-and-writers">Readers and Writers</a></h1>
 <ul>
-<li><code>java.io.File</code> class represents the location of a file <strong>or a directory</strong> on
-your hard drive</li>
-<li>Can be used to search for files/directories or to create an I/O object (like a
-Scanner) that reads from or writes to the file on the hard drive</li>
+<li>java standard library has many classes for handling input and output, such as:
+<ul>
+<li><a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/Scanner.html"><code>Scanner</code></a></li>
+<li><a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/io/PrintStream.html"><code>PrintStream</code></a></li>
+<li><a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/io/InputStream.html"><code>InputStream</code></a></li>
+<li><a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/io/BufferedReader.html"><code>BufferedReader</code></a></li>
+<li><a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/io/BufferedWriter.html"><code>BufferedWriter</code></a></li>
+<li><a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/io/FileWriter.html"><code>FileWriter</code></a></li>
+<li><a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/io/PrintWriter.html"><code>PrintWriter</code></a></li>
+</ul>
+</li>
+<li>these provide different features and deal with i/o at different levels of
+abstraction
+<ul>
+<li><code>InputStream</code> is a lower-level API: it works with raw bytes and isn't ideal
+if you want strings</li>
+<li><code>PrintStream</code> and <code>Scanner</code> are higher-level APIs: they can deal with
+strings and handle the conversion to bytes and the use of buffers</li>
+</ul>
+</li>
+<li>some of these classes throw checked exceptions in their constructors and/or
+methods, which we need to throw or handle</li>
+<li>many of these classes mention buffers
+<ul>
+<li>reading/writing is slow and requires interacting with the operating system
+(system calls)</li>
+<li>a buffer is a chunk of memory (such as an array) that can be used to collect
+data from multiple operations</li>
+<li>printing can write data to a buffer until it is full, then the whole buffer
+is written to the real destination (such as a file or standard output) at
+once to reduce the number of expensive system calls</li>
+<li>reading can pull a large amount of data into a buffer (one system call) and
+read a portion of the buffer every time your code calls a read function,
+reducing the number of times we need to pull new data into the program</li>
+<li>most of Java's i/o classes will handle buffering for you</li>
+</ul>
+</li>
 </ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../bonus/exceptions.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../bonus/files.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../bonus/io.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../bonus/ansi.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -178,11 +211,11 @@ Scanner) that reads from or writes to the file on the hard drive</li>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../bonus/exceptions.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../bonus/files.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../bonus/io.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../bonus/ansi.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Files - CSC110 Lecture Outlines</title>
+        <title>Demo Program: Password/Wordle Game - CSC110 Lecture Outlines</title>
 
 
         <!-- Custom HTML head -->
@@ -152,25 +152,50 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="files"><a class="header" href="#files">Files</a></h1>
+                        <h1 id="demo-program-passwordwordle-game"><a class="header" href="#demo-program-passwordwordle-game">Demo Program: Password/Wordle Game</a></h1>
+<p>We'll try implementing a game similar to Wordle or Password. Below are
+descriptions of a basic version and some enhancements we can make if time
+allows.</p>
 <ul>
-<li><code>java.io.File</code> class represents the location of a file <strong>or a directory</strong> on
-your hard drive</li>
-<li>Can be used to search for files/directories or to create an I/O object (like a
-Scanner) that reads from or writes to the file on the hard drive</li>
+<li>initial version
+<ul>
+<li>hard-coded word</li>
+<li>allow user to make guesses</li>
+<li>print same feedback a wordle/password game would provide</li>
+<li>detect correct guess</li>
+</ul>
+</li>
+<li>word list
+<ul>
+<li>read list of words from text files</li>
+<li>require guesses to be from the word list</li>
+<li>choose random secret word from the word list</li>
+</ul>
+</li>
+<li>nicer output
+<ul>
+<li>use ANSI to format feedback concisely</li>
+<li>show guess history separate from user input</li>
+<li>erase user input (will appear in guess history)</li>
+</ul>
+</li>
+<li>network
+<ul>
+<li>allow another player to connect to the program</li>
+<li>each player chooses a word from the word list</li>
+<li>players take turns guessing the other player's word</li>
+</ul>
+</li>
 </ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../bonus/exceptions.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../bonus/network.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../bonus/io.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -178,13 +203,10 @@ Scanner) that reads from or writes to the file on the hard drive</li>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../bonus/exceptions.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../bonus/network.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../bonus/io.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
             </nav>
 
         </div>

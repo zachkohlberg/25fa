@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Files - CSC110 Lecture Outlines</title>
+        <title>Terminal ANSI Escape Codes - CSC110 Lecture Outlines</title>
 
 
         <!-- Custom HTML head -->
@@ -152,23 +152,51 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="files"><a class="header" href="#files">Files</a></h1>
+                        <h1 id="terminal-ansi-escape-codes"><a class="header" href="#terminal-ansi-escape-codes">Terminal ANSI Escape Codes</a></h1>
 <ul>
-<li><code>java.io.File</code> class represents the location of a file <strong>or a directory</strong> on
-your hard drive</li>
-<li>Can be used to search for files/directories or to create an I/O object (like a
-Scanner) that reads from or writes to the file on the hard drive</li>
+<li>useful references
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/ANSI_escape_code">https://en.wikipedia.org/wiki/ANSI_escape_code</a></li>
+<li><a href="https://gist.github.com/ConnerWill/d4b6c776b509add763e17f9f113fd25b">https://gist.github.com/ConnerWill/d4b6c776b509add763e17f9f113fd25b</a></li>
+</ul>
+</li>
+<li>escape character and other ASCII control codes</li>
+<li>what can we do?
+<ul>
+<li>style text: colors, bold, italics, etc.</li>
+<li>move cursor</li>
+<li>delete text</li>
+</ul>
+</li>
+<li>applications
+<ul>
+<li>better-looking output with text styles</li>
+<li>nicer terminal interfaces
+<ul>
+<li>moving cursor and erasing previous output means you don't need to print
+everything in sequence</li>
+<li>can erase user input after reading to avoid cluttering the display</li>
+</ul>
+</li>
+<li>animations
+<ul>
+<li>erase existing output and print next frame</li>
+<li>may cause flickering depending on when terminal redraws</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../bonus/exceptions.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../bonus/io.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../bonus/io.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../bonus/network.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -178,11 +206,11 @@ Scanner) that reads from or writes to the file on the hard drive</li>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../bonus/exceptions.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../bonus/io.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../bonus/io.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../bonus/network.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

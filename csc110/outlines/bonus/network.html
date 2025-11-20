@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Files - CSC110 Lecture Outlines</title>
+        <title>I/O Over a Network - CSC110 Lecture Outlines</title>
 
 
         <!-- Custom HTML head -->
@@ -152,23 +152,71 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="files"><a class="header" href="#files">Files</a></h1>
+                        <h1 id="io-over-a-network"><a class="header" href="#io-over-a-network">I/O Over a Network</a></h1>
 <ul>
-<li><code>java.io.File</code> class represents the location of a file <strong>or a directory</strong> on
-your hard drive</li>
-<li>Can be used to search for files/directories or to create an I/O object (like a
-Scanner) that reads from or writes to the file on the hard drive</li>
+<li>we'll cover a very limited example, not everything required to produce a
+robust client-server application</li>
+<li>server: the host; accepts connections from clients</li>
+<li>client: connects to a server</li>
+<li>our program:
+<ul>
+<li>a server that accepts a single client connection</li>
+<li>once connection is created, both programs behave the same (no difference
+between client and server)</li>
+<li>can send and receive chat messages over network</li>
+</ul>
+</li>
+<li>we need to use two classes:
+<a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/net/ServerSocket.html"><code>ServerSocket</code></a>
+and
+<a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/net/Socket.html"><code>Socket</code></a>
+<ul>
+<li>a <code>ServerSocket</code> accepts connections from clients and creates <code>Socket</code>s to
+communicate with those clients</li>
+<li>a <code>Socket</code> contains an <code>InputStream</code> and an <code>OutputStream</code> for communication
+with another process over a network</li>
+</ul>
+</li>
+<li>some steps to make a more robust/complex program:
+<ul>
+<li>make a gui or use ANSI to prevent new messages from printing over user's
+input</li>
+<li>allow multiple clients to connect:
+<ul>
+<li>store sockets in a data structure (list or queue)</li>
+<li>iterate over sockets to read messages from all clients</li>
+<li>check server socket for new connections</li>
+<li>remove sockets for disconnected clients</li>
+</ul>
+</li>
+<li>handle exceptions to avoid crashing on errors</li>
+<li>multiple threads:
+<ul>
+<li>dedicated thread for the server socket to receive new connections</li>
+<li>separate threads to listen for messages from clients</li>
+<li>thread safety: use concurrent data structures where appropriate</li>
+</ul>
+</li>
+<li>server is the control center
+<ul>
+<li>clients send input/commands to server</li>
+<li>server decides how to handle client input</li>
+<li>server sends results/output to clients</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../bonus/exceptions.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../bonus/ansi.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../bonus/io.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../bonus/wordle.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -178,11 +226,11 @@ Scanner) that reads from or writes to the file on the hard drive</li>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../bonus/exceptions.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../bonus/ansi.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../bonus/io.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../bonus/wordle.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
