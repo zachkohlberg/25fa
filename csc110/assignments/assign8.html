@@ -182,6 +182,9 @@ this category and would receive the amount of points shown</li>
 You'll need to pass this array when you print the scores. Make the following
 changes to the scoring part of the function:
 <ul>
+<li>After printing the dice and before prompting for a score category, call
+your <code>printScores</code> function to show which categories are available and how
+many points they're worth.</li>
 <li>Change your input validation to ensure the user chooses a category from 1
 to 10 with a negative score. Remember to subtract 1 from the category
 number before using it to index the scores array (categories are 1-10, but
@@ -212,6 +215,7 @@ temporary array and pass that as the second argument.</li>
 <p>Requirements are the same as previous assignments except as noted here and in
 the directions.</p>
 <h3 id="io"><a class="header" href="#io">I/O</a></h3>
+<h4 id="scores"><a class="header" href="#scores">Scores</a></h4>
 <p>The <code>printScores</code> function must show which categories are available (negative
 value in the scores array) along with a score calculated for the given dice. For
 other categories, it must show the score in the scores array. The sample below
@@ -230,10 +234,14 @@ of 6, 6, 6, 5, 6.</p>
 9. Yahtzee: 50
 10. Chance: 11
 </code></pre>
-<p>The message at the end of the game must be formatted as shown below, immediately
-followed by the <code>printScores</code> output:</p>
+<h4 id="main"><a class="header" href="#main"><code>main</code></a></h4>
+<p>Most of your output will be produced by <code>playRound</code> and the functions it calls.
+Your <code>main</code> only needs to produce two pieces of output at the end of the game.
+First, the message showing your final score:</p>
 <pre><code>Game Over! Your total score is: 166.
-Score Categories:
+</code></pre>
+<p>Then the <code>printScores</code> output to show the final score in each category:</p>
+<pre><code>Score Categories:
 
 1. Aces: 2
 2. Twos: 8
@@ -246,6 +254,33 @@ Score Categories:
 9. Yahtzee: 50
 10. Chance: 11
 </code></pre>
+<h4 id="playround"><a class="header" href="#playround"><code>playRound</code></a></h4>
+<p>Your <code>playRound</code> function needs to produce output in the following order:</p>
+<ul>
+<li>In each iteration of the reroll phase (this is exactly the same as in previous
+versions, but I'm including it here for completeness):
+<ul>
+<li>Print the dice</li>
+<li>If the user entered an invalid command, print the appropriate error message</li>
+</ul>
+</li>
+<li>At the beginning of the score phase (before prompting the user for any input):
+<ul>
+<li>Print the dice</li>
+<li>Print the scores</li>
+</ul>
+</li>
+<li>For each invalid input received while prompting for a score category:
+<ul>
+<li>Print the appropriate error message</li>
+</ul>
+</li>
+<li>After getting a valid score category:
+<ul>
+<li>The message announcing how many points the user received</li>
+</ul>
+</li>
+</ul>
 <h3 id="functions"><a class="header" href="#functions">Functions</a></h3>
 <ul>
 <li><code>printScores</code>
