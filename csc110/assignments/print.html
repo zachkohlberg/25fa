@@ -260,6 +260,144 @@ allowed to use any third-party libraries in autograded assignments.</p>
 advanced features of the language or use Java keywords that we haven't covered
 in class. The tools you have are more than adequate to solve these problems, and
 they allow for a variety of solutions to most of the programs.</p>
+<h1 id="diffing-output"><a class="header" href="#diffing-output">Diffing Output</a></h1>
+<p>You can use the <code>diff</code> command on your terminal to compare the contents of two
+text files and see all differences between the files. This is helpful for
+checking what doesn't match between your program's output and the expected
+output when looking at the feedback report for an autograded assignment. To do
+this:</p>
+<ol>
+<li>Create two text files. The names don't matter, so for this example we'll say
+they're called <code>student.txt</code> and <code>expected.txt</code>.</li>
+<li>Find the output for a test case you'd like to check in the test report. Copy
+your program's output to one file (<code>student.txt</code>) and the expected program
+output to the other file (<code>expected.txt</code>).</li>
+<li>Run the command <code>diff</code> followed by the two files
+(<code>diff student.txt expected.txt</code>).</li>
+<li>The output will show any lines on which the files differ.</li>
+</ol>
+<p>Below is an example using the expected output from assignment 6's <code>main</code>
+function (case <code>main-io-2</code> in case you're curious) with some minor mistakes that
+I've added to show how diff works.</p>
+<p>The incorrect output from our program in <code>student.txt</code>:</p>
+<pre><code> A   B   C   D   E
++-+ +-+ +-+ +-+ +-+
+|5| |3| |1| |4| |5|
++-+ +-+ +-+ +-+ +-+
+ERROR: The command roooooolllll is not recognized.
+ A   B   C   D   E
++-+ +-+ +-+ +-+ +-+
+|5| |3| |1| |4| |5|
++-+ +-+ +-+ +-+ +-+
+ERROR: The command don't skip is not recognized.
+ A   B   C   D   E
++-+ +-+ +-+ +-+ +-+
+|5| |3| |1| |4| |5|
++-+ +-+ +-+ +-+ +-+
+ERROR: The command trip is not recognized.
+ A   B   C   D   E
++-+ +-+ +-+ +-+ +-+
+|5| |3| |1| |4| |5|
++-+ +-+ +-+ +-+ +-+
+ A   B   C   D   E
++-+ +-+ +-+ +-+ +-+
+|5| |3| |1| |4| |5|
++-+ +-+ +-+ +-+ +-+
+You scored 0 points
+
+</code></pre>
+<p>The expected output in <code>expected.txt</code>:</p>
+<pre><code> A   B   C   D   E
++-+ +-+ +-+ +-+ +-+
+|5| |3| |1| |4| |5|
++-+ +-+ +-+ +-+ +-+
+ERROR: The command "roooooolllll" is not recognized.
+ A   B   C   D   E
++-+ +-+ +-+ +-+ +-+
+|5| |3| |1| |4| |5|
++-+ +-+ +-+ +-+ +-+
+ERROR: The command "don't skip" is not recognized.
+ A   B   C   D   E
++-+ +-+ +-+ +-+ +-+
+|5| |3| |1| |4| |5|
++-+ +-+ +-+ +-+ +-+
+ERROR: The command "trip" is not recognized.
+ A   B   C   D   E
++-+ +-+ +-+ +-+ +-+
+|5| |3| |1| |4| |5|
++-+ +-+ +-+ +-+ +-+
+ A   B   C   D   E
++-+ +-+ +-+ +-+ +-+
+|5| |3| |1| |4| |2|
++-+ +-+ +-+ +-+ +-+
+ A   B   C   D   E
++-+ +-+ +-+ +-+ +-+
+|5| |3| |1| |4| |2|
++-+ +-+ +-+ +-+ +-+
+You scored 0 points!
+
+</code></pre>
+<p>The terminal when we diff these files:</p>
+<pre><code>$ diff student.txt expected.txt
+5c5
+&lt; ERROR: The command roooooolllll is not recognized.
+---
+&gt; ERROR: The command "roooooolllll" is not recognized.
+10c10
+&lt; ERROR: The command don't skip is not recognized.
+---
+&gt; ERROR: The command "don't skip" is not recognized.
+15c15
+&lt; ERROR: The command trip is not recognized.
+---
+&gt; ERROR: The command "trip" is not recognized.
+22c22,26
+&lt; |5| |3| |1| |4| |5|
+---
+&gt; |5| |3| |1| |4| |2|
+&gt; +-+ +-+ +-+ +-+ +-+
+&gt;  A   B   C   D   E
+&gt; +-+ +-+ +-+ +-+ +-+
+&gt; |5| |3| |1| |4| |2|
+24c28
+&lt; You scored 0 points
+---
+&gt; You scored 0 points!
+</code></pre>
+<p>The output from diff can be difficult to parse, so here's a summary of what the
+above diff means:</p>
+<ul>
+<li>A diff shows us a list of changes that would convert one file to the other.
+Each line starting with a <code>&lt;</code> is a line we would remove from the first file,
+and each line starting with a <code>&gt;</code> is a line we would add to the first file. In
+other words, assuming our output was first in the diff command
+(<code>diff student.txt expected.txt</code> and not <code>diff expected.txt student.txt</code>), <code>&lt;</code>
+marks incorrect lines from our output and <code>&gt;</code> marks the corresponding correct
+lines from the expected output.</li>
+<li>Line numbers are listed before the <code>&lt;</code> and <code>&gt;</code> lines as "XcY". X is a line
+number from our file and Y is a line number in the expected output file. X and
+Y can also be ranges if that part of the diff deals with multiple lines.</li>
+<li>For example, the first pair of lines (marked 5c5, indicating that these are
+line 5 in our output and the expected output) tells us that our output is
+missing the quotes around roooooolllll. The incorrect line from our output
+doesn't have the quotes, and the correct line from the expected output does
+have the quotes. The sections labeled 10c10 and 15c15 tell us the same thing.</li>
+<li>Further down, the section marked 22c22,26 is telling us that line 22 from out
+output file is incorrect and the correct output includes lines 22 to 26 from
+the expected output file. There are two problems here: our output ends in a 5
+rather than a 2, and it's missing a second printing of the dice. The missing
+output is why diff wants to replace our single line with five lines from the
+expected output. One line to fix the mistake and four more lines for the extra
+printing of the dice we were missing.</li>
+<li>Finally, the section marked 24c28 shows us that our final line of output (line
+24 in our output file and line 28 in the expected output file) is missing an
+exclamation point.</li>
+</ul>
+<p>The diff command is most useful when you have a small number of minor
+differences between your output and the expected output. In that case, the diff
+will be short and easy to read. If the outputs are nothing alike, then the diff
+will just show all or most of each file, which doesn't tell you anything you
+didn't already know.</p>
 <h1 id="character-sheet-project"><a class="header" href="#character-sheet-project">Character Sheet Project</a></h1>
 <p>This is some background information for the next four assignments. If you're not
 interested in the background and just want to write the programs, then feel free

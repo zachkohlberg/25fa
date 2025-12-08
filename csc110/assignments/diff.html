@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Character Sheet Project - CSC110 Assignments</title>
+        <title>Diffing Output - CSC110 Assignments</title>
 
 
         <!-- Custom HTML head -->
@@ -152,81 +152,154 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="character-sheet-project"><a class="header" href="#character-sheet-project">Character Sheet Project</a></h1>
-<p>This is some background information for the next four assignments. If you're not
-interested in the background and just want to write the programs, then feel free
-to skip this! You can code those programs without knowing anything about TTRPGs.</p>
-<h2 id="dungeons-and-dragons"><a class="header" href="#dungeons-and-dragons">Dungeons and Dragons</a></h2>
-<p><a href="https://en.wikipedia.org/wiki/Dungeons_%26_Dragons">Dungeons and Dragons</a> is a
-<a href="https://en.wikipedia.org/wiki/Tabletop_role-playing_game">tabletop roleplaying game</a>
-(TTRPG). Even if you haven't played a TTRPG before, you've probably still heard
-the name "Dungeons and Dragons" at some point. These assignments will use a
-modified version of some character creation rules from D&amp;D 5e. The real rules
-can be found in the <a href="https://www.5esrd.com/">5e System Reference Document</a>
-(SRD), which you can read if you're curious and want to learn more. However, you
-do not need to read the SRD for this assignment.</p>
-<h2 id="character-sheet"><a class="header" href="#character-sheet">Character Sheet</a></h2>
-<p>The idea behind these assignments is to write a program that generates a
-"character sheet" for someone playing a TTRPG like D&amp;D. A player normally
-controls a fictional character (their Player Character, or PC), and they track
-information about their character on a character sheet. This might include
-statistics, like how strong or fast the character is, the character's
-possessions, or information about the character's personality.</p>
-<p>The character sheet you generate will not cover all of the information about a
-real TTRPG character. This would get too complicated for an early programming
-assignment. Instead, we'll use a small subset of rules from the SRD, some of
-which will be simplified to better fit this assignment. You don't need to know
-any of these rules! The assignments will explain any calculations your code
-needs to perform.</p>
-<h2 id="terminology"><a class="header" href="#terminology">Terminology</a></h2>
-<p>Below is a summary of some terms that will come up in this assignment:</p>
+                        <h1 id="diffing-output"><a class="header" href="#diffing-output">Diffing Output</a></h1>
+<p>You can use the <code>diff</code> command on your terminal to compare the contents of two
+text files and see all differences between the files. This is helpful for
+checking what doesn't match between your program's output and the expected
+output when looking at the feedback report for an autograded assignment. To do
+this:</p>
+<ol>
+<li>Create two text files. The names don't matter, so for this example we'll say
+they're called <code>student.txt</code> and <code>expected.txt</code>.</li>
+<li>Find the output for a test case you'd like to check in the test report. Copy
+your program's output to one file (<code>student.txt</code>) and the expected program
+output to the other file (<code>expected.txt</code>).</li>
+<li>Run the command <code>diff</code> followed by the two files
+(<code>diff student.txt expected.txt</code>).</li>
+<li>The output will show any lines on which the files differ.</li>
+</ol>
+<p>Below is an example using the expected output from assignment 6's <code>main</code>
+function (case <code>main-io-2</code> in case you're curious) with some minor mistakes that
+I've added to show how diff works.</p>
+<p>The incorrect output from our program in <code>student.txt</code>:</p>
+<pre><code> A   B   C   D   E
++-+ +-+ +-+ +-+ +-+
+|5| |3| |1| |4| |5|
++-+ +-+ +-+ +-+ +-+
+ERROR: The command roooooolllll is not recognized.
+ A   B   C   D   E
++-+ +-+ +-+ +-+ +-+
+|5| |3| |1| |4| |5|
++-+ +-+ +-+ +-+ +-+
+ERROR: The command don't skip is not recognized.
+ A   B   C   D   E
++-+ +-+ +-+ +-+ +-+
+|5| |3| |1| |4| |5|
++-+ +-+ +-+ +-+ +-+
+ERROR: The command trip is not recognized.
+ A   B   C   D   E
++-+ +-+ +-+ +-+ +-+
+|5| |3| |1| |4| |5|
++-+ +-+ +-+ +-+ +-+
+ A   B   C   D   E
++-+ +-+ +-+ +-+ +-+
+|5| |3| |1| |4| |5|
++-+ +-+ +-+ +-+ +-+
+You scored 0 points
+
+</code></pre>
+<p>The expected output in <code>expected.txt</code>:</p>
+<pre><code> A   B   C   D   E
++-+ +-+ +-+ +-+ +-+
+|5| |3| |1| |4| |5|
++-+ +-+ +-+ +-+ +-+
+ERROR: The command "roooooolllll" is not recognized.
+ A   B   C   D   E
++-+ +-+ +-+ +-+ +-+
+|5| |3| |1| |4| |5|
++-+ +-+ +-+ +-+ +-+
+ERROR: The command "don't skip" is not recognized.
+ A   B   C   D   E
++-+ +-+ +-+ +-+ +-+
+|5| |3| |1| |4| |5|
++-+ +-+ +-+ +-+ +-+
+ERROR: The command "trip" is not recognized.
+ A   B   C   D   E
++-+ +-+ +-+ +-+ +-+
+|5| |3| |1| |4| |5|
++-+ +-+ +-+ +-+ +-+
+ A   B   C   D   E
++-+ +-+ +-+ +-+ +-+
+|5| |3| |1| |4| |2|
++-+ +-+ +-+ +-+ +-+
+ A   B   C   D   E
++-+ +-+ +-+ +-+ +-+
+|5| |3| |1| |4| |2|
++-+ +-+ +-+ +-+ +-+
+You scored 0 points!
+
+</code></pre>
+<p>The terminal when we diff these files:</p>
+<pre><code>$ diff student.txt expected.txt
+5c5
+&lt; ERROR: The command roooooolllll is not recognized.
+---
+&gt; ERROR: The command "roooooolllll" is not recognized.
+10c10
+&lt; ERROR: The command don't skip is not recognized.
+---
+&gt; ERROR: The command "don't skip" is not recognized.
+15c15
+&lt; ERROR: The command trip is not recognized.
+---
+&gt; ERROR: The command "trip" is not recognized.
+22c22,26
+&lt; |5| |3| |1| |4| |5|
+---
+&gt; |5| |3| |1| |4| |2|
+&gt; +-+ +-+ +-+ +-+ +-+
+&gt;  A   B   C   D   E
+&gt; +-+ +-+ +-+ +-+ +-+
+&gt; |5| |3| |1| |4| |2|
+24c28
+&lt; You scored 0 points
+---
+&gt; You scored 0 points!
+</code></pre>
+<p>The output from diff can be difficult to parse, so here's a summary of what the
+above diff means:</p>
 <ul>
-<li>A character's <strong>class</strong> is the role they fill in the game's world. In a game
-like D&amp;D, which focuses on fighting fantasy monsters, a character's class
-tells us their role in combat. A wizard casts spells, a rogue sneaks up on
-enemies, and a fighter... fights. Yes, everyone fights, but the fighter fights
-more directly, like with a sword and shield.</li>
-<li>A character's <strong>ancestry</strong> or <strong>race</strong> (the term varies by game, but I'll
-usually default to ancestry) represents what kind of creature they are. D&amp;D
-includes a lot of your standard fantasy races: elf, human, dwarf, goblin,
-gnome, halfling, and orc. However, depending on the game and who's running it,
-a TTRPG character could be anything: a ghost, a dragon, a talking bear, or a
-mannequin. I have run a game of D&amp;D that included both a talking bear and a
-mannequin as player characters. The mannequin also talked, and his name was
-Bob. The bear had a pet monkey. All of this will be on the exam<sup class="footnote-reference"><a href="#exam">1</a></sup>.</li>
-<li>A character's <strong>hit points</strong> (HP) represent how difficult they are to defeat
-in combat.</li>
-<li>A character's <strong>armor class</strong> (AC) represents how hard they are to hit with an
-attack. A high AC may mean that a character is very good at avoiding attacks,
-or that a character is wearing armor that blocks most attacks.</li>
-<li>A character's <strong>ability scores</strong> are numbers that represent a character's
-strength, cunning, speed, and other innate qualities. These affect most
-actions in the game.</li>
-<li>A character's <strong>ability modifiers</strong> are bonuses or penalties derived from
-their ability scores. The modifiers are the numbers we actually use in most
-calculations, and the scores only exist to determine the modifiers. At this
-point, you may be wondering why we bother with ability scores if we don't use
-them after calculating the modifiers. Good question! Anyway, let's talk about
-the character's level.</li>
-<li>A character's <strong>level</strong> represents how powerful and experienced they are. In
-most TTRPGs, characters gain experience and level up to represent how they've
-grown during their adventures.</li>
-<li>In addition to standard six-sided dice (referred to as D6 dice), D&amp;D uses
-several less common dice shapes: D4, D8, D10, D12, and D20.</li>
+<li>A diff shows us a list of changes that would convert one file to the other.
+Each line starting with a <code>&lt;</code> is a line we would remove from the first file,
+and each line starting with a <code>&gt;</code> is a line we would add to the first file. In
+other words, assuming our output was first in the diff command
+(<code>diff student.txt expected.txt</code> and not <code>diff expected.txt student.txt</code>), <code>&lt;</code>
+marks incorrect lines from our output and <code>&gt;</code> marks the corresponding correct
+lines from the expected output.</li>
+<li>Line numbers are listed before the <code>&lt;</code> and <code>&gt;</code> lines as "XcY". X is a line
+number from our file and Y is a line number in the expected output file. X and
+Y can also be ranges if that part of the diff deals with multiple lines.</li>
+<li>For example, the first pair of lines (marked 5c5, indicating that these are
+line 5 in our output and the expected output) tells us that our output is
+missing the quotes around roooooolllll. The incorrect line from our output
+doesn't have the quotes, and the correct line from the expected output does
+have the quotes. The sections labeled 10c10 and 15c15 tell us the same thing.</li>
+<li>Further down, the section marked 22c22,26 is telling us that line 22 from out
+output file is incorrect and the correct output includes lines 22 to 26 from
+the expected output file. There are two problems here: our output ends in a 5
+rather than a 2, and it's missing a second printing of the dice. The missing
+output is why diff wants to replace our single line with five lines from the
+expected output. One line to fix the mistake and four more lines for the extra
+printing of the dice we were missing.</li>
+<li>Finally, the section marked 24c28 shows us that our final line of output (line
+24 in our output file and line 28 in the expected output file) is missing an
+exclamation point.</li>
 </ul>
-<div class="footnote-definition" id="exam"><sup class="footnote-definition-label">1</sup>
-<p>We don't have exams, don't worry.</p>
-</div>
+<p>The diff command is most useful when you have a small number of minor
+differences between your output and the expected output. In that case, the diff
+will be short and easy to read. If the outputs are nothing alike, then the diff
+will just show all or most of each file, which doesn't tell you anything you
+didn't already know.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="diff.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="autograded.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="assign1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="character_sheet.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -236,11 +309,11 @@ several less common dice shapes: D4, D8, D10, D12, and D20.</li>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="diff.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="autograded.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="assign1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="character_sheet.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
